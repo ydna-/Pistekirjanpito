@@ -2,9 +2,14 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](http://andreasn.users.cs.helsinki.fi/pkp/)
+* [Linkki dokumentaatiooni](http://github.com/ydna-/Pistekirjanpito/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Kisällikursseilla opiskelijat palauttavat viikoittain harjoitustehtäviä,
+joista he voivat ansaita lisäpisteitä kurssisuoritukseen. Tämän web-sovelluksen
+tarkoituksena on toimia pistekirjanpitojärjestelmänä tällaisille kursseille.
+Ohjaajat pystyvät järjestelmän kautta vaivattomasti kirjaamaan oman kurssin
+opiskelijoiden palautuksia, ja opettajat taas lisäämään omia kursseja sekä
+näille opiskelijoita ja harjoitustehtäviä.
