@@ -47,28 +47,52 @@ käytettävän AngularJS-ohjelmistokehyksen käytettäväksi.
 
 \subsection{Käyttötapauskaavio}
 
-\includegraphics[scale=0.75]{kayttotapauskaavio}
+\includegraphics[scale=0.5]{kayttotapauskaavio}
 
-\subsection{Käyttäjät}
+\subsection{Käyttäjäryhmät}
 
 \begin{description}
+	\item[Opiskelija] \hfill \\
+	Opiskelijalla tarkoitetaan ketä tahansa, joka päätyy kyseisen
+	järjestelmän web-sivulle. Kaikki muut käyttäjäryhmät kuuluvat
+	myös tähän käyttäjäryhmään.
 	\item[Ohjaaja] \hfill \\
-	Ohjaajalla tarkoitetaan järjestelmään rekisteröitynyttä käyttäjää,
-	jonka rekisteröityminen on hyväksytty opettajan toimesta.
+	Ohjaaja on järjestelmään rekisteröitynyt käyttäjä, jonka vastuulla
+	on oman kurssin palautukset ja jonka rekisteröityminen on hyväksytty
+	opettajan toimesta.\\
 	\item[Opettaja] \hfill \\
-	Opettaja on rekisteröinyt ja autentikoitu käyttäjä, jonka vastuulla
-	ovat omat kurssit ja harjoitustehtävät.
+	Opettaja on järjestelmään rekisteröitynyt käyttäjä, jonka
+	vastuulla on omat kurssit ja jonka rekisteröityminen on hyväksytty
+	adminin toimesta.
+	\item[Admin] \hfill \\
+	Adminilla tarkoitetaan järjestelmän ylintä käyttäjäluokkaa.
 \end{description}
 
 \subsection{Käyttötapauskuvaukset}
 
 \begin{description}
+	\item[Opiskelijan käyttötapaukset] \hfill \\
+	\begin{description}
+		\item[Pisteiden tarkastelu] \hfill \\
+		Opiskelija pystyy järjestelmän etusivulta tarkastamaan
+		omat pisteensä valitsemalla kurssin ja syöttämällä
+		oman kurssitunnuksensa.
+		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen
+	\end{description}
 	\item[Ohjaajan käyttötapaukset] \hfill \\
 	\begin{description}
 		\item[Tehtävien kirjaaminen] \hfill \\
 		Ohjaajan tehtävänä on kirjata järjestelmään oman kurssin tehtäviä.
 		Ohjaajan tulee myös tarvittaessa pystyä katsomaan ja muokkaamaan
 		jo kirjattuja opiskelijan harjoituksen tehtäviä.
+		\item[Harjoituksen lisääminen] \hfill \\
+		Ohjaajan tehtäviin kuuluu myös lisätä omille kursseille harjoituksia
+		määrittelemällä tehtävien lukumäärä. Ohjaaja pystyy tarvittaessa
+		myös muokkaamaan ja poistamaan harjoituksia.
+		\item[Taulukoiden vienti] \hfill \\
+		Ohjaaja pystyy tulostamaan järjestelmästä taulukkona tietyn kurssin
+		kaikkien opiskelijoiden palautettujen tehtävien lukumäärät, esimerkiksi
+		.csv-muodossa.
 		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen
 	\end{description}
 	\item[Opettajan käyttötapaukset] \hfill \\
@@ -79,20 +103,20 @@ käytettävän AngularJS-ohjelmistokehyksen käytettäväksi.
 		\item[Kurssin lisääminen] \hfill \\
 		Opettajan tehtäviin kuuluu lisätä järjestelmään omia kursseja.
 		Opettaja pystyy tarvittaessa myös muokkaamaan ja poistamaan kursseja.
-		\item[Opiskelijan lisääminen] \hfill \\
+		\item[Opiskelijoiden lisääminen] \hfill \\
 		Opettajan tehtäviin kuuluu myös lisätä omille kursseille opiskelijoita
 		kurssitunnuksen mukaan. Opettaja pystyy tarvittaessa myös muokkaamaan
 		ja poistamaan opiskelijoita.
-		\item[Harjoituksen lisääminen] \hfill \\
-		Opettajan tehtäviin kuuluu myös lisätä omille kursseille harjoituksia
-		määrittelemällä tehtävien lukumäärä. Opettaja pystyy tarvittaessa
-		myös muokkaamaan ja poistamaan harjoituksia.
-		\item[Taulukoiden vienti] \hfill \\
-		Opettaja pystyy tulostamaan järjestelmästä taulukkona tietyn kurssin
-		kaikkien opiskelijoiden palautettujen tehtävien lukumäärät, esimerkiksi
-		.csv-muodossa.
-		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen
+		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen,
+		tehtävien kirjaaminen, harjoituksen lisääminen, taulukoiden vienti
 	\end{description}
+	\item[Adminin käyttötapaukset] \hfill \\
+		\item[Opettajan autentikointi] \hfill \\
+		Kun opettaja rekisteröityy järjestelmään, järjestelmän adminin
+		tulee vahvistaa opettajan käyttäjä.
+		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen,
+		tehtävien kirjaaminen, harjoituksen lisääminen, taulukoiden vienti,
+		kurssin lisääminen, opiskelijoiden lisääminen
 \end{description}
 
 \end{document}

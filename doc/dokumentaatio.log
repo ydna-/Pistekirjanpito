@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  17 MAY 2015 23:32
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  21 MAY 2015 18:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -467,14 +467,14 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 \openout3 = `dokumentaatio.toc'.
 
  [1] [2]
-<kayttotapauskaavio.png, id=17, 408.52625pt x 461.725pt>
+<kayttotapauskaavio.png, id=17, 734.745pt x 617.30624pt>
 File: kayttotapauskaavio.png Graphic file (type png)
 
 <use kayttotapauskaavio.png>
 Package pdftex.def Info: kayttotapauskaavio.png used on input line 50.
-(pdftex.def)             Requested size: 306.39394pt x 346.29291pt.
+(pdftex.def)             Requested size: 367.3716pt x 308.65236pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
 
  []
 
@@ -483,7 +483,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-[4] (./dokumentaatio.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+[4]
+Underfull \hbox (badness 3657) in paragraph at lines 110--112
+[]\T1/cmr/m/n/12 rekisteröityminen, kir-jau-tu-mi-nen, teh-tä-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+[5] (./dokumentaatio.aux) ) 
 Here is how much of TeX's memory you used:
  3193 strings out of 495044
  39482 string characters out of 3181317
@@ -491,17 +511,17 @@ Here is how much of TeX's memory you used:
  6312 multiletter control sequences out of 15000+200000
  16284 words of font info for 50 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,6n,24p,242b,236s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,6n,24p,242b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/
 ecbx1440.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600
 pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/y
 dna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/ydna/.texmf-v
 ar/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/ydna/.texmf-var/fonts/pk/
 ljfour/jknappen/ec/ecrm2074.600pk>
-Output written on dokumentaatio.pdf (5 pages, 80063 bytes).
+Output written on dokumentaatio.pdf (6 pages, 113209 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 201 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
