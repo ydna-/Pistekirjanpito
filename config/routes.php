@@ -36,10 +36,10 @@ $routes->get('/courses/1/exercises/1', function() {
     HelloWorldController::exercise_show();
 });
 
-$routes->get('/course/1/exercises/new', function() {
+$routes->get('/courses/1/exercises/new', function() {
     HelloWorldController::exercise_add();
 });
 
-$routes->get('/course/1/exercises/1/edit', function() {
+$routes->get('/courses/1/exercises/1/edit', function() {
     HelloWorldController::exercise_edit();
 });
