@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Muokkaa kurssia Johdatus yliopistomatematiikkaan</h1>
+
+<form>
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" class="form-control" value="Johdatus yliopistomatematiikkaan">
+    </div>
+    <div class="form-group">
+        <label>Lukukausi</label>
+        <input type="text" class="form-control" value="Syksy 2015">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+{% endblock %}

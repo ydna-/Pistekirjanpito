@@ -1,0 +1,122 @@
+\documentclass[a4paper,12pt, titlepage]{article}
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage[finnish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\linespread{1.24}
+\sloppy
+
+\title{Tietokantasovellus \\ Dokumentaatio}
+\author{Andreas Niskanen}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Johdanto}
+
+Kisällikursseilla opiskelijat palauttavat viikoittain harjoitustehtäviä,
+joista he voivat ansaita lisäpisteitä kurssisuoritukseen. Tehtäviä on
+kahdenlaisia. Tähtitehtävät tarkistetaan, ja niistä saa pisteitä vain
+silloin, kun tehtävä on tehty oikein. Tehtäviä saa kuitenkin korjata ja
+palauttaa uudelleen. Tähdettömiä tehtäviä ei sen sijaan tarkisteta.\\
+Tämä käytäntö vaatii toimiakseen pistekirjanpitojärjestelmän, jonka avulla
+ohjaajat voivat kirjata opiskelijan palauttamia tehtäviä ja näiden korjauksia
+mahdollisimman sujuvasti. Ohjaajan tulee myös nähdä opiskelijan palauttamat
+tehtävät sopivassa muodossa ja muokata näitä tarpeen mukaan.\\
+Kurssin opettajan vastuulla on lisätä järjestelmään kursseja ja poistaa
+niitä järjestelmästä, sekä lisätä kullekin kurssille harjoitustehtäviä ja
+hyväksyä ohjaajia, joilla on oikeudet muokata vain oman kurssin palautuksia.
+Lisäksi opettajat tarvitsevat tiettyjä tilastollisia tunnuslukuja (esimerkiksi
+palautettujen tehtävien määristä), jotka tulee näkyä kunkin kurssin yhteydessä.\\
+Kyseinen pistekirjanpitojärjestelmä toteutetaan tietojenkäsittelytieteen
+laitoksen users-palvelimelle käyttäen PostgreSQL-tietokantapalvelinta.
+Palvelimen puolella käytetään PHP-ohjelmointikieltä, jonka avulla haetaan
+tarvittava data tietokannasta ja tarjotaan REST-rajapinta selaimen puolella
+käytettävän AngularJS-ohjelmistokehyksen käytettäväksi.
+
+\newpage
+
+\section{Käyttötapaukset}
+
+\subsection{Käyttötapauskaavio}
+
+\includegraphics[scale=0.5]{kayttotapauskaavio}
+
+\subsection{Käyttäjäryhmät}
+
+\begin{description}
+	\item[Opiskelija] \hfill \\
+	Opiskelijalla tarkoitetaan ketä tahansa, joka päätyy kyseisen
+	järjestelmän web-sivulle. Kaikki muut käyttäjäryhmät kuuluvat
+	myös tähän käyttäjäryhmään.
+	\item[Ohjaaja] \hfill \\
+	Ohjaaja on järjestelmään rekisteröitynyt käyttäjä, jonka vastuulla
+	on oman kurssin palautukset ja jonka rekisteröityminen on hyväksytty
+	opettajan toimesta.\\
+	\item[Opettaja] \hfill \\
+	Opettaja on järjestelmään rekisteröitynyt käyttäjä, jonka
+	vastuulla on omat kurssit ja jonka rekisteröityminen on hyväksytty
+	adminin toimesta.
+	\item[Admin] \hfill \\
+	Adminilla tarkoitetaan järjestelmän ylintä käyttäjäluokkaa.
+\end{description}
+
+\subsection{Käyttötapauskuvaukset}
+
+\begin{description}
+	\item[Opiskelijan käyttötapaukset] \hfill \\
+	\begin{description}
+		\item[Pisteiden tarkastelu] \hfill \\
+		Opiskelija pystyy järjestelmän etusivulta tarkastamaan
+		omat pisteensä valitsemalla kurssin ja syöttämällä
+		oman kurssitunnuksensa.
+		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen
+	\end{description}
+	\item[Ohjaajan käyttötapaukset] \hfill \\
+	\begin{description}
+		\item[Tehtävien kirjaaminen] \hfill \\
+		Ohjaajan tehtävänä on kirjata järjestelmään oman kurssin tehtäviä.
+		Ohjaajan tulee myös tarvittaessa pystyä katsomaan ja muokkaamaan
+		jo kirjattuja opiskelijan harjoituksen tehtäviä.
+		\item[Harjoituksen lisääminen] \hfill \\
+		Ohjaajan tehtäviin kuuluu myös lisätä omille kursseille harjoituksia
+		määrittelemällä tehtävien lukumäärä. Ohjaaja pystyy tarvittaessa
+		myös muokkaamaan ja poistamaan harjoituksia.
+		\item[Taulukoiden vienti] \hfill \\
+		Ohjaaja pystyy tulostamaan järjestelmästä taulukkona tietyn kurssin
+		kaikkien opiskelijoiden palautettujen tehtävien lukumäärät, esimerkiksi
+		.csv-muodossa.
+		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen
+	\end{description}
+	\item[Opettajan käyttötapaukset] \hfill \\
+	\begin{description}
+		\item[Ohjaajan autentikointi] \hfill \\
+		Kun ohjaaja rekisteröityy järjestelmään tietyn kurssin ohjaajaksi,
+		kurssin vastuuopettajan tulee vahvistaa ohjaajan käyttäjä.
+		\item[Kurssin lisääminen] \hfill \\
+		Opettajan tehtäviin kuuluu lisätä järjestelmään omia kursseja.
+		Opettaja pystyy tarvittaessa myös muokkaamaan ja poistamaan kursseja.
+		\item[Opiskelijoiden lisääminen] \hfill \\
+		Opettajan tehtäviin kuuluu myös lisätä omille kursseille opiskelijoita
+		kurssitunnuksen mukaan. Opettaja pystyy tarvittaessa myös muokkaamaan
+		ja poistamaan opiskelijoita.
+		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen,
+		tehtävien kirjaaminen, harjoituksen lisääminen, taulukoiden vienti
+	\end{description}
+	\item[Adminin käyttötapaukset] \hfill \\
+		\item[Opettajan autentikointi] \hfill \\
+		Kun opettaja rekisteröityy järjestelmään, järjestelmän adminin
+		tulee vahvistaa opettajan käyttäjä.
+		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen,
+		tehtävien kirjaaminen, harjoituksen lisääminen, taulukoiden vienti,
+		kurssin lisääminen, opiskelijoiden lisääminen
+\end{description}
+
+\end{document}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää harjoitus kurssille Johdatus yliopistomatematiikkaan</h1>
+
+<form>
+    <div class="form-group">
+        <label>Tehtävien lukumäärä</label>
+        <input type="number" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Tähtitehtävien lukumäärä</label>
+        <input type="number" class="form-control">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+{% endblock %}
