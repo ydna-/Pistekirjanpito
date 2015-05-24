@@ -6,5 +6,5 @@
 \contentsline {subsection}{\numberline {2.3}K\IeC {\"a}ytt\IeC {\"o}tapauskuvaukset}{4}
 \contentsline {section}{\numberline {3}J\IeC {\"a}rjestelm\IeC {\"a}n tietosis\IeC {\"a}lt\IeC {\"o}}{6}
 \contentsline {subsection}{\numberline {3.1}K\IeC {\"a}sitekaavio}{6}
-\contentsline {subsection}{\numberline {3.2}Tietokohteet}{7}
-\contentsline {section}{\numberline {4}Relaatiotietokantakaavio}{7}
+\contentsline {subsection}{\numberline {3.2}Tietokohteet}{6}
+\contentsline {section}{\numberline {4}Relaatiotietokantakaavio}{8}

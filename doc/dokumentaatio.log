@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  24 MAY 2015 23:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  25 MAY 2015 00:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,32 +509,32 @@ File: kasitekaavio.png Graphic file (type png)
 Package pdftex.def Info: kasitekaavio.png used on input line 126.
 (pdftex.def)             Requested size: 366.36786pt x 360.34537pt.
 
-[5] <relaatiokaavio.png, id=29, 648.4225pt x 762.85pt>
+[5] [6 <./kasitekaavio.png (PNG copy)>]
+<relaatiokaavio.png, id=33, 648.4225pt x 762.85pt>
 File: relaatiokaavio.png Graphic file (type png)
-
-<use relaatiokaavio.png>
-Package pdftex.def Info: relaatiokaavio.png used on input line 132.
+ <use relaatiokaavio.png>
+Package pdftex.def Info: relaatiokaavio.png used on input line 189.
 (pdftex.def)             Requested size: 324.21045pt x 381.42407pt.
- [6 <./kasitekaavio.png (PNG copy)>] [7 <./relaatiokaavio.png (PNG copy)>] (./d
-okumentaatio.aux) ) 
+
+[7] [8 <./relaatiokaavio.png (PNG copy)>] (./dokumentaatio.aux) ) 
 Here is how much of TeX's memory you used:
  3203 strings out of 495044
  39690 string characters out of 3181317
- 96109 words of memory out of 3000000
+ 99109 words of memory out of 3000000
  6320 multiletter control sequences out of 15000+200000
  16284 words of font info for 50 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,6n,24p,242b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440
-.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </ho
-me/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/ydna/.tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/ydna/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecrm2074.600pk>
-Output written on dokumentaatio.pdf (8 pages, 185723 bytes).
+ </home/ydna/.
+texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/ydna/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/ydna/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecbx1200.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecbx1728.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.6
+00pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2074.600pk>
+Output written on dokumentaatio.pdf (9 pages, 189604 bytes).
 PDF statistics:
- 225 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 234 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
