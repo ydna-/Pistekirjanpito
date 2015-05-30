@@ -32,8 +32,8 @@ $routes->get('/courses/:id', function($id) {
     CourseController::course_show($id);
 });
 
-$routes->get('/courses/1/edit', function() {
-    HelloWorldController::course_edit();
+$routes->get('/courses/:id/edit', function($id) {
+    CourseController::course_edit($id);
 });
 
 $routes->get('/courses/1/exercises/new', function() {

@@ -26,4 +26,9 @@ class CourseController extends BaseController {
         View::make('course/new.html');
     }
     
+    public static function course_edit($id) {
+        $course = Course::find($id);
+        View::make('course/edit.html', array('course' => $course));
+    }
+    
 }

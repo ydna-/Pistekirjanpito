@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Muokkaa kurssia Johdatus yliopistomatematiikkaan</h1>
+<h1>Muokkaa kurssia</h1>
 
 <form>
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" class="form-control" value="Johdatus yliopistomatematiikkaan">
+        <input type="text" class="form-control" value="{{course.name}}">
     </div>
     <div class="form-group">
         <label>Lukukausi</label>
-        <input type="text" class="form-control" value="Syksy 2015">
+        <input type="text" class="form-control" value="{{course.term}}">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>

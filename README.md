@@ -5,13 +5,17 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://andreasn.users.cs.helsinki.fi/pkp/)
 * [Linkki dokumentaatiooni](http://github.com/ydna-/Pistekirjanpito/blob/master/doc/dokumentaatio.pdf)
 
-Staattiset HTML-sivut:
+Dynaamiset HTML-sivut:
 
 * Kurssisivut:
   * [listaus](http://andreasn.users.cs.helsinki.fi/pkp/courses)
   * [esittely](http://andreasn.users.cs.helsinki.fi/pkp/courses/1)
-  * [muokkaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/edit)
   * [luonti](http://andreasn.users.cs.helsinki.fi/pkp/courses/new)
+
+Staattiset HTML-sivut:
+
+* Kurssisivut:
+  * [muokkaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/edit)
 * Harjoitussivut:
   * [esittely](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/exercises/1)
   * [muokkaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/exercises/1/edit)

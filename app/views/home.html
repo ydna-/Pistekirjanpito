@@ -1,4 +1,4 @@
-    {% extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
 <h1>Tarkastele pisteitä</h1>
 
@@ -6,8 +6,9 @@
     <div class="form-group">
         <label for="sel">Kurssi</label>
         <select class="form-control" id="sel">
-            <option>Johdatus yliopistomatematiikkaan (syksy 2015)</option>
-            <option>Lineaarialgebra ja matriisilaskenta I (syksy 2015)</option>
+            {% for course in courses %}
+            <option>{{course.name}} ({{course.term}})</option>
+            {% endfor %}
         </select>
     </div>
     <div class="form-group">

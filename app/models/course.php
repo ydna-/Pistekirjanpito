@@ -46,4 +46,5 @@ class Course extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+    
 }

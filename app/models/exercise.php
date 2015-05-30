@@ -37,4 +37,5 @@ class Exercise extends BaseModel {
         }
         return null;
     }
+    
 }
