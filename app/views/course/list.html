@@ -3,7 +3,7 @@
 <h1>Kurssit</h1>
 
 <p>
-    <a href="#" class="btn btn-success">Lisää kurssi</a>
+    <a href="{{base_path}}/courses/new" class="btn btn-success">Lisää kurssi</a>
 </p>
 
 <table class="table table-striped table-bordered">
@@ -14,14 +14,12 @@
         </tr>
     </thead>
     <tbody>
+        {% for course in courses %}
         <tr>
-            <td><a href="#">Johdatus yliopistomatematiikkaan</a></td>
-            <td>Syksy 2015</td>
+            <td><a href="{{base_path}}/courses/{{course.id}}">{{course.name}}</td>
+            <td>{{course.term}}</td>
         </tr>
-        <tr>
-            <td><a href="#">Lineaarialgebra ja matriisilaskenta I</a></td>
-            <td>Syksy 2015</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

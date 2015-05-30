@@ -2,14 +2,14 @@
 {% block content %}
 <h1>Lisää kurssi</h1>
 
-<form>
+<form method="post" action="{{base_path}}/courses">
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" class="form-control">
+        <input name="name" class="form-control" type="text">
     </div>
     <div class="form-group">
         <label>Lukukausi</label>
-        <input type="text" class="form-control">
+        <input name="term" class="form-control" type="text">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>

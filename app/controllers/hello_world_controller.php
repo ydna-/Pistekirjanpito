@@ -7,7 +7,10 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        View::make('helloworld.html');
+        $course = Course::find(1);
+        $courses = Course::all();
+        Kint::dump($course);
+        Kint::dump($courses);
     }
     
     public static function login() {
