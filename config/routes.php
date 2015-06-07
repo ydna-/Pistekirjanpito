@@ -9,11 +9,23 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/login', function() {
-    HelloWorldController::login();
+    UserController::login();
+});
+
+$routes->post('/login', function() {
+    UserController::handle_login();
 });
 
 $routes->get('/register', function() {
-    HelloWorldController::register();
+    UserController::register();
+});
+
+$routes->post('/register', function() {
+    UserController::handle_register();
+});
+
+$routes->post('/logout', function() {
+    UserController::logout();
 });
 
 $routes->get('/courses', function() {
@@ -34,6 +46,14 @@ $routes->get('/courses/:id', function($id) {
 
 $routes->get('/courses/:id/edit', function($id) {
     CourseController::course_edit($id);
+});
+
+$routes->post('/courses/:id/edit', function($id) {
+    CourseController::course_update($id);
+});
+
+$routes->post('/courses/:id/destroy', function($id) {
+    CourseController::course_destroy($id);
 });
 
 $routes->get('/courses/1/exercises/new', function() {

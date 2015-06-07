@@ -8,28 +8,21 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        $course = Course::find(1);
-        $courses = Course::all();
-        Kint::dump($course);
-        Kint::dump($courses);
+        if (defined('CRYPT_SHA512') && CRYPT_SHA512) {
+            echo('JEE!');
+        } else {
+            echo('Ou nou :(');
+        }
     }
-    
-    public static function login() {
-        View::make('user/login.html');
-    }
-    
-    public static function register() {
-        View::make('user/register.html');
-    }
-    
+
     public static function exercise_add() {
         View::make('exercise/add.html');
     }
-    
+
     public static function exercise_edit() {
         View::make('exercise/edit.html');
     }
-    
+
     public static function exercise_show() {
         View::make('exercise/show.html');
     }

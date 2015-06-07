@@ -2,6 +2,10 @@
 {% block content %}
 <h1>Kurssit</h1>
 
+{% if message %}
+<div class="alert alert-success">{{message}}</div>
+{% endif %}
+
 <p>
     <a href="{{base_path}}/courses/new" class="btn btn-success">Lisää kurssi</a>
 </p>

@@ -2,7 +2,7 @@ CREATE TABLE Teacher(
     id SERIAL PRIMARY KEY,
     name varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
-    password varchar(50) NOT NULL
+    password varchar(60) NOT NULL
 );
 
 CREATE TABLE Course(
@@ -16,7 +16,7 @@ CREATE TABLE Instructor(
     id SERIAL PRIMARY KEY,
     name varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
-    password varchar(50) NOT NULL,
+    password varchar(60) NOT NULL,
     course_id INTEGER REFERENCES Course(id)
 );
 
