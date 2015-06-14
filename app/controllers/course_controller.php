@@ -11,7 +11,8 @@ class CourseController extends BaseController {
     public static function course_show($id) {
         self::check_logged_in();
         $course = Course::find($id);
-        View::make('course/show.html', array('course' => $course));
+        $exercises = Exercise::all($id);
+        View::make('course/show.html', array('course' => $course, 'exercises' => $exercises));
     }
 
     public static function course_store() {

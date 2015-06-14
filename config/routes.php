@@ -56,14 +56,26 @@ $routes->post('/courses/:id/destroy', function($id) {
     CourseController::course_destroy($id);
 });
 
-$routes->get('/courses/1/exercises/new', function() {
-    HelloWorldController::exercise_add();
+$routes->post('/courses/:course_id/exercises', function($course_id) {
+    ExerciseController::exercise_store($course_id);
 });
 
-$routes->get('/courses/1/exercises/1', function() {
-    HelloWorldController::exercise_show();
+$routes->get('/courses/:course_id/exercises/new', function($course_id) {
+    ExerciseController::exercise_create($course_id);
 });
 
-$routes->get('/courses/1/exercises/1/edit', function() {
-    HelloWorldController::exercise_edit();
+$routes->get('/courses/:course_id/exercises/:id', function($course_id, $id) {
+    ExerciseController::exercise_show($course_id, $id);
+});
+
+$routes->get('/courses/:course_id/exercises/:id/edit', function($course_id, $id) {
+    ExerciseController::exercise_edit($course_id, $id);
+});
+
+$routes->post('/courses/:course_id/exercises/:id/edit', function($course_id, $id) {
+    ExerciseController::exercise_update($course_id, $id);
+});
+
+$routes->post('/courses/:course_id/exercises/:id/destroy', function($course_id, $id) {
+    ExerciseController::exercise_destroy($course_id, $id);
 });

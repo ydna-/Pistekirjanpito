@@ -15,16 +15,4 @@ class HelloWorldController extends BaseController {
         }
     }
 
-    public static function exercise_add() {
-        View::make('exercise/new.html');
-    }
-
-    public static function exercise_edit() {
-        View::make('exercise/edit.html');
-    }
-
-    public static function exercise_show() {
-        View::make('exercise/show.html');
-    }
-
 }
