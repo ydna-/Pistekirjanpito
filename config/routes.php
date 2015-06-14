@@ -1,11 +1,7 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
-});
-
-$routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    HomeController::index();
 });
 
 $routes->get('/login', function() {
@@ -78,4 +74,16 @@ $routes->post('/courses/:course_id/exercises/:id/edit', function($course_id, $id
 
 $routes->post('/courses/:course_id/exercises/:id/destroy', function($course_id, $id) {
     ExerciseController::exercise_destroy($course_id, $id);
+});
+
+$routes->get('/courses/:course_id/students', function($course_id) {
+    StudentController::student_list($course_id);
+});
+
+$routes->post('/courses/:course_id/students', function($course_id) {
+    StudentController::student_store($course_id);
+});
+
+$routes->get('/courses/:course_id/students/new', function($course_id) {
+    StudentController::student_create($course_id);
 });

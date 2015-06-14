@@ -13,13 +13,16 @@ HTML-sivut:
 
 * Kurssisivut:
   * [listaus](http://andreasn.users.cs.helsinki.fi/pkp/courses)
-  * [esittely](http://andreasn.users.cs.helsinki.fi/pkp/courses/1)
+  * [esittely](http://andreasn.users.cs.helsinki.fi/pkp/courses/2)
   * [luonti](http://andreasn.users.cs.helsinki.fi/pkp/courses/new)
-  * [muokkaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/edit)
+  * [muokkaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/2/edit)
 * Harjoitussivut:
-  * [esittely](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/exercises/1)
-  * [muokkaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/exercises/1/edit)
-  * [luonti](http://andreasn.users.cs.helsinki.fi/pkp/courses/1/exercises/new)
+  * [esittely](http://andreasn.users.cs.helsinki.fi/pkp/courses/2/exercises/2)
+  * [muokkaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/2/exercises/2/edit)
+  * [luonti](http://andreasn.users.cs.helsinki.fi/pkp/courses/2/exercises/new)
+* Opiskelijasivut:
+  * [listaus](http://andreasn.users.cs.helsinki.fi/pkp/courses/2/students)
+  * [luonti](http://andreasn.users.cs.helsinki.fi/pkp/courses/2/students/new)
 * Muut:
   * [kirjautuminen](http://andreasn.users.cs.helsinki.fi/pkp/login)
   * [rekisteröityminen](http://andreasn.users.cs.helsinki.fi/pkp/register)
@@ -32,3 +35,7 @@ tarkoituksena on toimia pistekirjanpitojärjestelmänä tällaisille kursseille.
 Ohjaajat pystyvät järjestelmän kautta vaivattomasti kirjaamaan oman kurssin
 opiskelijoiden palautuksia, ja opettajat taas lisäämään omia kursseja sekä
 näille opiskelijoita ja harjoitustehtäviä.
+
+## Lisenssi
+
+Tämä projekti on lisensoitu MIT-lisenssillä.

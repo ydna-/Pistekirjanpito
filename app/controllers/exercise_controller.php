@@ -17,11 +17,10 @@ class ExerciseController extends BaseController {
             'course_id' => $course_id
         );
         $exercise = new Exercise($attributes);
-        $course = Course::find($course_id);
         $errors = $exercise->errors();
         if (count($errors) == 0) {
             $exercise->save();
-            Redirect::to('/courses/' . $course->id . '/exercises/' . $exercise->id, array('message' => 'Harjoitus on lisätty tietokantaan!'));
+            Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise->id, array('message' => 'Harjoitus on lisätty tietokantaan!'));
         } else {
             View::make('exercise/new.html', array('errors' => $errors, 'attributes' => $attributes, 'course' => $course));
         }

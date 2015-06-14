@@ -39,12 +39,11 @@ palautettujen tehtävien määristä), jotka tulee näkyä kunkin kurssin yhteyd
 Kyseinen pistekirjanpitojärjestelmä toteutetaan tietojenkäsittelytieteen
 laitoksen users-palvelimelle käyttäen PostgreSQL-tietokantapalvelinta.
 Palvelimen puolella käytetään PHP-ohjelmointikieltä, jonka avulla haetaan
-tarvittava data tietokannasta ja tarjotaan REST-rajapinta selaimen puolella
-käytettävän AngularJS-ohjelmistokehyksen käytettäväksi.
+tarvittava data tietokannasta ja vastataan käyttäjän selaimen pyyntöihin.
 
 \newpage
 
-\section{Käyttötapaukset}
+\section{Yleiskuva järjestelmästä}
 
 \subsection{Käyttötapauskaavio}
 
@@ -188,6 +187,16 @@ käytettävän AngularJS-ohjelmistokehyksen käytettäväksi.
 \section{Relaatiotietokantakaavio}
 
 \includegraphics[scale=0.5]{relaatiokaavio}
+
+\section{Järjestelmän yleisrakenne}
+
+Kyseistä tietokantasovellusta tehdessä on noudatettu MVC-mallia.
+Mallit, näkymät ja kontrollerit on sijoitettu app-kansion hakemistoihin models, views ja controllers.
+Sovellus käyttää istuntoa käyttäjän kirjautumisen havaitsemiseen.
+
+\section{Käyttöliittymä ja järjestelmän komponentit}
+
+\includegraphics[scale=0.45]{kayttoliittyma}
 
 \section{Käynnistys- / käyttöohje}
 
