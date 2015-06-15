@@ -26,8 +26,8 @@
         {% for exercise in exercises %}
         <tr>
             <td><a href="{{base_path}}/courses/{{exercise.course_id}}/exercises/{{exercise.id}}">Harjoitus {{exercise.exercise_number}}</a></td>
-            <td></td>
-            <td></td>
+            <td>{{exercise.number_of_exercises}}</td>
+            <td>{{exercise.number_of_star_exercises}}</td>
         </tr>
         {% endfor %}
     </tbody>

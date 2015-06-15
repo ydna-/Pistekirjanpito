@@ -18,6 +18,14 @@
         <input name="exercise_number" class="form-control" value="{{attributes.exercise_number}}" type="number">
     </div>
     <div class="form-group">
+        <label>Tehtävien lukumäärä</label>
+        <input id="nExercises" name="number_of_exercises" class="form-control" type="number">
+    </div>
+    <div id="divStar" class="form-group" style="display: none;">
+        <label>Tähtitehtävät</label>
+        <select id="starExercises" name="star_exercises[]" class="form-control" multiple=""></select>
+    </div>
+    <div class="form-group">
         <input name="course_id" value="{{course.id}}" type="hidden">
     </div>
     <div class="form-group">

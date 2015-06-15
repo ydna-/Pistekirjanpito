@@ -14,12 +14,36 @@ class ExerciseController extends BaseController {
         $params = $_POST;
         $attributes = array(
             'exercise_number' => $params['exercise_number'],
+            'number_of_exercises' => $params['number_of_exercises'],
+            'number_of_star_exercises' => count($params['star_exercises']),
             'course_id' => $course_id
         );
+        $number_of_exercises = $params['number_of_exercises'];
+        $star_exercises = $params['star_exercises'];
         $exercise = new Exercise($attributes);
+        $course = Course::find($course_id);
         $errors = $exercise->errors();
         if (count($errors) == 0) {
             $exercise->save();
+            for ($i = 1; $i <= $number_of_exercises; $i++) {
+                $problem = new Problem(array(
+                    'problem_number' => $i,
+                    'exercise_id' => $exercise->id
+                ));
+                $problem->save();
+            }
+            for ($i = 0; $i < count($star_exercises); $i++) {
+                $problem = new Problem(array(
+                    'problem_number' => $star_exercises[$i] . 'k1',
+                    'exercise_id' => $exercise->id
+                ));
+                $problem->save();
+                $problem = new Problem(array(
+                    'problem_number' => $star_exercises[$i] . 'k2',
+                    'exercise_id' => $exercise->id
+                ));
+                $problem->save();
+            }
             Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise->id, array('message' => 'Harjoitus on lisätty tietokantaan!'));
         } else {
             View::make('exercise/new.html', array('errors' => $errors, 'attributes' => $attributes, 'course' => $course));

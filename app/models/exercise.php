@@ -2,7 +2,7 @@
 
 class Exercise extends BaseModel {
 
-    public $id, $exercise_number, $course_id;
+    public $id, $exercise_number, $number_of_exercises, $number_of_star_exercises, $course_id;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -18,6 +18,8 @@ class Exercise extends BaseModel {
             $exercises[] = new Exercise(array(
                 'id' => $row['id'],
                 'exercise_number' => $row['exercise_number'],
+                'number_of_exercises' => $row['number_of_exercises'],
+                'number_of_star_exercises' => $row['number_of_star_exercises'],
                 'course_id' => $row['course_id']
             ));
         }
@@ -32,6 +34,8 @@ class Exercise extends BaseModel {
             $exercise = new Exercise(array(
                 'id' => $row['id'],
                 'exercise_number' => $row['exercise_number'],
+                'number_of_exercises' => $row['number_of_exercises'],
+                'number_of_star_exercises' => $row['number_of_star_exercises'],
                 'course_id' => $row['course_id']
             ));
             return $exercise;
@@ -40,8 +44,8 @@ class Exercise extends BaseModel {
     }
     
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Exercise (exercise_number, course_id) VALUES (:exercise_number, :course_id) RETURNING id');
-        $query->execute(array('exercise_number' => $this->exercise_number, 'course_id' => $this->course_id));
+        $query = DB::connection()->prepare('INSERT INTO Exercise (exercise_number, number_of_exercises, number_of_star_exercises, course_id) VALUES (:exercise_number, :number_of_exercises, :number_of_star_exercises, :course_id) RETURNING id');
+        $query->execute(array('exercise_number' => $this->exercise_number, 'number_of_exercises' => $this->number_of_exercises, 'number_of_star_exercises' => $this->number_of_star_exercises, 'course_id' => $this->course_id));
         $row = $query->fetch();
         $this->id = $row['id'];
     }

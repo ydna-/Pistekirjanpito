@@ -1,6 +1,6 @@
 <?php
 
-class Home2Controller extends BaseController {
+class HomeController extends BaseController {
 
     public static function index() {
         $courses = Course::all();
