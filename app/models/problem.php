@@ -2,7 +2,7 @@
 
 class Problem extends BaseModel {
 
-    public $id, $problem_number, $exercise_id;
+    public $id, $problem_number, $star_problem, $exercise_id;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -17,6 +17,7 @@ class Problem extends BaseModel {
             $problems[] = new Problem(array(
                 'id' => $row['id'],
                 'problem_number' => $row['problem_number'],
+                'star_problem' => $row['star_problem'],
                 'exercise_id' => $row['exercise_id']
             ));
         }
@@ -31,6 +32,7 @@ class Problem extends BaseModel {
             $problem = new Exercise(array(
                 'id' => $row['id'],
                 'problem_number' => $row['exercise_number'],
+                'star_problem' => $row['star_problem'],
                 'exercise_id' => $row['course_id']
             ));
             return $problem;
@@ -39,8 +41,8 @@ class Problem extends BaseModel {
     }
     
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Problem (problem_number, exercise_id) VALUES (:problem_number, :exercise_id) RETURNING id');
-        $query->execute(array('problem_number' => $this->problem_number, 'exercise_id' => $this->exercise_id));
+        $query = DB::connection()->prepare('INSERT INTO Problem (problem_number, star_problem, exercise_id) VALUES (:problem_number, :star_problem, :exercise_id) RETURNING id');
+        $query->execute(array('problem_number' => $this->problem_number, 'star_problem' => $this->star_problem, 'exercise_id' => $this->exercise_id));
         $row = $query->fetch();
         $this->id = $row['id'];
     }

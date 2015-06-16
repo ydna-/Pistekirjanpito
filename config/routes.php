@@ -87,3 +87,11 @@ $routes->post('/courses/:course_id/students', function($course_id) {
 $routes->get('/courses/:course_id/students/new', function($course_id) {
     StudentController::student_create($course_id);
 });
+
+$routes->get('/courses/:course_id/exercises/:exercise_id/log', function($course_id, $exercise_id) {
+    LogController::log_create($course_id, $exercise_id);
+});
+
+$routes->post('/courses/:course_id/exercises/:exercise_id/log', function($course_id, $exercise_id) {
+    LogController::log_store($course_id, $exercise_id);
+});

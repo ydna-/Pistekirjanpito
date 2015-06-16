@@ -6,17 +6,22 @@
             <file>file:/home/ydna/Pistekirjanpito/app/models/course.php</file>
             <file>file:/home/ydna/Pistekirjanpito/index.php</file>
             <file>file:/home/ydna/Pistekirjanpito/lib/view.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/controllers/exercise_controller.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/controllers/student_controller.php</file>
             <file>file:/home/ydna/Pistekirjanpito/lib/base_model.php</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/exercise/show.html</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/course/show.html</file>
             <file>file:/home/ydna/Pistekirjanpito/nbproject/project.xml</file>
             <file>file:/home/ydna/Pistekirjanpito/assets/js/site.js</file>
+            <file>file:/home/ydna/Pistekirjanpito/config/environment.sh</file>
             <file>file:/home/ydna/Pistekirjanpito/app/models/user.php</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/user/register.html</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/views/student/new.html</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/user/login.html</file>
             <file>file:/home/ydna/Pistekirjanpito/composer.lock</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/base.html</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/course/list.html</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/views/student/list.html</file>
             <file>file:/home/ydna/Pistekirjanpito/drop_tables.sh</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/macros/forms.html</file>
             <file>file:/home/ydna/Pistekirjanpito/composer.json</file>
@@ -24,20 +29,24 @@
             <file>file:/home/ydna/Pistekirjanpito/app/views/home.html</file>
             <file>file:/home/ydna/Pistekirjanpito/README.md</file>
             <file>file:/home/ydna/Pistekirjanpito/lib/base_controller.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/controllers/home_controller.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/models/problem.php</file>
             <file>file:/home/ydna/Pistekirjanpito/lib/database.php</file>
             <file>file:/home/ydna/Pistekirjanpito/nbproject/project.properties</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/course/edit.html</file>
             <file>file:/home/ydna/Pistekirjanpito/app/controllers/course_controller.php</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/exercise/new.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/create_tables.sh</file>
             <file>file:/home/ydna/Pistekirjanpito/app/models/exercise.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/config/database.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/models/student.php</file>
             <file>file:/home/ydna/Pistekirjanpito/vendor/angular.min.js</file>
             <file>file:/home/ydna/Pistekirjanpito/sql/create_tables.sql</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/course/new.html</file>
             <file>file:/home/ydna/Pistekirjanpito/app/views/exercise/edit.html</file>
+            <file>file:/home/ydna/Pistekirjanpito/config/routes.php</file>
             <file>file:/home/ydna/Pistekirjanpito/sql/add_test_data.sql</file>
             <file>file:/home/ydna/Pistekirjanpito/app/controllers/user_controller.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/php_logs.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/bootstrap.sh</file>
         </group>
     </open-files>
 </project-private>

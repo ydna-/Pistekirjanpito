@@ -30,14 +30,15 @@ CREATE TABLE Student(
 CREATE TABLE Exercise(
     id SERIAL PRIMARY KEY,
     exercise_number INTEGER NOT NULL,
-    number_of_exercises INTEGER NOT NULL,
-    number_of_star_exercises INTEGER NOT NULL,
+    number_of_problems INTEGER NOT NULL,
+    number_of_star_problems INTEGER NOT NULL,
     course_id INTEGER REFERENCES Course(id)
 );
 
 CREATE TABLE Problem(
     id SERIAL PRIMARY KEY,
     problem_number varchar(4) NOT NULL,
+    star_problem BOOLEAN NOT NULL,
     exercise_id INTEGER REFERENCES Exercise(id)
 );
 
