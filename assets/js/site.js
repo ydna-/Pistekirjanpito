@@ -6,6 +6,16 @@ $(document).ready(function () {
         }
         $("#divStar").show();
     });
+    $("input[type=radio][name=role]").change(function () {
+        switch($(this).val()) {
+            case "instructor":
+                $("#divCourse").show();
+                break;
+            case "teacher":
+                $("#divCourse").hide();
+                break;
+        }
+    });
     $(".custom-checkbox").val("").click(function () {
         switch($(this).val()) {
             case "":

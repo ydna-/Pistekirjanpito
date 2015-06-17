@@ -5,7 +5,7 @@ class HomeController extends BaseController {
     public static function index() {
         View::make('home.html');
     }
-    
+
     public static function score_show() {
         View::make('scores/show.html');
     }
