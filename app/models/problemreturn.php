@@ -23,8 +23,28 @@ class ProblemReturn extends BaseModel {
         return $returns;
     }
     
+    public static function find($problem_id, $student_id) {
+        $query = DB::connection()->prepare('SELECT * FROM ProblemReturn WHERE problem_id = :problem_id AND student_id = :student_id LIMIT 1');
+        $query->execute(array('problem_id' => $problem_id, 'student_id' => $student_id));
+        $row = $query->fetch();
+        if ($row) {
+            $return = new ProblemReturn(array(
+                'mark' => $row['mark'],
+                'problem_id' => $row['problem_id'],
+                'student_id' => $row['student_id']
+            ));
+            return $return;
+        }
+        return null;
+    }
+    
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO ProblemReturn (mark, problem_id, student_id) VALUES (:mark, :problem_id, :student_id)');
+        $query->execute(array('mark' => $this->mark, 'problem_id' => $this->problem_id, 'student_id' => $this->student_id));
+    }
+    
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE ProblemReturn SET mark = :mark WHERE problem_id = :problem_id AND student_id = :student_id');
         $query->execute(array('mark' => $this->mark, 'problem_id' => $this->problem_id, 'student_id' => $this->student_id));
     }
 

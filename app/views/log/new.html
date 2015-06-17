@@ -14,7 +14,7 @@
 </div>
 {% endif %}
 
-<form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log">
+<form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log{{option}}">
     <div class="form-group">
         <div class="form-inline">
             <label>Kurssitunnus</label>
@@ -25,7 +25,8 @@
             </select>
         </div>
         <div class="form-inline">
-            {% for problem in problems if (problem.problem_number|length) < 3 %}
+            {% for problem in problems %}
+            <small>{{problem.problem_number}}</small>
             {% if problem.star_problem %}
             <input name={{problem.problem_number}} class="form-control custom-checkbox" value="" type="checkbox" style="width:50px; height:50px;">
             {% else %}

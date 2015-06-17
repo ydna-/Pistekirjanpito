@@ -103,3 +103,19 @@ $routes->get('/courses/:course_id/exercises/:exercise_id/log', function($course_
 $routes->post('/courses/:course_id/exercises/:exercise_id/log', function($course_id, $exercise_id) {
     LogController::log_store($course_id, $exercise_id);
 });
+
+$routes->get('/courses/:course_id/exercises/:exercise_id/log/first', function($course_id, $exercise_id) {
+    LogController::log_first_create($course_id, $exercise_id);
+});
+
+$routes->post('/courses/:course_id/exercises/:exercise_id/log/first', function($course_id, $exercise_id) {
+    LogController::log_first_store($course_id, $exercise_id);
+});
+
+$routes->get('/courses/:course_id/exercises/:exercise_id/log/second', function($course_id, $exercise_id) {
+    LogController::log_second_create($course_id, $exercise_id);
+});
+
+$routes->post('/courses/:course_id/exercises/:exercise_id/log/second', function($course_id, $exercise_id) {
+    LogController::log_second_store($course_id, $exercise_id);
+});

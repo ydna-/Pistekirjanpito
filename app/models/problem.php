@@ -9,7 +9,39 @@ class Problem extends BaseModel {
     }
 
     public static function all($exercise_id) {
-        $query = DB::connection()->prepare('SELECT * FROM Problem WHERE exercise_id = :exercise_id');
+        $query = DB::connection()->prepare("SELECT * FROM Problem WHERE exercise_id = :exercise_id AND problem_number NOT LIKE '%k%'");
+        $query->execute(array('exercise_id' => $exercise_id));
+        $rows = $query->fetchAll();
+        $problems = array();
+        foreach ($rows as $row) {
+            $problems[] = new Problem(array(
+                'id' => $row['id'],
+                'problem_number' => $row['problem_number'],
+                'star_problem' => $row['star_problem'],
+                'exercise_id' => $row['exercise_id']
+            ));
+        }
+        return $problems;
+    }
+    
+    public static function all_first($exercise_id) {
+        $query = DB::connection()->prepare("SELECT * FROM Problem WHERE exercise_id = :exercise_id AND problem_number LIKE '%k1'");
+        $query->execute(array('exercise_id' => $exercise_id));
+        $rows = $query->fetchAll();
+        $problems = array();
+        foreach ($rows as $row) {
+            $problems[] = new Problem(array(
+                'id' => $row['id'],
+                'problem_number' => $row['problem_number'],
+                'star_problem' => $row['star_problem'],
+                'exercise_id' => $row['exercise_id']
+            ));
+        }
+        return $problems;
+    }
+    
+    public static function all_second($exercise_id) {
+        $query = DB::connection()->prepare("SELECT * FROM Problem WHERE exercise_id = :exercise_id AND problem_number LIKE '%k2'");
         $query->execute(array('exercise_id' => $exercise_id));
         $rows = $query->fetchAll();
         $problems = array();
