@@ -4,6 +4,14 @@ $routes->get('/', function() {
     HomeController::index();
 });
 
+$routes->get('/scores', function() {
+    HomeController::score_show();
+});
+
+$routes->post('/scores', function() {
+    HomeController::score_query();
+});
+
 $routes->get('/login', function() {
     UserController::login();
 });

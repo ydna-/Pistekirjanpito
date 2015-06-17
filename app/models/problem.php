@@ -29,11 +29,11 @@ class Problem extends BaseModel {
         $query->execute(array('id' => $id));
         $row = $query->fetch();
         if ($row) {
-            $problem = new Exercise(array(
+            $problem = new Problem(array(
                 'id' => $row['id'],
-                'problem_number' => $row['exercise_number'],
+                'problem_number' => $row['problem_number'],
                 'star_problem' => $row['star_problem'],
-                'exercise_id' => $row['course_id']
+                'exercise_id' => $row['exercise_id']
             ));
             return $problem;
         }

@@ -2,18 +2,16 @@
 {% block content %}
 <h1>Tarkastele pisteitä</h1>
 
-<form>
-    <div class="form-group">
-        <label for="sel">Kurssi</label>
-        <select class="form-control" id="sel">
-            {% for course in courses %}
-            <option>{{course.name}} ({{course.term}})</option>
-            {% endfor %}
-        </select>
-    </div>
+{% if error %}
+<div class="alert alert-danger">
+    {{error}}
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/scores">
     <div class="form-group">
         <label>Kurssitunnus</label>
-        <input type="text" class="form-control">
+        <input type="text" name="course_number" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Lähetä</button>
 </form>

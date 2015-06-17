@@ -40,6 +40,22 @@ class Student extends BaseModel {
         }
         return null;
     }
+    
+    public static function find_by_course_number($course_number) {
+        $query = DB::connection()->prepare('SELECT * FROM STUDENT WHERE course_number = :course_number LIMIT 1');
+        $query->execute(array('course_number' => $course_number));
+        $row = $query->fetch();
+        if ($row) {
+            $student = new Student(array(
+                'id' => $row['id'],
+                'student_number' => $row['student_number'],
+                'course_number' => $row['course_number'],
+                'course_id' => $row['course_id']
+            ));
+            return $student;
+        }
+        return null;
+    }
 
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Student (student_number, course_number, course_id) VALUES (:student_number, :course_number, :course_id) RETURNING id');
