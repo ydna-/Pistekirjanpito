@@ -8,7 +8,22 @@ class ProblemReturn extends BaseModel {
         parent::__construct($attributes);
     }
     
-    public static function all($student_id) {
+    public static function all_by_exercise($exercise_id) {
+        $query = DB::connection()->prepare('SELECT mark, problem_id, student_id FROM ProblemReturn INNER JOIN Problem ON ProblemReturn.problem_id = problem.id WHERE exercise_id=:exercise_id');
+        $query->execute(array('exercise_id' => $exercise_id));
+        $rows = $query->fetchAll();
+        $returns = array();
+        foreach ($rows as $row) {
+            $returns[] = new ProblemReturn(array(
+                'mark' => $row['mark'],
+                'problem_id' => $row['problem_id'],
+                'student_id' => $row['student_id']
+            ));
+        }
+        return $returns;
+    }
+    
+    public static function all_by_student($student_id) {
         $query = DB::connection()->prepare('SELECT * FROM ProblemReturn WHERE student_id = :student_id');
         $query->execute(array('student_id' => $student_id));
         $rows = $query->fetchAll();

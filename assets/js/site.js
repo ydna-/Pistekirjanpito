@@ -6,21 +6,59 @@ $(document).ready(function () {
         }
         $("#divStar").show();
     });
-    $(".custom-checkbox").val("").click(function () {
-        switch($(this).val()) {
+    $(".ns-checkbox").val("").click(function () {
+        switch ($(this).val()) {
             case "":
-                $(this).val("V");
-                $(this).prop('indeterminate',true);
-                break;
-            case "V":
                 $(this).val("O");
-                $(this).prop('indeterminate',false);
-                $(this).prop('checked',true);
+                $(this).prop('checked', true);
                 break;
             case "O":
                 $(this).val("");
-                $(this).prop('indeterminate',false);
-                $(this).prop('checked',false);
+                $(this).prop('checked', false);
         }
+    });
+    $(".star-checkbox").val("").click(function () {
+        switch ($(this).val()) {
+            case "":
+                $(this).val("V");
+                $(this).prop('indeterminate', true);
+                break;
+            case "V":
+                $(this).val("O");
+                $(this).prop('indeterminate', false);
+                $(this).prop('checked', true);
+                break;
+            case "O":
+                $(this).val("");
+                $(this).prop('indeterminate', false);
+                $(this).prop('checked', false);
+        }
+    });
+    $("#selCourseNo").change(function () {
+        var student_no = $(this).val();
+        $(".checkbox").each(function (i) {
+            var problem_no = $(this).attr('name');
+            var temp = student_no + "|" + problem_no;
+            switch ($(document.getElementById(temp)).val()) {
+                case " ":
+                    $(this).val("");
+                    $(this).prop('indeterminate', false);
+                    $(this).prop('checked', false);
+                    break;
+                case "O":
+                    $(this).val("O");
+                    $(this).prop('indeterminate', false);
+                    $(this).prop('checked', true);
+                    break;
+                case "V":
+                    $(this).val("V");
+                    $(this).prop('indeterminate', true);
+                    break;
+                default:
+                    $(this).val("");
+                    $(this).prop('indeterminate', false);
+                    $(this).prop('checked', false);
+            }
+        });
     });
 });

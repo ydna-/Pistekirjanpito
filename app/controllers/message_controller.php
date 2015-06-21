@@ -7,7 +7,7 @@ class MessageController extends BaseController {
         $messages = Message::all();
         View::make('message/list.html', array('messages' => $messages));
     }
-    
+
     public static function message_accept($id) {
         self::check_logged_in();
         $message = Message::find($id);
@@ -18,8 +18,6 @@ class MessageController extends BaseController {
                 'password' => $message->sender_password,
                 'is_teacher' => 1
             );
-            $user = new User($attributes);
-            $user->save();
         } else {
             $attributes = array(
                 'name' => $message->sender_name,
@@ -27,9 +25,9 @@ class MessageController extends BaseController {
                 'password' => $message->sender_password,
                 'is_teacher' => 0
             );
-            $user = new User($attributes);
-            $user->save_instructor();
         }
+        $user = new User($attributes);
+        $user->save();
         $message->destroy();
         Redirect::to('/messages', array('message' => 'Pyyntö on hyväksytty!'));
     }
@@ -40,5 +38,5 @@ class MessageController extends BaseController {
         $message->destroy();
         Redirect::to('/messages', array('message' => 'Pyyntö on hylätty!'));
     }
-    
+
 }

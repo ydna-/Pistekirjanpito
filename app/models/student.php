@@ -63,6 +63,16 @@ class Student extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+    
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE Student SET student_number = :student_number, course_number = :course_number, course_id = :course_id WHERE id = :id');
+        $query->execute(array('student_number' => $this->student_number, 'course_number' => $this->course_number, 'course_id' => $this->course_id, 'id' => $this->id));
+    }
+    
+    public function destroy() {
+        $query = DB::connection()->prepare('DELETE FROM Student WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+    }
 
     public function validate_student_number() {
         $errors = array();

@@ -32,11 +32,13 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="navigation">
+                    {% if user_logged_in %}
                     <ul class="nav navbar-nav">
                         <li><a href="{{base_path}}/courses">Kurssit</a></li>
+                        {% if user_logged_in.is_teacher %}
                         <li><a href="{{base_path}}/messages">Viestit</a></li>
+                        {% endif %}
                     </ul>
-                    {% if user_logged_in %}
                     <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">
                         <button type="submit" class="btn btn-default">Kirjaudu ulos</button>
                     </form>

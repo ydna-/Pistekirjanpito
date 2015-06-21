@@ -58,7 +58,7 @@ class UserController extends BaseController {
                 }
             }
         } else {
-            View::make('user/register.html', array('errors' => 'Salasanat eivät täsmää!', 'name' => $params['name'], 'email' => $params['email']));
+            View::make('user/register.html', array('errors' => array('Salasanat eivät täsmää!'), 'name' => $params['name'], 'email' => $params['email']));
         }
     }
 

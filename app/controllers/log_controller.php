@@ -8,7 +8,8 @@ class LogController extends BaseController {
         $exercise = Exercise::find($exercise_id);
         $problems = Problem::all($exercise_id);
         $students = Student::all($course_id);
-        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'option' => ''));
+        $returns = ProblemReturn::all_by_exercise($exercise_id);
+        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'returns' => $returns, 'option' => ''));
     }
 
     public static function log_first_create($course_id, $exercise_id) {
@@ -17,7 +18,8 @@ class LogController extends BaseController {
         $exercise = Exercise::find($exercise_id);
         $problems = Problem::all_first($exercise_id);
         $students = Student::all($course_id);
-        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'option' => '/first'));
+        $returns = ProblemReturn::all_by_exercise($exercise_id);
+        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'returns' => $returns, 'option' => '/first'));
     }
 
     public static function log_second_create($course_id, $exercise_id) {
@@ -26,85 +28,95 @@ class LogController extends BaseController {
         $exercise = Exercise::find($exercise_id);
         $problems = Problem::all_second($exercise_id);
         $students = Student::all($course_id);
-        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'option' => '/second'));
+        $returns = ProblemReturn::all_by_exercise($exercise_id);
+        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'returns' => $returns, 'option' => '/second'));
     }
 
     public static function log_store($course_id, $exercise_id) {
         self::check_logged_in();
         $params = $_POST;
-        $problems = Problem::all($exercise_id);
-        foreach ($problems as $problem) {
-            if (array_key_exists($problem->problem_number, $params)) {
-                $mark = strtoupper($params[$problem->problem_number]);
-                $mark = $mark[0];
-            } else {
-                $mark = ' ';
+        if ($params['course_number'] !== "") {
+            $problems = Problem::all($exercise_id);
+            foreach ($problems as $problem) {
+                if (array_key_exists($problem->id, $params)) {
+                    $mark = $params[$problem->id][0];
+                } else {
+                    $mark = ' ';
+                }
+                $attributes = array(
+                    'mark' => $mark,
+                    'problem_id' => $problem->id,
+                    'student_id' => $params['course_number']
+                );
+                $problemreturn = new ProblemReturn($attributes);
+                if (ProblemReturn::find($problem->id, $params['course_number'])) {
+                    $problemreturn->update();
+                } else {
+                    $problemreturn->save();
+                }
             }
-            $attributes = array(
-                'mark' => $mark,
-                'problem_id' => $problem->id,
-                'student_id' => $params['course_number']
-            );
-            $problemreturn = new ProblemReturn($attributes);
-            if (ProblemReturn::find($problem->id, $params['course_number'])) {
-                $problemreturn->update();
-            } else {
-                $problemreturn->save();
-            }
+            Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log', array('message' => 'Pisteet kirjattu tietokantaan!'));
+        } else {
+            Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log', array('error' => 'Kurssitunnusta ei löydy!'));
         }
-        Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log', array('message' => 'Pisteet kirjattu tietokantaan!'));
     }
 
     public static function log_first_store($course_id, $exercise_id) {
         self::check_logged_in();
         $params = $_POST;
-        $problems = Problem::all_first($exercise_id);
-        foreach ($problems as $problem) {
-            if (array_key_exists($problem->problem_number, $params)) {
-                $mark = strtoupper($params[$problem->problem_number]);
-                $mark = $mark[0];
-            } else {
-                $mark = ' ';
+        if ($params['course_number'] !== "") {
+            $problems = Problem::all_first($exercise_id);
+            foreach ($problems as $problem) {
+                if (array_key_exists($problem->id, $params)) {
+                    $mark = $params[$problem->id][0];
+                } else {
+                    $mark = ' ';
+                }
+                $attributes = array(
+                    'mark' => $mark,
+                    'problem_id' => $problem->id,
+                    'student_id' => $params['course_number']
+                );
+                $problemreturn = new ProblemReturn($attributes);
+                if (ProblemReturn::find($problem->id, $params['course_number'])) {
+                    $problemreturn->update();
+                } else {
+                    $problemreturn->save();
+                }
             }
-            $attributes = array(
-                'mark' => $mark,
-                'problem_id' => $problem->id,
-                'student_id' => $params['course_number']
-            );
-            $problemreturn = new ProblemReturn($attributes);
-            if (ProblemReturn::find($problem->id, $params['course_number'])) {
-                $problemreturn->update();
-            } else {
-                $problemreturn->save();
-            }
+            Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('message' => 'Pisteet kirjattu tietokantaan!'));
+        } else {
+            Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('error' => 'Kurssitunnusta ei löydy!'));
         }
-        Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('message' => 'Pisteet kirjattu tietokantaan!'));
     }
 
     public static function log_second_store($course_id, $exercise_id) {
         self::check_logged_in();
         $params = $_POST;
-        $problems = Problem::all_second($exercise_id);
-        foreach ($problems as $problem) {
-            if (array_key_exists($problem->problem_number, $params)) {
-                $mark = strtoupper($params[$problem->problem_number]);
-                $mark = $mark[0];
-            } else {
-                $mark = ' ';
+        if ($params['course_number'] !== "") {
+            $problems = Problem::all_second($exercise_id);
+            foreach ($problems as $problem) {
+                if (array_key_exists($problem->id, $params)) {
+                    $mark = $params[$problem->id][0];
+                } else {
+                    $mark = ' ';
+                }
+                $attributes = array(
+                    'mark' => $mark,
+                    'problem_id' => $problem->id,
+                    'student_id' => $params['course_number']
+                );
+                $problemreturn = new ProblemReturn($attributes);
+                if (ProblemReturn::find($problem->id, $params['course_number'])) {
+                    $problemreturn->update();
+                } else {
+                    $problemreturn->save();
+                }
             }
-            $attributes = array(
-                'mark' => $mark,
-                'problem_id' => $problem->id,
-                'student_id' => $params['course_number']
-            );
-            $problemreturn = new ProblemReturn($attributes);
-            if (ProblemReturn::find($problem->id, $params['course_number'])) {
-                $problemreturn->update();
-            } else {
-                $problemreturn->save();
-            }
+            Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/second', array('message' => 'Pisteet kirjattu tietokantaan!'));
+        } else {
+            Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/second', array('error' => 'Kurssitunnusta ei löydy!'));
         }
-        Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('message' => 'Pisteet kirjattu tietokantaan!'));
     }
 
 }

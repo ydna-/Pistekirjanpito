@@ -68,7 +68,7 @@ $routes->post('/courses/:id/edit', function($id) {
     CourseController::course_update($id);
 });
 
-$routes->post('/courses/:id/destroy', function($id) {
+$routes->get('/courses/:id/destroy', function($id) {
     CourseController::course_destroy($id);
 });
 
@@ -92,7 +92,7 @@ $routes->post('/courses/:course_id/exercises/:id/edit', function($course_id, $id
     ExerciseController::exercise_update($course_id, $id);
 });
 
-$routes->post('/courses/:course_id/exercises/:id/destroy', function($course_id, $id) {
+$routes->get('/courses/:course_id/exercises/:id/destroy', function($course_id, $id) {
     ExerciseController::exercise_destroy($course_id, $id);
 });
 
@@ -106,6 +106,18 @@ $routes->post('/courses/:course_id/students', function($course_id) {
 
 $routes->get('/courses/:course_id/students/new', function($course_id) {
     StudentController::student_create($course_id);
+});
+
+$routes->get('/courses/:course_id/students/:student_id/edit', function($course_id, $student_id) {
+    StudentController::student_edit($course_id, $student_id);
+});
+
+$routes->post('/courses/:course_id/students/:student_id/edit', function($course_id, $student_id) {
+    StudentController::student_update($course_id, $student_id);
+});
+
+$routes->get('/courses/:course_id/students/:student_id/destroy', function($course_id, $student_id) {
+    StudentController::student_destroy($course_id, $student_id);
 });
 
 $routes->get('/courses/:course_id/exercises/:exercise_id/log', function($course_id, $exercise_id) {

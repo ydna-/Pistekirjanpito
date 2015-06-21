@@ -15,7 +15,7 @@ class HomeController extends BaseController {
         $student = Student::find_by_course_number($params['course_number']);
         if ($student) {
             $exercises = Exercise::all($student->course_id);
-            $returns = ProblemReturn::all($student->id);
+            $returns = ProblemReturn::all_by_student($student->id);
             $points = array();
             for ($i = 1; $i <= count($exercises); $i++) {
                 $points[$i] = 0;

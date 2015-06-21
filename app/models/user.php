@@ -19,37 +19,17 @@ class User extends BaseModel {
                 'name' => $row['name'],
                 'email' => $row['email'],
                 'password' => $row['password'],
-                'is_teacher' => true
+                'is_teacher' => $row['is_teacher']
             ));
             return $user;
         } else {
-            $query = DB::connection()->prepare('SELECT * FROM Instructor WHERE id = :id LIMIT 1');
-            $query->execute(array('id' => $id));
-            $row = $query->fetch();
-            if ($row) {
-                $user = new User(array(
-                    'id' => $row['id'],
-                    'name' => $row['name'],
-                    'email' => $row['email'],
-                    'password' => $row['password'],
-                    'is_teacher' => false
-                ));
-                return $user;
-            }
             return null;
         }
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Teacher (name, email, password) VALUES (:name, :email, :password) RETURNING id');
-        $query->execute(array('name' => $this->name, 'email' => $this->email, 'password' => $this->password));
-        $row = $query->fetch();
-        $this->id = $row['id'];
-    }
-
-    public function save_instructor() {
-        $query = DB::connection()->prepare('INSERT INTO Instructor (name, email, password) VALUES (:name, :email, :password) RETURNING id');
-        $query->execute(array('name' => $this->name, 'email' => $this->email, 'password' => $this->password));
+        $query = DB::connection()->prepare('INSERT INTO Teacher (name, email, password, is_teacher) VALUES (:name, :email, :password, :is_teacher) RETURNING id');
+        $query->execute(array('name' => $this->name, 'email' => $this->email, 'password' => $this->password, 'is_teacher' => $this->is_teacher));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
@@ -65,32 +45,14 @@ class User extends BaseModel {
                     'name' => $row['name'],
                     'email' => $row['email'],
                     'password' => $row['password'],
-                    'is_teacher' => false
+                    'is_teacher' => $row['is_teacher']
                 ));
                 return $user;
             } else {
                 return null;
             }
         } else {
-            $query = DB::connection()->prepare('SELECT * FROM Instructor WHERE email = :email LIMIT 1');
-            $query->execute(array('email' => $email));
-            $row = $query->fetch();
-            if ($row) {
-                if (crypt($password, $row['password']) == $row['password']) {
-                    $user = new User(array(
-                        'id' => $row['id'],
-                        'name' => $row['name'],
-                        'email' => $row['email'],
-                        'password' => $row['password'],
-                        'is_teacher' => false
-                    ));
-                    return $user;
-                } else {
-                    return null;
-                }
-            } else {
-                return null;
-            }
+            return null;
         }
     }
 
