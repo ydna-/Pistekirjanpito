@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  21 JUN 2015 23:21
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  21 JUN 2015 23:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -605,13 +605,13 @@ Package pdftex.def Info: kasitekaavio.png used on input line 115.
 (pdftex.def)             Requested size: 269.00433pt x 239.89565pt.
 
 [5 <./kasitekaavio.png (PNG copy)>] [6]
-<relaatiokaavio.png, id=107, 547.04375pt x 617.30624pt>
+<relaatiokaavio.png, id=107, 614.295pt x 483.8075pt>
 File: relaatiokaavio.png Graphic file (type png)
-
-<use relaatiokaavio.png>
+ <use relaatiokaavio.png>
 Package pdftex.def Info: relaatiokaavio.png used on input line 182.
-(pdftex.def)             Requested size: 273.5212pt x 308.65236pt.
- [7 <./relaatiokaavio.png (PNG copy)>]
+(pdftex.def)             Requested size: 307.14674pt x 241.90315pt.
+
+[7 <./relaatiokaavio.png (PNG copy)>]
 <kayttoliittyma.png, id=112, 872.25874pt x 509.905pt>
 File: kayttoliittyma.png Graphic file (type png)
  <use kayttoliittyma.png>
@@ -662,7 +662,7 @@ r/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/ydna/.texmf-var/fonts/pk/l
 jfour/jknappen/ec/ecbx1200.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknapp
 en/ec/ecbx1728.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm14
 40.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2074.600pk>
-Output written on dokumentaatio.pdf (9 pages, 275801 bytes).
+Output written on dokumentaatio.pdf (9 pages, 271619 bytes).
 PDF statistics:
  362 PDF objects out of 1000 (max. 8388607)
  135 compressed objects within 2 object streams

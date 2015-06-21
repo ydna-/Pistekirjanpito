@@ -73,6 +73,11 @@ class Student extends BaseModel {
         $query = DB::connection()->prepare('DELETE FROM Student WHERE id = :id');
         $query->execute(array('id' => $this->id));
     }
+    
+    public static function delete_all($course_id) {
+        $query = DB::connection()->prepare('DELETE FROM Student WHERE course_id = :course_id');
+        $query->execute(array('course_id' => $course_id));
+    }
 
     public function validate_student_number() {
         $errors = array();

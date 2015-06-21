@@ -59,6 +59,15 @@ class Exercise extends BaseModel {
         $query = DB::connection()->prepare('DELETE FROM Exercise WHERE id = :id');
         $query->execute(array('id' => $this->id));
     }
+    
+    public static function delete_all($course_id) {
+        $exercises = Exercise::all($course_id);
+        foreach ($exercises as $exercise) {
+            Problem::delete_all($exercise->id);
+        }
+        $query = DB::connection()->prepare('DELETE FROM Exercise WHERE course_id = :course_id');
+        $query->execute(array('course_id' => $course_id));
+    }
 
     public function validate_number() {
         $errors = array();

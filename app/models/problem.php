@@ -72,6 +72,15 @@ class Problem extends BaseModel {
         return null;
     }
     
+    public static function delete_all($exercise_id) {
+        $problems = Problem::all($exercise_id);
+        foreach ($problems as $problem) {
+            ProblemReturn::delete_all($problem->id);
+        }
+        $query = DB::connection()->prepare('DELETE FROM Problem WHERE exercise_id = :exercise_id');
+        $query->execute(array('exercise_id' => $exercise_id));
+    }
+    
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Problem (problem_number, star_problem, exercise_id) VALUES (:problem_number, :star_problem, :exercise_id) RETURNING id');
         $query->execute(array('problem_number' => $this->problem_number, 'star_problem' => $this->star_problem, 'exercise_id' => $this->exercise_id));

@@ -53,6 +53,11 @@ class ProblemReturn extends BaseModel {
         return null;
     }
     
+    public static function delete_all($problem_id) {
+        $query = DB::connection()->prepare('DELETE FROM ProblemReturn WHERE problem_id = :problem_id');
+        $query->execute(array('problem_id' => $problem_id));
+    }
+    
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO ProblemReturn (mark, problem_id, student_id) VALUES (:mark, :problem_id, :student_id)');
         $query->execute(array('mark' => $this->mark, 'problem_id' => $this->problem_id, 'student_id' => $this->student_id));

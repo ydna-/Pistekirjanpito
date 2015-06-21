@@ -52,6 +52,8 @@ class Course extends BaseModel {
     }
 
     public function destroy() {
+        Exercise::delete_all($this->id);
+        Student::delete_all($this->id);
         $query = DB::connection()->prepare('DELETE FROM Course WHERE id = :id');
         $query->execute(array('id' => $this->id));
     }
