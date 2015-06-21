@@ -2,7 +2,7 @@
 
 class Course extends BaseModel {
 
-    public $id, $name, $term, $teacher_id;
+    public $id, $name, $term;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -18,8 +18,7 @@ class Course extends BaseModel {
             $courses[] = new Course(array(
                 'id' => $row['id'],
                 'name' => $row['name'],
-                'term' => $row['term'],
-                'teacher_id' => $row['teacher_id']
+                'term' => $row['term']
             ));
         }
         return $courses;
@@ -33,8 +32,7 @@ class Course extends BaseModel {
             $course = new Course(array(
                 'id' => $row['id'],
                 'name' => $row['name'],
-                'term' => $row['term'],
-                'teacher_id' => $row['teacher_id']
+                'term' => $row['term']
             ));
             return $course;
         }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  14 JUN 2015 23:37
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.11.12)  21 JUN 2015 23:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -572,112 +572,100 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.21 \newpage
-              [1] [2] <kayttotapauskaavio.png, id=82, 734.745pt x 617.30624pt>
+              [1] [2] <kayttotapauskaavio.png, id=87, 734.745pt x 514.92375pt>
 File: kayttotapauskaavio.png Graphic file (type png)
 
 <use kayttotapauskaavio.png>
 Package pdftex.def Info: kayttotapauskaavio.png used on input line 50.
-(pdftex.def)             Requested size: 367.3716pt x 308.65236pt.
+(pdftex.def)             Requested size: 367.3716pt x 257.46124pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 
  []
 
 [3 <./kayttotapauskaavio.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 [4]
-Underfull \hbox (badness 3657) in paragraph at lines 110--112
+Underfull \hbox (badness 3657) in paragraph at lines 106--108
 []\T1/cmr/m/n/12 rekisteröityminen, kir-jau-tu-mi-nen, teh-tä-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
-
- []
-
-<kasitekaavio.png, id=92, 732.7375pt x 720.6925pt>
+<kasitekaavio.png, id=97, 538.01pt x 479.7925pt>
 File: kasitekaavio.png Graphic file (type png)
  <use kasitekaavio.png>
-Package pdftex.def Info: kasitekaavio.png used on input line 126.
-(pdftex.def)             Requested size: 366.36786pt x 360.34537pt.
+Package pdftex.def Info: kasitekaavio.png used on input line 115.
+(pdftex.def)             Requested size: 269.00433pt x 239.89565pt.
 
-[5] [6 <./kasitekaavio.png (PNG copy)>]
-<relaatiokaavio.png, id=102, 648.4225pt x 762.85pt>
+[5 <./kasitekaavio.png (PNG copy)>] [6]
+<relaatiokaavio.png, id=107, 547.04375pt x 617.30624pt>
 File: relaatiokaavio.png Graphic file (type png)
- <use relaatiokaavio.png>
-Package pdftex.def Info: relaatiokaavio.png used on input line 189.
-(pdftex.def)             Requested size: 324.21045pt x 381.42407pt.
 
-[7] <kayttoliittyma.png, id=107, 872.25874pt x 506.89375pt>
+<use relaatiokaavio.png>
+Package pdftex.def Info: relaatiokaavio.png used on input line 182.
+(pdftex.def)             Requested size: 273.5212pt x 308.65236pt.
+ [7 <./relaatiokaavio.png (PNG copy)>]
+<kayttoliittyma.png, id=112, 872.25874pt x 509.905pt>
 File: kayttoliittyma.png Graphic file (type png)
+ <use kayttoliittyma.png>
+Package pdftex.def Info: kayttoliittyma.png used on input line 192.
+(pdftex.def)             Requested size: 392.5128pt x 229.45512pt.
 
-<use kayttoliittyma.png>
-Package pdftex.def Info: kayttoliittyma.png used on input line 199.
-(pdftex.def)             Requested size: 392.5128pt x 228.10008pt.
-
-Overfull \hbox (2.5128pt too wide) in paragraph at lines 199--200
+Overfull \hbox (2.5128pt too wide) in paragraph at lines 192--193
 [] 
  []
 
-[8 <./relaatiokaavio.png (PNG copy)>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 203.
-
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 198.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 4316) in paragraph at lines 203--206
+Underfull \hbox (badness 4316) in paragraph at lines 198--201
 \T1/cmr/m/n/12 Harjoitustyö on asen-net-tu-na osoit-tees-sa []$\T1/cmtt/m/n/12 
 http : / / andreasn . users . cs .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--206
+Underfull \hbox (badness 10000) in paragraph at lines 198--201
 \T1/cmtt/m/n/12 helsinki . fi / pkp/$[]\T1/cmr/m/n/12 . Kir-jau-tu-mis-ta voi k
 o-keil-la säh-kö-pos-tio-soit-teel-la
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 207.
-[9 <./kayttoliittyma.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 207.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
+[8 <./kayttoliittyma.png (PNG copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
  (./dokumentaatio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 207.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 207.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
 Package rerunfilecheck Info: File `dokumentaatio.out' has not changed.
-(rerunfilecheck)             Checksum: 35FF8630E915B2E2C3F6DC1B30FB0B80;820.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 207.
+(rerunfilecheck)             Checksum: 8B7B65F2C557B63242135B6100F6D311;869.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 202.
  ) 
 Here is how much of TeX's memory you used:
- 6654 strings out of 495044
- 92463 string characters out of 3181317
+ 6655 strings out of 495044
+ 92477 string characters out of 3181317
  178757 words of memory out of 3000000
- 9722 multiletter control sequences out of 15000+200000
+ 9723 multiletter control sequences out of 15000+200000
  16597 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,6n,28p,246b,424s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,6n,28p,246b,454s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/yd
 na/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/ydna/.texmf-va
 r/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/ydna/.texmf-var/fonts/pk/l
 jfour/jknappen/ec/ecbx1200.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknapp
 en/ec/ecbx1728.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm14
 40.600pk> </home/ydna/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2074.600pk>
-Output written on dokumentaatio.pdf (10 pages, 266880 bytes).
+Output written on dokumentaatio.pdf (9 pages, 275801 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
+ 362 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
  23 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

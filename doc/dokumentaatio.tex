@@ -58,14 +58,10 @@ tarvittava data tietokannasta ja vastataan käyttäjän selaimen pyyntöihin.
 	myös tähän käyttäjäryhmään.
 	\item[Ohjaaja] \hfill \\
 	Ohjaaja on järjestelmään rekisteröitynyt käyttäjä, jonka vastuulla
-	on oman kurssin palautukset ja jonka rekisteröityminen on hyväksytty
-	opettajan toimesta.\\
+	on oman kurssin palautukset.
 	\item[Opettaja] \hfill \\
 	Opettaja on järjestelmään rekisteröitynyt käyttäjä, jonka
-	vastuulla on omat kurssit ja jonka rekisteröityminen on hyväksytty
-	adminin toimesta.
-	\item[Admin] \hfill \\
-	Adminilla tarkoitetaan järjestelmän ylintä käyttäjäluokkaa.
+	vastuulla on omat kurssit.
 \end{description}
 
 \subsection{Käyttötapauskuvaukset}
@@ -97,9 +93,9 @@ tarvittava data tietokannasta ja vastataan käyttäjän selaimen pyyntöihin.
 	\end{description}
 	\item[Opettajan käyttötapaukset] \hfill \\
 	\begin{description}
-		\item[Ohjaajan autentikointi] \hfill \\
-		Kun ohjaaja rekisteröityy järjestelmään tietyn kurssin ohjaajaksi,
-		kurssin vastuuopettajan tulee vahvistaa ohjaajan käyttäjä.
+		\item[Käyttäjän autentikointi] \hfill \\
+		Kun ohjaaja tai opettaja rekisteröityy järjestelmään,
+		opettajan tulee vahvistaa kyseinen käyttäjä.
 		\item[Kurssin lisääminen] \hfill \\
 		Opettajan tehtäviin kuuluu lisätä järjestelmään omia kursseja.
 		Opettaja pystyy tarvittaessa myös muokkaamaan ja poistamaan kursseja.
@@ -110,13 +106,6 @@ tarvittava data tietokannasta ja vastataan käyttäjän selaimen pyyntöihin.
 		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen,
 		tehtävien kirjaaminen, harjoituksen lisääminen, taulukoiden vienti
 	\end{description}
-	\item[Adminin käyttötapaukset] \hfill \\
-		\item[Opettajan autentikointi] \hfill \\
-		Kun opettaja rekisteröityy järjestelmään, järjestelmän adminin
-		tulee vahvistaa opettajan käyttäjä.
-		\item[Muut käyttötapaukset:] rekisteröityminen, kirjautuminen,
-		tehtävien kirjaaminen, harjoituksen lisääminen, taulukoiden vienti,
-		kurssin lisääminen, opiskelijoiden lisääminen
 \end{description}
 
 \section{Järjestelmän tietosisältö}
@@ -128,29 +117,21 @@ tarvittava data tietokannasta ja vastataan käyttäjän selaimen pyyntöihin.
 \subsection{Tietokohteet}
 
 \begin{description}
-	\item[Tietokohde: Opettaja] \hfill \\
+	\item[Tietokohde: Käyttäjä] \hfill \\
 	\begin{tabular}{| l | l |}
 	\hline
 	Attribuutti & Arvojoukko \\ \hline
 	Nimi & Merkkijono, max. 50 merkkiä \\ \hline
 	Sähköpostiosoite & Merkkijono, max. 50 merkkiä \\ \hline
+	Salasana & Merkkijono, max. 60 merkkiä \\ \hline
+	On opettaja & Totuusarvo \\ \hline
 	\end{tabular}
-	\newpage
 	\item[Tietokohde: Kurssi] \hfill \\
 	\begin{tabular}{| l | l |}
 	\hline
 	Attribuutti & Arvojoukko \\ \hline
 	Nimi & Merkkijono, max. 50 merkkiä \\ \hline
 	Lukukausi & Merkkijono, max. 50 merkkiä \\ \hline
-	Vastuuopettajan id & Kokonaisluku \\ \hline
-	\end{tabular}
-	\item[Tietokohde: Ohjaaja] \hfill \\
-	\begin{tabular}{| l | l |}
-	\hline
-	Attribuutti & Arvojoukko \\ \hline
-	Nimi & Merkkijono, max. 50 merkkiä \\ \hline
-	Sähköpostiosoite & Merkkijono, max. 50 merkkiä \\ \hline
-	Kurssin id & Kokonaisluku \\ \hline
 	\end{tabular}
 	\item[Tietokohde: Opiskelija] \hfill \\
 	\begin{tabular}{| l | l |}
@@ -165,6 +146,8 @@ tarvittava data tietokannasta ja vastataan käyttäjän selaimen pyyntöihin.
 	\hline
 	Attribuutti & Arvojoukko \\ \hline
 	Harjoitusnumero & Kokonaisluku \\ \hline
+	Tehtävien lukumäärä & Kokonaisluku \\ \hline
+	Tähtitehtävien lukumäärä & Kokonaisluku \\ \hline
 	Kurssin id & Kokonaisluku \\ \hline
 	\end{tabular}
 	\item[Tietokohde: Tehtävä] \hfill \\
@@ -172,15 +155,25 @@ tarvittava data tietokannasta ja vastataan käyttäjän selaimen pyyntöihin.
 	\hline
 	Attribuutti & Arvojoukko \\ \hline
 	Tehtävänumero & Kokonaisluku \\ \hline
+	On tähtitehtävä & Totuusarvo \\ \hline
 	Harjoituksen id & Kokonaisluku \\ \hline
 	\end{tabular}
 	\item[Tietokohde: Palautus] \hfill \\
 	\begin{tabular}{| l | l |}
 	\hline
 	Attribuutti & Arvojoukko \\ \hline
-	Merkki & 1 merkki \\ \hline
+	Arvosana & 1 merkki \\ \hline
 	Tehtävän id & Kokonaisluku \\ \hline
 	Opiskelijan id & Kokonaisluku \\ \hline
+	\end{tabular}
+	\item[Tietokohde: Viesti] \hfill \\
+	\begin{tabular}{| l | l |}
+	\hline
+	Attribuutti & Arvojoukko \\ \hline
+	Lähettäjän nimi & Merkkijono \\ \hline
+	Lähettäjän sähköpostiosoite & Merkkijono \\ \hline
+	Lähettäjän salasana & Merkkijono \\ \hline
+	Lähettäjä on opettaja & Totuusarvo \\ \hline
 	\end{tabular}
 \end{description}
 
@@ -197,6 +190,8 @@ Sovellus käyttää istuntoa käyttäjän kirjautumisen havaitsemiseen.
 \section{Käyttöliittymä ja järjestelmän komponentit}
 
 \includegraphics[scale=0.45]{kayttoliittyma}
+
+\section{Asennustiedot}
 
 \section{Käynnistys- / käyttöohje}
 

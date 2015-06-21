@@ -9,8 +9,7 @@ CREATE TABLE Teacher(
 CREATE TABLE Course(
     id SERIAL PRIMARY KEY,
     name varchar(50) NOT NULL,
-    term varchar(50) NOT NULL,
-    teacher_id INTEGER REFERENCES Teacher(id)
+    term varchar(50) NOT NULL
 );
 
 CREATE TABLE Student(
