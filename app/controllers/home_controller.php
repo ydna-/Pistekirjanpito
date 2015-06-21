@@ -24,7 +24,7 @@ class HomeController extends BaseController {
                 $problem = Problem::find($return->problem_id);
                 $exercise = Exercise::find($problem->exercise_id);
                 if ($return->mark == 'O') {
-                    $points[$exercise->exercise_number] ++;
+                    $points[$exercise->exercise_number]++;
                 }
             }
             View::make('scores/show.html', array('points' => $points, 'course' => Course::find($student->course_id)));

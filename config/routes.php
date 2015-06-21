@@ -28,6 +28,18 @@ $routes->post('/register', function() {
     UserController::handle_register();
 });
 
+$routes->get('/messages', function() {
+    MessageController::message_list();
+});
+
+$routes->post('/messages/:id/accept', function($id) {
+    MessageController::message_accept($id);
+});
+
+$routes->post('/messages/:id/decline', function($id) {
+    MessageController::message_destroy($id);
+});
+
 $routes->post('/logout', function() {
     UserController::logout();
 });

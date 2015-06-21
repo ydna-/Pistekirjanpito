@@ -3,29 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ydna/Pistekirjanpito/app/controllers/home_controller.php</file>
             <file>file:/home/ydna/Pistekirjanpito/app/models/course.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/models/problem.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/controllers/exercise_controller.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/controllers/student_controller.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/scores/show.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/exercise/show.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/course/show.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/controllers/course_controller.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/exercise/new.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/assets/js/site.js</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/models/problemreturn.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/models/student.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/controllers/log_controller.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/sql/create_tables.sql</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/student/new.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/log/new.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/config/routes.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/base.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/student/list.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/controllers/user_controller.php</file>
-            <file>file:/home/ydna/Pistekirjanpito/app/views/home.html</file>
-            <file>file:/home/ydna/Pistekirjanpito/lib/redirect.php</file>
         </group>
     </open-files>
 </project-private>

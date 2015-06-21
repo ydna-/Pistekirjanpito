@@ -2,6 +2,10 @@
 {% block content %}
 <h1>Rekisteröidy</h1>
 
+{% if message %}
+<div class="alert alert-success">{{message}}</div>
+{% endif %}
+
 {% if errors %}
 <div class="alert alert-danger">
     <ul>
@@ -26,17 +30,13 @@
         <input class="form-control" name="password" type="password">
     </div>
     <div class="form-group">
+        <label>Vahvista salasana</label>
+        <input class="form-control" name="validate_password" type="password">
+    </div>
+    <div class="form-group">
         <label>Rooli</label><br>
         <label class="radio-inline"><input type="radio" name="role" value="instructor">Ohjaaja</label>
         <label class="radio-inline"><input type="radio" name="role" checked="checked" value="teacher">Opettaja</label>
-    </div>
-    <div id="divCourse" class="form-group" style="display: none;">
-        <label>Kurssi</label>
-        <select class="form-control" name="course_number">
-            {% for course in courses %}
-            <option value="{{course.id}}">{{course.name}} ({{course.term}})</option>
-            {% endfor %}
-        </select>
     </div>
     <button type="submit" class="btn btn-primary">Rekisteröidy</button>
 </form>

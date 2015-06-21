@@ -48,3 +48,11 @@ CREATE TABLE ProblemReturn(
     student_id INTEGER REFERENCES Student(id),
     PRIMARY KEY (problem_id, student_id)
 );
+
+CREATE TABLE Message(
+    id SERIAL PRIMARY KEY,
+    sender_name varchar(50) NOT NULL,
+    sender_email varchar(50) NOT NULL,
+    sender_password varchar(60) NOT NULL,
+    sender_is_teacher BOOLEAN NOT NULL
+);
