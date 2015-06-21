@@ -56,6 +56,7 @@ class Exercise extends BaseModel {
     }
 
     public function destroy() {
+        Problem::delete_all($this->id);
         $query = DB::connection()->prepare('DELETE FROM Exercise WHERE id = :id');
         $query->execute(array('id' => $this->id));
     }
