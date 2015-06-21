@@ -10,7 +10,9 @@
     <a href="{{base_path}}/courses/{{course.id}}/exercises/new" class="btn btn-success">Lisää harjoitus</a>
     <a href="{{base_path}}/courses/{{course.id}}/students" class="btn btn-success">Opiskelijat</a>
     {% if user_logged_in.is_teacher %}
-    <a href="{{base_path}}/courses/{{course.id}}/destroy" class="btn btn-danger pull-right">Poista</a>
+    <form method="post" action="{{base_path}}/courses/{{course.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa kurssin?">
+        <button type="submit" class="btn btn-danger pull-right">Poista</button>
+    </form>
     <a href="{{base_path}}/courses/{{course.id}}/edit" class="btn btn-default pull-right">Muokkaa</a>
     {% endif %}
 </p>

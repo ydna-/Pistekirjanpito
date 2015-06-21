@@ -68,7 +68,7 @@ $routes->post('/courses/:id/edit', function($id) {
     CourseController::course_update($id);
 });
 
-$routes->get('/courses/:id/destroy', function($id) {
+$routes->post('/courses/:id/destroy', function($id) {
     CourseController::course_destroy($id);
 });
 
@@ -92,7 +92,7 @@ $routes->post('/courses/:course_id/exercises/:id/edit', function($course_id, $id
     ExerciseController::exercise_update($course_id, $id);
 });
 
-$routes->get('/courses/:course_id/exercises/:id/destroy', function($course_id, $id) {
+$routes->post('/courses/:course_id/exercises/:id/destroy', function($course_id, $id) {
     ExerciseController::exercise_destroy($course_id, $id);
 });
 

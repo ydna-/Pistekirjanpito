@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    $('form.destroy-form').on('submit', function (submit) {
+        var confirm_message = $(this).attr('data-confirm');
+        if (!confirm(confirm_message)) {
+            submit.preventDefault();
+        }
+    });
     $("#nExercises").change(function () {
         $("#starExercises").children().remove();
         for (var i = 1; i <= $(this).val(); i++) {
