@@ -19,7 +19,7 @@
 {% endfor %}
 
 <form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log{{option}}">
-    <div class="form-group">
+    <div class="form">
         <div class="form-inline">
             <label>Kurssitunnus</label>
             <select id="selCourseNo" class="form-control" name="course_number">
@@ -29,9 +29,9 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="row form-inline">
+        <div class="row form-group">
             {% for problem in problems %}
-            <div class="col-md-1">
+            <div class="col-sm-1 form-inline">
                 <pre>{{problem.problem_number}}{% if problem.star_problem %}*{% endif %}</pre>
                 {% if problem.star_problem %}
                 <input name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
@@ -41,7 +41,7 @@
             </div>
             {% if (problem.problem_number|number_format)%5 == 0 %}
         </div>
-        <div class=" row form-inline">
+        <div class="row form-group">
             {% endif %}
             {% endfor %}
         </div>

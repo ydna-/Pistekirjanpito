@@ -10,7 +10,7 @@ class StudentController extends BaseController {
     }
 
     public static function student_store($course_id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         try {
             $fh = fopen($_FILES['file']['tmp_name'], 'r+');
             $students = array();
@@ -35,20 +35,20 @@ class StudentController extends BaseController {
     }
 
     public static function student_create($course_id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $course = Course::find($course_id);
         View::make('student/new.html', array('course' => $course));
     }
 
     public static function student_edit($course_id, $student_id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $student = Student::find($student_id);
         $course = Course::find($course_id);
         View::make('student/edit.html', array('course' => $course, 'student' => $student));
     }
 
     public static function student_update($course_id, $student_id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $params = $_POST;
         $attributes = array(
             'id' => $student_id,
@@ -67,7 +67,7 @@ class StudentController extends BaseController {
     }
 
     public static function student_destroy($course_id, $student_id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $student = new Student(array('id' => $student_id));
         $student->destroy();
         Redirect::to('/courses/' . $course_id . '/students', array('message' => 'Opiskelija on poistettu tietokannasta!'));

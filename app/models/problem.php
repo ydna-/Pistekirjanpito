@@ -74,6 +74,8 @@ class Problem extends BaseModel {
     
     public static function delete_all($exercise_id) {
         $problems = Problem::all($exercise_id);
+        $problems = array_merge($problems, Problem::all_first($exercise_id));
+        $problems = array_merge($problems, Problem::all_second($exercise_id));
         foreach ($problems as $problem) {
             ProblemReturn::delete_all($problem->id);
         }

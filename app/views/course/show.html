@@ -9,6 +9,7 @@
 <p>
     <a href="{{base_path}}/courses/{{course.id}}/exercises/new" class="btn btn-success">Lisää harjoitus</a>
     <a href="{{base_path}}/courses/{{course.id}}/students" class="btn btn-success">Opiskelijat</a>
+    <a href="{{base_path}}/courses/{{course.id}}/csv" class="btn btn-success">Lataa CSV-tiedosto</a>
     {% if user_logged_in.is_teacher %}
     <form method="post" action="{{base_path}}/courses/{{course.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa kurssin?">
         <button type="submit" class="btn btn-danger pull-right">Poista</button>

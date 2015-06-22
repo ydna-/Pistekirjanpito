@@ -4,6 +4,34 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/ydna/Pistekirjanpito/app/models/course.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/index.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/controllers/exercise_controller.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/views/exercise/show.html</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/views/course/show.html</file>
+            <file>file:/home/ydna/Pistekirjanpito/assets/js/site.js</file>
+            <file>file:/home/ydna/Pistekirjanpito/deploy.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/config/environment.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/controllers/log_controller.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/models/user.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/sql/drop_tables.sql</file>
+            <file>file:/home/ydna/Pistekirjanpito/drop_tables.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/README.md</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/controllers/home_controller.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/models/problem.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/lib/database.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/controllers/course_controller.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/create_tables.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/models/exercise.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/config/database.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/add_test_data.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/models/student.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/models/problemreturn.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/sql/create_tables.sql</file>
+            <file>file:/home/ydna/Pistekirjanpito/config/routes.php</file>
+            <file>file:/home/ydna/Pistekirjanpito/sql/add_test_data.sql</file>
+            <file>file:/home/ydna/Pistekirjanpito/php_logs.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/bootstrap.sh</file>
+            <file>file:/home/ydna/Pistekirjanpito/app/views/score/show.html</file>
         </group>
     </open-files>
 </project-private>

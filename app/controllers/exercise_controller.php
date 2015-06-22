@@ -94,14 +94,14 @@ class ExerciseController extends BaseController {
     }
 
     public static function exercise_edit($course_id, $id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $exercise = Exercise::find($id);
         $course = Course::find($course_id);
         View::make('exercise/edit.html', array('attributes' => $exercise, 'course' => $course));
     }
 
     public static function exercise_update($course_id, $id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
@@ -119,10 +119,61 @@ class ExerciseController extends BaseController {
     }
 
     public static function exercise_destroy($course_id, $id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $exercise = new Exercise(array('id' => $id));
         $exercise->destroy();
         Redirect::to('/courses/' . $course_id, array('message' => 'Harjoitus on poistettu tietokannasta!'));
+    }
+
+    public static function exercise_csv($course_id, $id) {
+        $students = Student::all($course_id);
+        $problems = Problem::all($id);
+        $problems = array_merge($problems, Problem::all_first($id));
+        $problems = array_merge($problems, Problem::all_second($id));
+        usort($problems, function($a, $b) {
+            if ($a->problem_number - $b->problem_number == 0) {
+                if (strlen($a->problem_number) == strlen($b->problem_number)) {
+                    return substr($a->problem_number, -1) - substr($b->problem_number, -1);
+                } else {
+                    return strlen($a->problem_number) - strlen($b->problem_number);
+                }
+            }
+            return $a->problem_number - $b->problem_number;
+        });
+        $array = array();
+        $array[0][0] = 'tunnus';
+        $i = 1;
+        foreach ($problems as $problem) {
+            $array[0][$i] = $problem->problem_number;
+            $i++;
+        }
+        $i = 1;
+        foreach ($students as $student) {
+            $array[$i][0] = $student->course_number;
+            $j = 1;
+            foreach ($problems as $problem) {
+                $return = ProblemReturn::find($problem->id, $student->id);
+                if ($return) {
+                    $array[$i][$j] = $return->mark;
+                } else {
+                    $array[$i][$j] = ' ';
+                }
+                $j++;
+            }
+            $i++;
+        }
+        try {
+            $file = fopen('php://temp', 'w');
+            foreach ($array as $row) {
+                fputcsv($file, $row, ',');
+            }
+            fseek($file, 0);
+            header('Content-Type: application/csv');
+            header('Content-Disposition: attachment; filename="' . $id . '.csv' . '";');
+            fpassthru($file);
+        } catch (Exception $e) {
+            Kint::dump($array);
+        }
     }
 
 }

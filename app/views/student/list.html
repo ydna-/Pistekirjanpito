@@ -6,17 +6,21 @@
 <div class="alert alert-success">{{message}}</div>
 {% endif %}
 
+{% if user_logged_in.is_teacher %}
 <p>
     <a href="{{base_path}}/courses/{{course.id}}/students/new" class="btn btn-success">Lisää opiskelijoita</a>
 </p>
+{% endif %}
 
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Opiskelijanumero</th>
             <th>Kurssitunnus</th>
+            {% if user_logged_in.is_teacher %}
             <th></th>
             <th></th>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -24,8 +28,10 @@
         <tr>
             <td>{{student.student_number}}</td>
             <td>{{student.course_number}}</td>
+            {% if user_logged_in.is_teacher %}
             <td><a href="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/edit" class="btn btn-default btn-xs">Muokkaa</a></td>
             <td><a href="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/destroy" class="btn btn-danger btn-xs">Poista</a></td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

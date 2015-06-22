@@ -143,3 +143,11 @@ $routes->get('/courses/:course_id/exercises/:exercise_id/log/second', function($
 $routes->post('/courses/:course_id/exercises/:exercise_id/log/second', function($course_id, $exercise_id) {
     LogController::log_second_store($course_id, $exercise_id);
 });
+
+$routes->get('/courses/:course_id/csv', function($course_id) {
+    CourseController::course_csv($course_id);
+});
+
+$routes->get('/courses/:course_id/exercises/:exercise_id/csv', function($course_id, $exercise_id) {
+    ExerciseController::exercise_csv($course_id, $exercise_id);
+});

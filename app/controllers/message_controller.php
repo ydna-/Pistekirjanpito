@@ -3,13 +3,13 @@
 class MessageController extends BaseController {
 
     public static function message_list() {
-        self::check_logged_in();
+        self::check_is_teacher();
         $messages = Message::all();
         View::make('message/list.html', array('messages' => $messages));
     }
 
     public static function message_accept($id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $message = Message::find($id);
         if ($message->sender_is_teacher) {
             $attributes = array(
@@ -33,7 +33,7 @@ class MessageController extends BaseController {
     }
 
     public static function message_destroy($id) {
-        self::check_logged_in();
+        self::check_is_teacher();
         $message = new Message(array('id' => $id));
         $message->destroy();
         Redirect::to('/messages', array('message' => 'Pyyntö on hylätty!'));
