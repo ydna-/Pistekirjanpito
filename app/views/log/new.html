@@ -34,9 +34,9 @@
             <div class="col-sm-1 form-inline">
                 <pre>{{problem.problem_number}}{% if problem.star_problem %}*{% endif %}</pre>
                 {% if problem.star_problem %}
-                <input name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
+                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
                 {% else %}
-                <input name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
+                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
                 {% endif %}
             </div>
             {% if (problem.problem_number|number_format)%5 == 0 %}
@@ -46,6 +46,8 @@
             {% endfor %}
         </div>
     </div>
+    <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki</button>
+    <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
     <button type="submit" class="btn btn-primary">Tallenna</button>
 </form>
 {% endblock %}
