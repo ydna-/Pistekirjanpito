@@ -24,6 +24,8 @@ CREATE TABLE Exercise(
     exercise_number INTEGER NOT NULL,
     number_of_problems INTEGER NOT NULL,
     number_of_star_problems INTEGER NOT NULL,
+    max_number_of_problems INTEGER NOT NULL,
+    max_number_of_star_problems INTEGER NOT NULL,
     course_id INTEGER REFERENCES Course(id)
 );
 

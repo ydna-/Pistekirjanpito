@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>{{course.name}} ({{course.term}})</h1>
+<h5>Opiskelijoita {{course.number_of_students}}, joista tehtäviä palauttaneita {{course.number_of_returned}}</h5>
 
 {% if message %}
 <div class="alert alert-success">{{message}}</div>
@@ -24,6 +25,7 @@
             <th>Harjoitus</th>
             <th>Tehtävien lukumäärä</th>
             <th>Tähtitehtävien lukumäärä</th>
+            <th>Tehtäviä palauttaneiden lkm</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +34,7 @@
             <td><a href="{{base_path}}/courses/{{exercise.course_id}}/exercises/{{exercise.id}}">Harjoitus {{exercise.exercise_number}}</a></td>
             <td>{{exercise.number_of_problems}}</td>
             <td>{{exercise.number_of_star_problems}}</td>
+            <td>{{exercise.number_of_returned}}</td>
         </tr>
         {% endfor %}
     </tbody>

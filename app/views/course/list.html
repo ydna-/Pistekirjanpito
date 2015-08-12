@@ -17,6 +17,8 @@
         <tr>
             <th>Nimi</th>
             <th>Lukukausi</th>
+            <th>Opiskelijoiden lkm</th>
+            <th>Tehtäviä palauttaneiden lkm</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +26,8 @@
         <tr>
             <td><a href="{{base_path}}/courses/{{course.id}}">{{course.name}}</td>
             <td>{{course.term}}</td>
+            <td>{{course.number_of_students}}</td>
+            <td>{{course.number_of_returned}}</td>
         </tr>
         {% endfor %}
     </tbody>

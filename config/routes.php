@@ -4,10 +4,6 @@ $routes->get('/', function() {
     HomeController::index();
 });
 
-$routes->get('/scores', function() {
-    HomeController::score_show();
-});
-
 $routes->post('/scores', function() {
     HomeController::score_query();
 });
@@ -39,9 +35,25 @@ $routes->post('/messages/:id/accept', function($id) {
 $routes->post('/messages/:id/decline', function($id) {
     MessageController::message_destroy($id);
 });
+/*
+$routes->get('/edit', function() {
+    UserController::user_edit();
+});
 
+$routes->post('/edit', function() {
+    UserController::user_update();
+});
+*/
 $routes->post('/logout', function() {
     UserController::logout();
+});
+
+$routes->get('/users', function() {
+    UserController::user_list();
+});
+
+$routes->post('/users/:id/destroy', function($id) {
+    UserController::user_destroy($id);
 });
 
 $routes->get('/courses', function() {

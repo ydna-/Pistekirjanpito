@@ -38,6 +38,21 @@ class ProblemReturn extends BaseModel {
         return $returns;
     }
     
+    public static function all_by_exercise_and_student($exercise_id, $student_id) {
+        $query = DB::connection()->prepare('SELECT mark, problem_id, student_id FROM ProblemReturn INNER JOIN Problem ON ProblemReturn.problem_id = problem.id WHERE exercise_id=:exercise_id AND student_id = :student_id');
+        $query->execute(array('exercise_id' => $exercise_id, 'student_id' => $student_id));
+        $rows = $query->fetchAll();
+        $returns = array();
+        foreach ($rows as $row) {
+            $returns[] = new ProblemReturn(array(
+                'mark' => $row['mark'],
+                'problem_id' => $row['problem_id'],
+                'student_id' => $row['student_id']
+            ));
+        }
+        return $returns;
+    }
+    
     public static function find($problem_id, $student_id) {
         $query = DB::connection()->prepare('SELECT * FROM ProblemReturn WHERE problem_id = :problem_id AND student_id = :student_id LIMIT 1');
         $query->execute(array('problem_id' => $problem_id, 'student_id' => $student_id));
@@ -56,6 +71,11 @@ class ProblemReturn extends BaseModel {
     public static function delete_all($problem_id) {
         $query = DB::connection()->prepare('DELETE FROM ProblemReturn WHERE problem_id = :problem_id');
         $query->execute(array('problem_id' => $problem_id));
+    }
+    
+    public static function delete_all_by_student($student_id) {
+        $query = DB::connection()->prepare('DELETE FROM ProblemReturn WHERE student_id = :student_id');
+        $query->execute(array('student_id' => $student_id));
     }
     
     public function save() {

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+{% if option == '/first' %}
+<h1>Kirjaa ensimmäisiä korjauksia</h1>
+{% elseif option == '/second' %}
+<h1>Kirjaa toisia korjauksia</h1>
+{% else %}
 <h1>Kirjaa pisteitä</h1>
+{% endif %}
 
 {% if message %}
 <div class="alert alert-success">

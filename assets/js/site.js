@@ -1,3 +1,10 @@
+function showPoints(elem) {
+    $(".div-exercise").each(function () {
+        $(this).hide();
+    });
+    $("#div" + elem.id).show();
+}
+
 function toggle(elem) {
     if (elem.hasClass("star-checkbox")) {
         switch (elem.val()) {
@@ -44,7 +51,7 @@ function selectAll() {
         $(this).prop('indeterminate', false);
         $(this).prop('checked', true);
     });
-    
+
 }
 
 function removeAll() {

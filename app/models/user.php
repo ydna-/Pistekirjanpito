@@ -75,4 +75,25 @@ class User extends BaseModel {
         return $errors;
     }
 
+    public static function all() {
+        $query = DB::connection()->prepare('SELECT * FROM Teacher');
+        $query->execute();
+        $rows = $query->fetchAll();
+        $users = array();
+        foreach ($rows as $row) {
+            $users[] = new User(array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'email' => $row['email'],
+                'is_teacher' => $row['is_teacher']
+            ));
+        }
+        return $users;
+    }
+    
+    public function destroy() {
+        $query = DB::connection()->prepare('DELETE FROM Teacher WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+    }
+
 }

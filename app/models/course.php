@@ -79,5 +79,22 @@ class Course extends BaseModel {
         }
         return $errors;
     }
+    
+    public function get_number_of_students() {
+        $students = Student::all($this->id);
+        return count($students);
+    }
+    
+    public function get_number_of_returned() {
+        $students = Student::all($this->id);
+        $number = 0;
+        foreach ($students as $student) {
+            $returns = ProblemReturn::all_by_student($student->id);
+            if (count($returns) != 0) {
+                $number++;
+            }
+        }
+        return $number;
+    }
 
 }
