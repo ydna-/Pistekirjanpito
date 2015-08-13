@@ -107,13 +107,13 @@ class LogController extends BaseController {
                 $number = substr($problem->problem_number, 0, -2);
                 $previous = ProblemReturn::find_by_number($number, $exercise_id, $params['course_number']);
                 if ($previous && $previous->mark == 'O') {
-                    Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
+                    Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/second', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
                     return;
                 }
                 $number = $number . "k1";
                 $previous = ProblemReturn::find_by_number($number, $exercise_id, $params['course_number']);
                 if ($previous && $previous->mark == 'O') {
-                    Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
+                    Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/second', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
                     return;
                 }
             }

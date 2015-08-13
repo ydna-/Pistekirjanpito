@@ -28,8 +28,8 @@
     <div class="form">
         <div class="form-inline">
             <label>Kurssitunnus</label>
-            <select id="selCourseNo" class="chzn-select form-control" name="course_number">
-                <option value=""></option>
+            <select id="selCourseNo" class="selectpicker" data-live-search="true" name="course_number">
+                <option></option>
                 {% for student in students %}
                 <option value="{{student.id}}">{{student.course_number}}</option>
                 {% endfor %}
@@ -54,7 +54,7 @@
     </div>
     <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki</button>
     <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
-    <button type="submit" class="btn btn-primary">Tallenna</button>
+    <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
 </form>
 
 {% endblock %}
