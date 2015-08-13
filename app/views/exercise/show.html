@@ -12,11 +12,34 @@
     <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log/second" class="btn btn-primary">Kirjaa toisia korjauksia</a>
     <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/csv" class="btn btn-primary">Lataa CSV-tiedosto</a>
     {% if user_logged_in.is_teacher %}
-    <form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa harjoituksen?">
-        <button type="submit" class="btn btn-danger pull-right">Poista</button>
-    </form>
-    <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/edit" class="btn btn-default pull-right">Muokkaa</a>
-    {% endif %}
+<form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa harjoituksen?">
+    <button type="submit" class="btn btn-danger pull-right">Poista</button>
+</form>
+<a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/edit" class="btn btn-default pull-right">Muokkaa</a>
+{% endif %}
 </p>
+
+<ul>
+    <li>Maksimipistemäärä (ei-tähti): {{exercise.max_non_star_score}}</li>
+    <li>Maksimipistemäärä (tähti): {{exercise.max_star_score}}</li>
+</ul>
+
+<table class="table table-striped table-bordered" style="table-layout: fixed;">
+    <caption>Tehtäviä palauttaneiden opiskelijoiden lukumäärä tehtäväkohtaisesti</caption>
+    <thead>
+        <tr>
+            {% for problem in problems %}
+            <th>{{problem.problem_number}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for problem in problems %}
+            <th>{{problem.number_of_returned}}</th>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
 
 {% endblock %}

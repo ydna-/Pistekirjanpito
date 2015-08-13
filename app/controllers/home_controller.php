@@ -19,9 +19,7 @@ class HomeController extends BaseController {
                 $points[$i]['total_points'] = 0;
                 $points[$i]['number_of_problems'] = $exercise->number_of_problems;
                 $marks[$exercise->exercise_number] = array();
-                $problems = Problem::all($exercise->id);
-                $problems = array_merge($problems, Problem::all_first($exercise->id));
-                $problems = array_merge($problems, Problem::all_second($exercise->id));
+                $problems = Problem::all_plus_star($exercise->id);
                 usort($problems, function($a, $b) {
                     if ($a->problem_number - $b->problem_number == 0) {
                         if (strlen($a->problem_number) == strlen($b->problem_number)) {

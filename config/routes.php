@@ -35,15 +35,7 @@ $routes->post('/messages/:id/accept', function($id) {
 $routes->post('/messages/:id/decline', function($id) {
     MessageController::message_destroy($id);
 });
-/*
-$routes->get('/edit', function() {
-    UserController::user_edit();
-});
 
-$routes->post('/edit', function() {
-    UserController::user_update();
-});
-*/
 $routes->post('/logout', function() {
     UserController::logout();
 });
@@ -128,7 +120,7 @@ $routes->post('/courses/:course_id/students/:student_id/edit', function($course_
     StudentController::student_update($course_id, $student_id);
 });
 
-$routes->get('/courses/:course_id/students/:student_id/destroy', function($course_id, $student_id) {
+$routes->post('/courses/:course_id/students/:student_id/destroy', function($course_id, $student_id) {
     StudentController::student_destroy($course_id, $student_id);
 });
 

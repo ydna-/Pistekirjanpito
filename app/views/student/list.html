@@ -29,8 +29,10 @@
             <td>{{student.student_number}}</td>
             <td>{{student.course_number}}</td>
             {% if user_logged_in.is_teacher %}
-            <td><a href="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/edit" class="btn btn-default btn-xs">Muokkaa</a></td>
-            <td><a href="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/destroy" class="btn btn-danger btn-xs">Poista</a></td>
+            <td><a href="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/edit" class="btn btn-default">Muokkaa</a></td>
+            <td><form method="post" action="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa opiskelijan?">
+                    <button type="submit" class="btn btn-danger pull-right">Poista</button>
+                </form></td>
             {% endif %}
         </tr>
         {% endfor %}

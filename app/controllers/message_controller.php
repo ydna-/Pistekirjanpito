@@ -9,7 +9,7 @@ class MessageController extends BaseController {
     }
 
     public static function message_accept($id) {
-        self::check_is_teacher();
+        //self::check_is_teacher();
         $message = Message::find($id);
         if ($message->sender_is_teacher) {
             $attributes = array(

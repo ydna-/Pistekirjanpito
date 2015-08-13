@@ -18,7 +18,6 @@
     </head>
 
     <body>
-
         <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -43,9 +42,6 @@
                     <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">
                         <button type="submit" class="btn btn-default">Kirjaudu ulos</button>
                     </form>
-                    <form class="navbar-form navbar-right" method="get" action="{{base_path}}/edit">
-                        <button type="submit" class="btn btn-default">Muokkaa omia tietoja</button>
-                    </form>
                     {% else %}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>
@@ -57,13 +53,13 @@
         </nav>
 
         <div id="main-container">
-            <p>TESTING</p>
             {% block content %}{% endblock %}
         </div>
 
         {% block body %}
         <script src="{{base_path}}/vendor/jquery.min.js"></script>
         <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="{{base_path}}/vendor/chosen.jquery.min.js"></script>
         <script src="{{base_path}}/assets/js/site.js"></script>
         {% endblock %}
     </body>

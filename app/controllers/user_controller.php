@@ -70,37 +70,12 @@ class UserController extends BaseController {
     public static function user_list() {
         self::check_is_teacher();
         $users = User::all();
-        View::make('user/list.html', array('users' => $users));
-    }
-
-    public static function user_edit() {
-        $user = self::get_user_logged_in();
-        View::make('user/edit.html', array('user' => $user));
-    }
-
-    public static function user_update() {
-        $params = $_POST;
-        $user = self::get_user_logged_in();
-        $params = $_POST;
-        if ($params['password'] === $params['validate_password']) {
-            $salt = substr(strtr(base64_encode(openssl_random_pseudo_bytes(22)), '+', '.'), 0, 22);
-            $hash = crypt($params['password'], '$2a$12$' . $salt);
-            $attributes = array(
-                'id' => $id,
-                'exercise_number' => $params['exercise_number'],
-                'course_id' => $course_id
-            );
-            $user = new User($attributes);
-            $errors = $exercise->errors();
-            if (count($errors) == 0) {
-                $exercise->update();
-                Redirect::to('/edit', array('message' => 'Omat tiedot on päivitetty!'));
-            } else {
-                View::make('user/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+        foreach ($users as $key => $val) {
+            if ($val->id == self::get_user_logged_in()->id) {
+                unset($users[$key]);
             }
-        } else {
-            View::make('user/edit.html', array('errors' => array('Salasanat eivät täsmää!'), 'name' => $params['name'], 'email' => $params['email']));
         }
+        View::make('user/list.html', array('users' => $users));
     }
 
     public static function user_destroy($id) {

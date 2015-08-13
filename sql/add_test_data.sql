@@ -33,10 +33,10 @@ INSERT INTO Student (student_number, course_number, course_id) VALUES ('01501001
 INSERT INTO Student (student_number, course_number, course_id) VALUES ('015010013','B013-AAA',2);
 INSERT INTO Student (student_number, course_number, course_id) VALUES ('015010014','B014-AAA',2);
 
-INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, course_id) VALUES (1,15,1,1);
-INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, course_id) VALUES (2,15,1,1);
-INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, course_id) VALUES (1,15,1,2);
-INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, course_id) VALUES (2,15,1,2);
+INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, max_non_star_score, max_star_score, course_id) VALUES (1,15,1,12,1,1);
+INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, max_non_star_score, max_star_score, course_id) VALUES (2,15,1,13,1,1);
+INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, max_non_star_score, max_star_score, course_id) VALUES (1,15,1,12,1,2);
+INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, max_non_star_score, max_star_score, course_id) VALUES (2,15,1,13,1,2);
 
 INSERT INTO Problem (problem_number, star_problem, exercise_id) VALUES ('1',false,1);
 INSERT INTO Problem (problem_number, star_problem, exercise_id) VALUES ('2',false,1);

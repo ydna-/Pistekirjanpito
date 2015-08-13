@@ -2,7 +2,7 @@
 
 class Exercise extends BaseModel {
 
-    public $id, $exercise_number, $number_of_problems, $number_of_star_problems, $course_id;
+    public $id, $exercise_number, $number_of_problems, $number_of_star_problems, $max_non_star_score, $max_star_score, $course_id;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -20,6 +20,8 @@ class Exercise extends BaseModel {
                 'exercise_number' => $row['exercise_number'],
                 'number_of_problems' => $row['number_of_problems'],
                 'number_of_star_problems' => $row['number_of_star_problems'],
+                'max_non_star_score' => $row['max_non_star_score'],
+                'max_star_score' => $row['max_star_score'],
                 'course_id' => $row['course_id']
             ));
         }
@@ -36,6 +38,8 @@ class Exercise extends BaseModel {
                 'exercise_number' => $row['exercise_number'],
                 'number_of_problems' => $row['number_of_problems'],
                 'number_of_star_problems' => $row['number_of_star_problems'],
+                'max_non_star_score' => $row['max_non_star_score'],
+                'max_star_score' => $row['max_star_score'],
                 'course_id' => $row['course_id']
             ));
             return $exercise;
@@ -44,15 +48,15 @@ class Exercise extends BaseModel {
     }
     
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, course_id) VALUES (:exercise_number, :number_of_problems, :number_of_star_problems, :course_id) RETURNING id');
-        $query->execute(array('exercise_number' => $this->exercise_number, 'number_of_problems' => $this->number_of_problems, 'number_of_star_problems' => $this->number_of_star_problems, 'course_id' => $this->course_id));
+        $query = DB::connection()->prepare('INSERT INTO Exercise (exercise_number, number_of_problems, number_of_star_problems, max_non_star_score, max_star_score, course_id) VALUES (:exercise_number, :number_of_problems, :number_of_star_problems, :max_non_star_score, :max_star_score, :course_id) RETURNING id');
+        $query->execute(array('exercise_number' => $this->exercise_number, 'number_of_problems' => $this->number_of_problems, 'number_of_star_problems' => $this->number_of_star_problems, 'max_non_star_score' => $this->max_non_star_score, 'max_star_score' => $this->max_star_score, 'course_id' => $this->course_id));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
 
     public function update() {
-        $query = DB::connection()->prepare('UPDATE Exercise SET exercise_number = :exercise_number, course_id = :course_id WHERE id = :id');
-        $query->execute(array('exercise_number' => $this->exercise_number, 'course_id' => $this->course_id, 'id' => $this->id));
+        $query = DB::connection()->prepare('UPDATE Exercise SET exercise_number = :exercise_number, max_non_star_score = :max_non_star_score, max_star_score = :max_star_score, course_id = :course_id WHERE id = :id');
+        $query->execute(array('exercise_number' => $this->exercise_number, 'course_id' => $this->course_id, 'max_non_star_score' => $this->max_non_star_score, 'max_star_score' => $this->max_star_score, 'id' => $this->id));
     }
 
     public function destroy() {

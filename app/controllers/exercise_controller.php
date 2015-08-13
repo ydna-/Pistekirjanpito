@@ -6,7 +6,21 @@ class ExerciseController extends BaseController {
         self::check_logged_in();
         $exercise = Exercise::find($id);
         $course = Course::find($course_id);
-        View::make('exercise/show.html', array('exercise' => $exercise, 'course' => $course));
+        $problems = Problem::all_plus_star($id);
+        usort($problems, function($a, $b) {
+            if ($a->problem_number - $b->problem_number == 0) {
+                if (strlen($a->problem_number) == strlen($b->problem_number)) {
+                    return substr($a->problem_number, -1) - substr($b->problem_number, -1);
+                } else {
+                    return strlen($a->problem_number) - strlen($b->problem_number);
+                }
+            }
+            return $a->problem_number - $b->problem_number;
+        });
+        foreach ($problems as $problem) {
+            $problem->number_of_returned = $problem->get_number_of_returned();
+        }
+        View::make('exercise/show.html', array('exercise' => $exercise, 'course' => $course, 'problems' => $problems));
     }
 
     public static function exercise_store($course_id) {
@@ -17,6 +31,8 @@ class ExerciseController extends BaseController {
                 'exercise_number' => $params['exercise_number'],
                 'number_of_problems' => $params['number_of_problems'],
                 'number_of_star_problems' => count($params['star_exercises']),
+                'max_non_star_score' => $params['max_non_star_score'],
+                'max_star_score' => $params['max_star_score'],
                 'course_id' => $course_id
             );
             $number_of_problems = $params['number_of_problems'];
@@ -64,6 +80,8 @@ class ExerciseController extends BaseController {
                 'exercise_number' => $params['exercise_number'],
                 'number_of_problems' => $params['number_of_problems'],
                 'number_of_star_problems' => 0,
+                'max_non_star_score' => $params['max_non_star_score'],
+                'max_star_score' => 0,
                 'course_id' => $course_id
             );
             $number_of_problems = $params['number_of_problems'];
@@ -106,6 +124,8 @@ class ExerciseController extends BaseController {
         $attributes = array(
             'id' => $id,
             'exercise_number' => $params['exercise_number'],
+            'max_non_star_score' => $params['max_non_star_score'],
+            'max_star_score' => $params['max_star_score'],
             'course_id' => $course_id
         );
         $exercise = new Exercise($attributes);
@@ -127,9 +147,7 @@ class ExerciseController extends BaseController {
 
     public static function exercise_csv($course_id, $id) {
         $students = Student::all($course_id);
-        $problems = Problem::all($id);
-        $problems = array_merge($problems, Problem::all_first($id));
-        $problems = array_merge($problems, Problem::all_second($id));
+        $problems = Problem::all_plus_star($id);
         usort($problems, function($a, $b) {
             if ($a->problem_number - $b->problem_number == 0) {
                 if (strlen($a->problem_number) == strlen($b->problem_number)) {

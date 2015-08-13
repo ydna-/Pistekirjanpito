@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Pisteet kurssilla {{course.name}}</h1>
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="table-layout: fixed;">
     <thead>
         <tr>
             {% for number in points|keys %}
@@ -21,23 +21,23 @@
 
 {% for number in marks|keys %}
 <div id="div{{number}}" class="div-exercise" style="display: none;">
-<h3>Harjoitus {{number}}</h3>
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            {% for problemnumber in marks[number]|keys %}
-            <th>Tehtävä {{problemnumber}}</th>
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            {% for mark in marks[number] %}
-            <td>{{mark}}</td>
-            {% endfor %}
-        </tr>
-    </tbody>
-</table>
+    <table class="table table-striped table-bordered" style="table-layout: fixed;">
+        <caption>Harjoitus {{number}}</caption>
+        <thead>
+            <tr>
+                {% for problemnumber in marks[number]|keys %}
+                <th>{{problemnumber}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for mark in marks[number] %}
+                <td>{{mark}}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
 </div>
 {% endfor %}
 

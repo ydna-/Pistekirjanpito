@@ -67,6 +67,14 @@ class LogController extends BaseController {
         if ($params['course_number'] !== "") {
             $problems = Problem::all_first($exercise_id);
             foreach ($problems as $problem) {
+                $number = substr($problem->problem_number, 0, -2);
+                $previous = ProblemReturn::find_by_number($number, $exercise_id, $params['course_number']);
+                if ($previous && $previous->mark == 'O') {
+                    Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
+                    return;
+                }
+            }
+            foreach ($problems as $problem) {
                 if (array_key_exists($problem->id, $params)) {
                     $mark = $params[$problem->id][0];
                 } else {
@@ -95,6 +103,20 @@ class LogController extends BaseController {
         $params = $_POST;
         if ($params['course_number'] !== "") {
             $problems = Problem::all_second($exercise_id);
+            foreach ($problems as $problem) {
+                $number = substr($problem->problem_number, 0, -2);
+                $previous = ProblemReturn::find_by_number($number, $exercise_id, $params['course_number']);
+                if ($previous && $previous->mark == 'O') {
+                    Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
+                    return;
+                }
+                $number = $number . "k1";
+                $previous = ProblemReturn::find_by_number($number, $exercise_id, $params['course_number']);
+                if ($previous && $previous->mark == 'O') {
+                    Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
+                    return;
+                }
+            }
             foreach ($problems as $problem) {
                 if (array_key_exists($problem->id, $params)) {
                     $mark = $params[$problem->id][0];

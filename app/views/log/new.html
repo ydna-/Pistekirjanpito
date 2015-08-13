@@ -28,7 +28,7 @@
     <div class="form">
         <div class="form-inline">
             <label>Kurssitunnus</label>
-            <select id="selCourseNo" class="form-control" name="course_number">
+            <select id="selCourseNo" class="chzn-select form-control" name="course_number">
                 <option value=""></option>
                 {% for student in students %}
                 <option value="{{student.id}}">{{student.course_number}}</option>
@@ -56,4 +56,5 @@
     <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
     <button type="submit" class="btn btn-primary">Tallenna</button>
 </form>
+
 {% endblock %}

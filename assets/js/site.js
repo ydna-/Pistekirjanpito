@@ -1,5 +1,5 @@
 function showPoints(elem) {
-    $(".div-exercise").each(function () {
+    $(".div-exercise").each(function() {
         $(this).hide();
     });
     $("#div" + elem.id).show();
@@ -42,11 +42,11 @@ function toggle(elem) {
 }
 
 function selectAll() {
-    $(".ns-checkbox").each(function () {
+    $(".ns-checkbox").each(function() {
         $(this).val("O");
         $(this).prop('checked', true);
     });
-    $(".star-checkbox").each(function () {
+    $(".star-checkbox").each(function() {
         $(this).val("O");
         $(this).prop('indeterminate', false);
         $(this).prop('checked', true);
@@ -55,32 +55,33 @@ function selectAll() {
 }
 
 function removeAll() {
-    $(".ns-checkbox").each(function () {
+    $(".ns-checkbox").each(function() {
         $(this).val("");
         $(this).prop('checked', false);
     });
-    $(".star-checkbox").each(function () {
+    $(".star-checkbox").each(function() {
         $(this).val("");
         $(this).prop('indeterminate', false);
         $(this).prop('checked', false);
     });
 }
 
-$(document).ready(function () {
-    $('form.destroy-form').on('submit', function (submit) {
+$(document).ready(function() {
+    $('form.destroy-form').on('submit', function(submit) {
         var confirm_message = $(this).attr('data-confirm');
         if (!confirm(confirm_message)) {
             submit.preventDefault();
         }
     });
-    $("#nExercises").change(function () {
+    $("#nExercises").change(function() {
         $("#starExercises").children().remove();
         for (var i = 1; i <= $(this).val(); i++) {
             $("#starExercises").append('<option value=' + i + '>' + i + '</option>');
         }
         $("#divStar").show();
     });
-    $(".ns-checkbox").val("").click(function () {
+
+    $(".ns-checkbox").val("").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("O");
@@ -91,7 +92,7 @@ $(document).ready(function () {
                 $(this).prop('checked', false);
         }
     });
-    $(".star-checkbox").val("").click(function () {
+    $(".star-checkbox").val("").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("V");
@@ -108,9 +109,9 @@ $(document).ready(function () {
                 $(this).prop('checked', false);
         }
     });
-    $("#selCourseNo").change(function () {
+    $("#selCourseNo").change(function() {
         var student_no = $(this).val();
-        $(".checkbox").each(function (i) {
+        $(".checkbox").each(function(i) {
             var problem_no = $(this).attr('name');
             var temp = student_no + "|" + problem_no;
             switch ($(document.getElementById(temp)).val()) {
@@ -137,7 +138,10 @@ $(document).ready(function () {
     });
 });
 
-$(document).keydown(function (e) {
+$(document).keydown(function(e) {
+    if ($("#selCourseNo").is(":focus")) {
+        return;
+    }
     switch (e.which) {
         case 49:
             toggle($("#p1"));

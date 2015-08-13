@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/log/new.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/lib/database.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/exercise/new.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/sql/create_tables.sql</file>
+            <file>file:/home/andreasn/Pistekirjanpito/lib/view.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/exercise/edit.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/exercise/show.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/index.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/lib/base_model.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/assets/js/site.js</file>
+            <file>file:/home/andreasn/Pistekirjanpito/lib/redirect.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/user/list.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/lib/base_controller.php</file>
+        </group>
+    </open-files>
+</project-private>

@@ -68,6 +68,22 @@ class ProblemReturn extends BaseModel {
         return null;
     }
     
+    public static function find_by_number($problem_number, $exercise_id, $student_id) {
+        $problem = Problem::find_by_number($problem_number, $exercise_id);
+        $query = DB::connection()->prepare('SELECT * FROM ProblemReturn WHERE problem_id = :problem_id AND student_id = :student_id LIMIT 1');
+        $query->execute(array('problem_id' => $problem->id, 'student_id' => $student_id));
+        $row = $query->fetch();
+        if ($row) {
+            $return = new ProblemReturn(array(
+                'mark' => $row['mark'],
+                'problem_id' => $row['problem_id'],
+                'student_id' => $row['student_id']
+            ));
+            return $return;
+        }
+        return null;
+    }
+    
     public static function delete_all($problem_id) {
         $query = DB::connection()->prepare('DELETE FROM ProblemReturn WHERE problem_id = :problem_id');
         $query->execute(array('problem_id' => $problem_id));
