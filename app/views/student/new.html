@@ -12,7 +12,21 @@
 </div>
 {% endif %}
 
-<form method="post" accept-charset="utf-8" enctype="multipart/form-data" action="{{base_path}}/courses/{{course.id}}/students">
+<form method="post" action="{{base_path}}/courses/{{course.id}}/students">
+    <div class="form-group">
+        <label>Opiskelijanumero</label>
+        <input name="student_number" class="form-control" value="{{student.student_number}}" type="text">
+    </div>
+    <div class="form-group">
+        <label>Kurssitunnus</label>
+        <input name="course_number" class="form-control" value="{{student.course_number}}" type="text">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+
+<form method="post" accept-charset="utf-8" enctype="multipart/form-data" action="{{base_path}}/courses/{{course.id}}/students/csv">
     <div class="form-group">
         <label>Lähetä CSV-tiedosto</label>
         <p>Tiedoston pitää koostua riveistä, jotka ovat muotoa <i>opiskelijanumero,kurssitunnus</i>.</p>

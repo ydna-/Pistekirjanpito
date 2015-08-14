@@ -8,6 +8,24 @@ class StudentController extends BaseController {
         $course = Course::find($course_id);
         View::make('student/list.html', array('students' => $students, 'course' => $course));
     }
+    
+    public static function student_store_one($course_id) {
+        self::check_is_teacher();
+        $params = $_POST;
+        $attributes = array(
+            'student_number' => $params['student_number'],
+            'course_number' => $params['course_number'],
+            'course_id' => $course_id
+        );
+        $student = new Student($attributes);
+        $errors = $student->errors();
+        if (count($errors) == 0) {
+            $student->save();
+            Redirect::to('/courses/' . $course_id . '/students', array('message' => 'Opiskelija on lisätty tietokantaan!'));
+        } else {
+            View::make('student/new.html', array('errors' => $errors, 'student' => $student));
+        }
+    }
 
     public static function student_store($course_id) {
         self::check_is_teacher();

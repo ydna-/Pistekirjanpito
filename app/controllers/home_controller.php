@@ -14,10 +14,9 @@ class HomeController extends BaseController {
             $returns = ProblemReturn::all_by_student($student->id);
             $points = array();
             $marks = array();
-            $i = 1;
             foreach ($exercises as $exercise) {
-                $points[$i]['total_points'] = 0;
-                $points[$i]['number_of_problems'] = $exercise->number_of_problems;
+                $points[$exercise->exercise_number]['total_points'] = 0;
+                $points[$exercise->exercise_number]['number_of_problems'] = $exercise->number_of_problems;
                 $marks[$exercise->exercise_number] = array();
                 $problems = Problem::all_plus_star($exercise->id);
                 usort($problems, function($a, $b) {
@@ -33,7 +32,6 @@ class HomeController extends BaseController {
                 foreach ($problems as $problem) {
                     $marks[$exercise->exercise_number][$problem->problem_number] = null;
                 }
-                $i++;
             }
             foreach ($returns as $return) {
                 $problem = Problem::find($return->problem_id);

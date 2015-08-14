@@ -105,6 +105,10 @@ $routes->get('/courses/:course_id/students', function($course_id) {
 });
 
 $routes->post('/courses/:course_id/students', function($course_id) {
+    StudentController::student_store_one($course_id);
+});
+
+$routes->post('/courses/:course_id/students/csv', function($course_id) {
     StudentController::student_store($course_id);
 });
 

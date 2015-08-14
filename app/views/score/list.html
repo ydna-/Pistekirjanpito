@@ -6,7 +6,7 @@
     <thead>
         <tr>
             {% for number in points|keys %}
-            <th><button id="{{number}}" onclick="showPoints(this)">Harjoitus {{number}}</button></th>
+            <th><a href="#" id="{{number}}" onclick="showPoints(this)">Harjoitus {{number}}</a></th>
             {% endfor %}
         </tr>
     </thead>
