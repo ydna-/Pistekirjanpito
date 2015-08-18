@@ -68,9 +68,9 @@ for key, value in exercises.iteritems():
         questions[question_index] = (j, key)
         f.write("INSERT INTO Question(question_number, exercise_id) VALUES ('" + str(j) + "'," + str(key) + ");\n")
 
-for key1, value1 in problems.iteritems():
+for key2, value2 in students.iteritems():
     if random.random() < 0.8:
-        for key2, value2 in students.iteritems():
+        for key1, value1 in problems.iteritems():    
             if value2[2] == exercises[value1[2]][5]:
                 if random.random() < 0.8:
                     if value1[1] == 0:
@@ -78,10 +78,8 @@ for key1, value1 in problems.iteritems():
                     else:
                         mark = random.choice(["O","V"," "])
                     f.write("INSERT INTO ProblemReturn(mark, problem_id, student_id) VALUES ('" + mark + "'," + str(key1) + "," + str(key2) + ");\n")
-
-for key1, value1 in questions.iteritems():
-    for key2, value2 in students.iteritems():
-        if value2[2] == exercises[value1[1]][5]:
-            if random.random() < 0.8:
-                mark = random.choice(["K","E"])
-                f.write("INSERT INTO Answer(mark, problem_id, student_id) VALUES ('" + mark + "'," + str(key1) + "," + str(key2) + ");\n")
+        for key1, value1 in questions.iteritems():
+            if value2[2] == exercises[value1[1]][5]:
+                if random.random() < 0.8:
+                    mark = random.choice(["K","E"])
+                    f.write("INSERT INTO Answer(mark, question_id, student_id) VALUES ('" + mark + "'," + str(key1) + "," + str(key2) + ");\n")
