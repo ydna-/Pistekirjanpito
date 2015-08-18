@@ -6,8 +6,8 @@ class CourseController extends BaseController {
         self::check_logged_in();
         $courses = Course::all();
         foreach ($courses as $course) {
-            $course->number_of_students = $course->get_number_of_students();
-            $course->number_of_returned = $course->get_number_of_returned();
+            $course->number_of_students = Student::count($course->id);
+            $course->number_of_returned = Student::count_returned($course->id);
         }
         View::make('course/list.html', array('courses' => $courses));
     }
@@ -15,11 +15,11 @@ class CourseController extends BaseController {
     public static function course_show($id) {
         self::check_logged_in();
         $course = Course::find($id);
-        $course->number_of_students = $course->get_number_of_students();
-        $course->number_of_returned = $course->get_number_of_returned();
+        $course->number_of_students = Student::count($id);
+        $course->number_of_returned = Student::count_returned($id);
         $exercises = Exercise::all($id);
         foreach ($exercises as $exercise) {
-            $exercise->number_of_returned = $exercise->get_number_of_returned();
+            $exercise->number_of_returned = Student::count_returned_by_exercise($course->id, $exercise->id);
         }
         View::make('course/show.html', array('course' => $course, 'exercises' => $exercises));
     }

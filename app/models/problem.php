@@ -105,9 +105,7 @@ class Problem extends BaseModel {
     }
 
     public static function delete_all($exercise_id) {
-        $problems = Problem::all($exercise_id);
-        $problems = array_merge($problems, Problem::all_first($exercise_id));
-        $problems = array_merge($problems, Problem::all_second($exercise_id));
+        $problems = Problem::all_plus_star($exercise_id);
         foreach ($problems as $problem) {
             ProblemReturn::delete_all($problem->id);
         }
@@ -120,19 +118,6 @@ class Problem extends BaseModel {
         $query->execute(array('problem_number' => $this->problem_number, 'star_problem' => $this->star_problem, 'exercise_id' => $this->exercise_id));
         $row = $query->fetch();
         $this->id = $row['id'];
-    }
-
-    public function get_number_of_returned() {
-        $exercise = Exercise::find($this->exercise_id);
-        $students = Student::all($exercise->course_id);
-        $number = 0;
-        foreach ($students as $student) {
-            $return = ProblemReturn::find($this->id, $student->id);
-            if ($return) {
-                $number++;
-            }
-        }
-        return $number;
     }
 
 }

@@ -24,6 +24,34 @@ class Student extends BaseModel {
         }
         return $students;
     }
+    
+    public static function count($course_id) {
+        $query = DB::connection()->prepare('SELECT count(id) FROM Student WHERE course_id = :course_id');
+        $query->execute(array('course_id' => $course_id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
+    
+    public static function count_returned($course_id) {
+        $query = DB::connection()->prepare("SELECT count(distinct student_id) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id WHERE course_id = :course_id AND (mark='O' OR mark='V')");
+        $query->execute(array('course_id' => $course_id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
+    
+    public static function count_returned_by_exercise($course_id, $exercise_id) {
+        $query = DB::connection()->prepare("SELECT count(distinct student_id) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND exercise_id = :exercise_id AND (MARK='O' OR MARK='V')");
+        $query->execute(array('course_id' => $course_id, 'exercise_id' => $exercise_id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
+    
+    public static function count_returned_by_problem($course_id, $exercise_id, $problem_id) {
+        $query = DB::connection()->prepare("SELECT count(distinct student_id) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND exercise_id = :exercise_id AND problem_id = :problem_id AND (MARK='O' OR MARK='V')");
+        $query->execute(array('course_id' => $course_id, 'exercise_id' => $exercise_id, 'problem_id' => $problem_id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Student WHERE id = :id LIMIT 1');

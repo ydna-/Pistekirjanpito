@@ -18,7 +18,7 @@ class ExerciseController extends BaseController {
             return $a->problem_number - $b->problem_number;
         });
         foreach ($problems as $problem) {
-            $problem->number_of_returned = $problem->get_number_of_returned();
+            $problem->number_of_returned = Student::count_returned_by_problem($course->id, $exercise->id, $problem->id);
         }
         View::make('exercise/show.html', array('exercise' => $exercise, 'course' => $course, 'problems' => $problems));
     }
