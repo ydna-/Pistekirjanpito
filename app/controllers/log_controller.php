@@ -7,9 +7,11 @@ class LogController extends BaseController {
         $course = Course::find($course_id);
         $exercise = Exercise::find($exercise_id);
         $problems = Problem::all($exercise_id);
+        $questions = Question::all($exercise_id);
         $students = Student::all($course_id);
         $returns = ProblemReturn::all_by_exercise($exercise_id);
-        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'returns' => $returns, 'option' => ''));
+        $answers = Answer::all_by_exercise($exercise_id);
+        View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'questions' => $questions, 'students' => $students, 'returns' => $returns, 'answers' => $answers, 'option' => ''));
     }
 
     public static function log_first_create($course_id, $exercise_id) {
@@ -18,7 +20,7 @@ class LogController extends BaseController {
         $exercise = Exercise::find($exercise_id);
         $problems = Problem::all_first($exercise_id);
         $students = Student::all($course_id);
-        $returns = ProblemReturn::all_by_exercise($exercise_id);
+        $returns = ProblemReturn::all_first_by_exercise($exercise_id);
         View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'returns' => $returns, 'option' => '/first'));
     }
 
@@ -28,7 +30,7 @@ class LogController extends BaseController {
         $exercise = Exercise::find($exercise_id);
         $problems = Problem::all_second($exercise_id);
         $students = Student::all($course_id);
-        $returns = ProblemReturn::all_by_exercise($exercise_id);
+        $returns = ProblemReturn::all_second_by_exercise($exercise_id);
         View::make('log/new.html', array('course' => $course, 'exercise' => $exercise, 'problems' => $problems, 'students' => $students, 'returns' => $returns, 'option' => '/second'));
     }
 
@@ -53,6 +55,25 @@ class LogController extends BaseController {
                     $problemreturn->update();
                 } else {
                     $problemreturn->save();
+                }
+            }
+            $questions = Question::all($exercise_id);
+            foreach ($questions as $question) {
+                if (array_key_exists('q' . $question->id, $params)) {
+                    $mark = $params['q' . $question->id][0];
+                } else {
+                    $mark = ' ';
+                }
+                $attributes = array(
+                    'mark' => $mark,
+                    'question_id' => $question->id,
+                    'student_id' => $params['course_number']
+                );
+                $answer = new Answer($attributes);
+                if (Answer::find($question->id, $params['course_number'])) {
+                    $answer->update();
+                } else {
+                    $answer->save();
                 }
             }
             Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log', array('message' => 'Pisteet kirjattu tietokantaan!'));

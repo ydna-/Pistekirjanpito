@@ -38,6 +38,25 @@ function toggle(elem) {
             default:
                 return;
         }
+    } else if (elem.hasClass("q-checkbox")) {
+        switch (elem.val()) {
+            case "":
+                elem.val("E");
+                elem.prop('indeterminate', true);
+                break;
+            case "E":
+                elem.val("K");
+                elem.prop('indeterminate', false);
+                elem.prop('checked', true);
+                break;
+            case "K":
+                elem.val("");
+                elem.prop('indeterminate', false);
+                elem.prop('checked', false);
+                break;
+            default:
+                return;
+        }
     }
 }
 
@@ -51,7 +70,6 @@ function selectAll() {
         $(this).prop('indeterminate', false);
         $(this).prop('checked', true);
     });
-
 }
 
 function removeAll() {
@@ -111,6 +129,23 @@ $(document).ready(function () {
                 $(this).prop('checked', true);
                 break;
             case "O":
+                $(this).val("");
+                $(this).prop('indeterminate', false);
+                $(this).prop('checked', false);
+        }
+    });
+    $(".q-checkbox").val("").click(function () {
+        switch ($(this).val()) {
+            case "":
+                $(this).val("E");
+                $(this).prop('indeterminate', true);
+                break;
+            case "E":
+                $(this).val("K");
+                $(this).prop('indeterminate', false);
+                $(this).prop('checked', true);
+                break;
+            case "K":
                 $(this).val("");
                 $(this).prop('indeterminate', false);
                 $(this).prop('checked', false);

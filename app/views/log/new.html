@@ -51,6 +51,14 @@
             {% endif %}
             {% endfor %}
         </div>
+        <div class="row form-group">
+            {% for question in questions %}
+            <div class="col-sm-1 form-inline">
+                <pre>{{question.question_number}}</pre>
+                <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
+            </div>
+            {% endfor %}
+        </div>
     </div>
     <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki</button>
     <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>

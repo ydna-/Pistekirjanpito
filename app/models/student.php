@@ -99,6 +99,7 @@ class Student extends BaseModel {
     
     public function destroy() {
         ProblemReturn::delete_all_by_student($this->id);
+        Answer::delete_all_by_student($this->id);
         $query = DB::connection()->prepare('DELETE FROM Student WHERE id = :id');
         $query->execute(array('id' => $this->id));
     }
