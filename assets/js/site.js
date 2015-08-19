@@ -1,5 +1,5 @@
 function showPoints(elem) {
-    $(".div-exercise").each(function () {
+    $(".div-exercise").each(function() {
         $(this).hide();
     });
     $("#div" + elem.id).show();
@@ -61,11 +61,11 @@ function toggle(elem) {
 }
 
 function selectAll() {
-    $(".ns-checkbox").each(function () {
+    $(".ns-checkbox").each(function() {
         $(this).val("O");
         $(this).prop('checked', true);
     });
-    $(".star-checkbox").each(function () {
+    $(".star-checkbox").each(function() {
         $(this).val("O");
         $(this).prop('indeterminate', false);
         $(this).prop('checked', true);
@@ -73,11 +73,11 @@ function selectAll() {
 }
 
 function removeAll() {
-    $(".ns-checkbox").each(function () {
+    $(".ns-checkbox").each(function() {
         $(this).val("");
         $(this).prop('checked', false);
     });
-    $(".star-checkbox").each(function () {
+    $(".star-checkbox").each(function() {
         $(this).val("");
         $(this).prop('indeterminate', false);
         $(this).prop('checked', false);
@@ -91,22 +91,68 @@ function enable() {
 
 var flag = false;
 
-$(document).ready(function () {
-    $('form.destroy-form').on('submit', function (submit) {
+$(document).ready(function() {
+    $('form.destroy-form').on('submit', function(submit) {
         var confirm_message = $(this).attr('data-confirm');
         if (!confirm(confirm_message)) {
             submit.preventDefault();
         }
     });
-    $("#nExercises").change(function () {
+    if ($("#numberOfReturnedExercises").length) {
+        var labels = [];
+        var data = [];
+        $('input', '#numberOfReturnedExercises').each(function() {
+            labels.push($(this).attr('id'));
+            data.push($(this).attr('value'));
+        });
+        var ctx = $("#exerciseChart").get(0).getContext("2d");
+        var data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Tehtäviä palauttaneiden opiskelijoiden lukumäärä",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: data
+                }
+            ]
+        };
+        var exerciseChart = new Chart(ctx).Bar(data);
+    }
+    if ($("#numberOfReturnedProblems").length) {
+        var labels = [];
+        var data = [];
+        $('input', '#numberOfReturnedProblems').each(function() {
+            labels.push($(this).attr('id'));
+            data.push($(this).attr('value'));
+        });
+        var ctx = $("#problemChart").get(0).getContext("2d");
+        var data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Tehtäviä palauttaneiden opiskelijoiden lukumäärä",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: data
+                }
+            ]
+        };
+        var exerciseChart = new Chart(ctx).Bar(data);
+    }
+    $("#nExercises").change(function() {
         $("#starExercises").children().remove();
         for (var i = 1; i <= $(this).val(); i++) {
-            $("#starExercises").append('<option value=' + i + '>' + i + '</option>');
+            $("#starExercises").append('<option value=' + i + '>' + i + '</option>').selectpicker('refresh');
+            ;
         }
         $("#divStar").show();
     });
-
-    $(".ns-checkbox").val("").click(function () {
+    $(".ns-checkbox").val("").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("O");
@@ -117,7 +163,7 @@ $(document).ready(function () {
                 $(this).prop('checked', false);
         }
     });
-    $(".star-checkbox").val("").click(function () {
+    $(".star-checkbox").val("").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("V");
@@ -134,7 +180,7 @@ $(document).ready(function () {
                 $(this).prop('checked', false);
         }
     });
-    $(".q-checkbox").val("").click(function () {
+    $(".q-checkbox").val("").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("E");
@@ -154,13 +200,38 @@ $(document).ready(function () {
 
     $(".selectpicker").selectpicker();
 
-    $("#selCourseNo").change(function () {
+    $("#selCourseNo").change(function() {
         $("#selCourseNo").prop('disabled', true);
         $("#selCourseNo").selectpicker('refresh');
         var student_no = $(this).val();
-        $(".checkbox").each(function (i) {
+        $(".checkbox").each(function(i) {
+            if ($(this).hasClass("q-checkbox")) {
+                var question_no = $(this).attr('name');
+                var temp = student_no + question_no;
+                switch ($(document.getElementById(temp)).val()) {
+                    case " ":
+                        $(this).val("");
+                        $(this).prop('indeterminate', false);
+                        $(this).prop('checked', false);
+                        break;
+                    case "K":
+                        $(this).val("K");
+                        $(this).prop('indeterminate', false);
+                        $(this).prop('checked', true);
+                        break;
+                    case "E":
+                        $(this).val("E");
+                        $(this).prop('indeterminate', true);
+                        break;
+                    default:
+                        $(this).val("");
+                        $(this).prop('indeterminate', false);
+                        $(this).prop('checked', false);
+                }
+                return true;
+            }
             var problem_no = $(this).attr('name');
-            var temp = student_no + "|" + problem_no;
+            var temp = student_no + "p" + problem_no;
             switch ($(document.getElementById(temp)).val()) {
                 case " ":
                     $(this).val("");
@@ -186,7 +257,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).keydown(function (e) {
+$(document).keydown(function(e) {
     if (flag) {
         switch (e.which) {
             case 49:

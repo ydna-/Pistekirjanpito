@@ -36,6 +36,7 @@ class ExerciseController extends BaseController {
                 'course_id' => $course_id
             );
             $number_of_problems = $params['number_of_problems'];
+            $number_of_questions = $params['number_of_questions'];
             $star_exercises = $params['star_exercises'];
             $exercise = new Exercise($attributes);
             $course = Course::find($course_id);
@@ -71,6 +72,13 @@ class ExerciseController extends BaseController {
                         $problem->save();
                     }
                 }
+                for ($i = 1; $i <= $number_of_questions; $i++) {
+                    $question = new Question(array(
+                        'question_number' => $i,
+                        'exercise_id' => $exercise->id
+                    ));
+                    $question->save();
+                }
                 Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise->id, array('message' => 'Harjoitus on lisätty tietokantaan!'));
             } else {
                 View::make('exercise/new.html', array('errors' => $errors, 'attributes' => $attributes, 'course' => $course));
@@ -85,6 +93,7 @@ class ExerciseController extends BaseController {
                 'course_id' => $course_id
             );
             $number_of_problems = $params['number_of_problems'];
+            $number_of_questions = $params['number_of_questions'];
             $exercise = new Exercise($attributes);
             $course = Course::find($course_id);
             $errors = $exercise->errors();
@@ -97,6 +106,13 @@ class ExerciseController extends BaseController {
                         'exercise_id' => $exercise->id
                     ));
                     $problem->save();
+                }
+                for ($i = 1; $i <= $number_of_questions; $i++) {
+                    $question = new Question(array(
+                        'question_number' => $i,
+                        'exercise_id' => $exercise->id
+                    ));
+                    $question->save();
                 }
                 Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise->id, array('message' => 'Harjoitus on lisätty tietokantaan!'));
             } else {

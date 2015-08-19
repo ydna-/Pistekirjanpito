@@ -6,6 +6,12 @@
 <div class="alert alert-success">{{message}}</div>
 {% endif %}
 
+<div id="numberOfReturnedExercises" style="display: none;">
+{% for exercise in exercises %}
+<input type="hidden" id="{{exercise.exercise_number}}" value="{{exercise.number_of_returned}}" />
+{% endfor %}
+</div>
+
 <p>
     <a href="{{base_path}}/courses/{{course.id}}/exercises/new" class="btn btn-primary">Lisää harjoitus</a>
     <a href="{{base_path}}/courses/{{course.id}}/students" class="btn btn-primary">Opiskelijat</a>
@@ -25,7 +31,6 @@
             <th>Harjoitus</th>
             <th>Tehtävien lukumäärä</th>
             <th>Tähtitehtävien lukumäärä</th>
-            <th>Tehtäviä palauttaneiden lkm</th>
             <th>Maksimipistemäärä (ei-tähti)</th>
             <th>Maksimipistemäärä (tähti)</th>
         </tr>
@@ -36,11 +41,13 @@
             <td><a href="{{base_path}}/courses/{{exercise.course_id}}/exercises/{{exercise.id}}">Harjoitus {{exercise.exercise_number}}</a></td>
             <td>{{exercise.number_of_problems}}</td>
             <td>{{exercise.number_of_star_problems}}</td>
-            <td>{{exercise.number_of_returned}}</td>
             <td>{{exercise.max_non_star_score}}</td>
             <td>{{exercise.max_star_score}}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<caption>Tehtäviä palauttaneiden opiskelijoiden lukumäärä harjoituskohtaisesti</caption>
+<canvas id="exerciseChart" width="1000" height="400"></canvas>
 {% endblock %}

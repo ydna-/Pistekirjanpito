@@ -21,7 +21,11 @@
 {% endif %}
 
 {% for ret in returns %}
-<input type="hidden" id="{{ret.student_id}}|{{ret.problem_id}}" value="{{ret.mark}}" />
+<input type="hidden" id="{{ret.student_id}}p{{ret.problem_id}}" value="{{ret.mark}}" />
+{% endfor %}
+
+{% for ans in answers %}
+<input type="hidden" id="{{ans.student_id}}q{{ans.question_id}}" value="{{ans.mark}}" />
 {% endfor %}
 
 <form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log{{option}}">

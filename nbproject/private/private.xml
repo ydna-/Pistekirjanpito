@@ -3,7 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/andreasn/Pistekirjanpito/app/models/problem.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/log/new.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/base.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/controllers/log_controller.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/exercise/new.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/models/problemreturn.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/sql/create_tables.sql</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/models/question.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/models/answer.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/models/student.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/exercise/show.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/controllers/exercise_controller.php</file>
             <file>file:/home/andreasn/Pistekirjanpito/index.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/assets/css/site.css</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/course/show.html</file>
+            <file>file:/home/andreasn/Pistekirjanpito/assets/js/site.js</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/controllers/home_controller.php</file>
+            <file>file:/home/andreasn/Pistekirjanpito/app/views/course/new.html</file>
         </group>
     </open-files>
 </project-private>
