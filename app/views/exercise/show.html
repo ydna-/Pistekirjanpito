@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Harjoitus {{exercise.exercise_number}}</h1>
+<ol class="breadcrumb">
+  <li><a href="{{base_path}}/courses">Kurssit</a></li>
+  <li><a href="{{base_path}}/courses/{{course.id}}">{{course.name}} ({{course.term}})</a></li>
+  <li class="active">Harjoitus {{exercise.exercise_number}}</li>
+</ol>
 
 {% if message %}
 <div class="alert alert-success">{{message}}</div>

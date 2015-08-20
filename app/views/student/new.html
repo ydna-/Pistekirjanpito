@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Lisää opiskelijoita</h1>
+<ol class="breadcrumb">
+  <li><a href="{{base_path}}/courses">Kurssit</a></li>
+  <li><a href="{{base_path}}/courses/{{course.id}}">{{course.name}} ({{course.term}})</a></li>
+  <li><a href="{{base_path}}/courses/{{course.id}}/students">Opiskelijat</a></li>
+  <li class="active">Lisää opiskelijoita</li>
+</ol>
 
 {% if errors %}
 <div class="alert alert-danger">

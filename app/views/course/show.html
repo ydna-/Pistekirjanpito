@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{course.name}} ({{course.term}})</h1>
+<ol class="breadcrumb">
+  <li><a href="{{base_path}}/courses">Kurssit</a></li>
+  <li class="active">{{course.name}} ({{course.term}})</li>
+</ol>
 
 {% if message %}
 <div class="alert alert-success">{{message}}</div>

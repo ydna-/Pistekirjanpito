@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Lisää kurssi</h1>
+<ol class="breadcrumb">
+  <li><a href="{{base_path}}/courses">Kurssit</a></li>
+  <li class="active">Lisää kurssi</li>
+</ol>
 
 {% if errors %}
 <div class="alert alert-danger">

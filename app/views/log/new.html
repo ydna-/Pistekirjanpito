@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-{% if option == '/first' %}
-<h1>Kirjaa ensimmäisiä korjauksia</h1>
-{% elseif option == '/second' %}
-<h1>Kirjaa toisia korjauksia</h1>
-{% else %}
-<h1>Kirjaa pisteitä</h1>
-{% endif %}
+<ol class="breadcrumb">
+    <li><a href="{{base_path}}/courses">Kurssit</a></li>
+    <li><a href="{{base_path}}/courses/{{course.id}}">{{course.name}} ({{course.term}})</a></li>
+    <li><a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}">Harjoitus {{exercise.exercise_number}}</a></li>
+    {% if option == '/first' %}
+    <li class="active">Kirjaa ensimmäisiä korjauksia</li>
+    {% elseif option == '/second' %}
+    <li class="active">Kirjaa toisia korjauksia</li>
+    {% else %}
+    <li class="active">Kirjaa pisteitä</li>
+    {% endif %}
+</ol>
 
 {% if message %}
 <div class="alert alert-success">
@@ -39,6 +44,7 @@
                 {% endfor %}
             </select>
         </div>
+        <label>Tehtävät</label>
         <div class="row form-group">
             {% for problem in problems %}
             <div class="col-sm-1 form-inline">
@@ -55,6 +61,9 @@
             {% endif %}
             {% endfor %}
         </div>
+        {% if option == '' %}
+        <label>Kysymykset</label>
+        {% endif %}
         <div class="row form-group">
             {% for question in questions %}
             <div class="col-sm-1 form-inline">
