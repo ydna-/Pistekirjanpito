@@ -16,6 +16,7 @@ class HomeController extends BaseController {
             $marks = array();
             $course = Course::find($student->course_id);
             $total = 0;
+            $total_star = 0;
             foreach ($exercises as $exercise) {
                 $points[$exercise->exercise_number]['total_points'] = 0;
                 $points[$exercise->exercise_number]['number_of_problems'] = $exercise->number_of_problems;
@@ -39,12 +40,16 @@ class HomeController extends BaseController {
                 $problem = Problem::find($return->problem_id);
                 $exercise = Exercise::find($problem->exercise_id);
                 if ($return->mark == 'O') {
-                    $points[$exercise->exercise_number]['total_points']++;
-                    $total++;
+                    $points[$exercise->exercise_number]['total_points'] ++;
+                    if ($problem->star_problem) {
+                        $total_star++;
+                    } else {
+                        $total++;
+                    }
                 }
                 $marks[$exercise->exercise_number][$problem->problem_number] = $return->mark;
             }
-            View::make('score/list.html', array('points' => $points, 'marks' => $marks, 'course' => $course, 'percentage' => round(($total/$course->total_problems)*100)));
+            View::make('score/list.html', array('points' => $points, 'marks' => $marks, 'course' => $course, 'percentage' => round(($total / $course->total_problems) * 100), 'percentage_star' => round(($total_star / $course->total_star_problems) * 100)));
         } else {
             View::make('home.html', array('error' => 'Kyseistä kurssitunnusta ei löydy!'));
         }

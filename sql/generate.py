@@ -12,7 +12,7 @@ for name in names:
     for term in terms:
         course_index = course_index + 1
         courses[course_index] = (name, term)
-        f.write("INSERT INTO Course(name, term, total_problems) VALUES ('" + name + "','" + term + "',400);\n")
+        f.write("INSERT INTO Course(name, term, total_problems, total_star_problems) VALUES ('" + name + "','" + term + "',200,60);\n")
 
 students = {}
 student_index = 0

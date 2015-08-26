@@ -2,7 +2,7 @@
 
 class Course extends BaseModel {
 
-    public $id, $name, $term, $total_problems;
+    public $id, $name, $term, $total_problems, $total_star_problems;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -19,7 +19,8 @@ class Course extends BaseModel {
                 'id' => $row['id'],
                 'name' => $row['name'],
                 'term' => $row['term'],
-                'total_problems' => $row['total_problems']
+                'total_problems' => $row['total_problems'],
+                'total_star_problems' => $row['total_star_problems']
             ));
         }
         return $courses;
@@ -34,7 +35,8 @@ class Course extends BaseModel {
                 'id' => $row['id'],
                 'name' => $row['name'],
                 'term' => $row['term'],
-                'total_problems' => $row['total_problems']
+                'total_problems' => $row['total_problems'],
+                'total_star_problems' => $row['total_star_problems']
             ));
             return $course;
         }
@@ -42,15 +44,15 @@ class Course extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Course (name, term, total_problems) VALUES (:name, :term, :total_problems) RETURNING id');
-        $query->execute(array('name' => $this->name, 'term' => $this->term, 'total_problems' => $this->total_problems));
+        $query = DB::connection()->prepare('INSERT INTO Course (name, term, total_problems, total_star_problems) VALUES (:name, :term, :total_problems, :total_star_problems) RETURNING id');
+        $query->execute(array('name' => $this->name, 'term' => $this->term, 'total_problems' => $this->total_problems, 'total_star_problems' => $this->total_star_problems));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
 
     public function update() {
-        $query = DB::connection()->prepare('UPDATE Course SET name = :name, term = :term, total_problems = :total_problems WHERE id = :id');
-        $query->execute(array('name' => $this->name, 'term' => $this->term, 'total_problems' => $this->total_problems, 'id' => $this->id));
+        $query = DB::connection()->prepare('UPDATE Course SET name = :name, term = :term, total_problems = :total_problems, total_star_problems = :total_star_problems WHERE id = :id');
+        $query->execute(array('name' => $this->name, 'term' => $this->term, 'total_problems' => $this->total_problems, 'total_star_problems' => $this->total_star_problems, 'id' => $this->id));
     }
 
     public function destroy() {
