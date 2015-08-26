@@ -29,7 +29,8 @@ class CourseController extends BaseController {
         $params = $_POST;
         $attributes = array(
             'name' => $params['name'],
-            'term' => $params['term']
+            'term' => $params['term'],
+            'total_problems' => $params['total_problems']
         );
         $course = new Course($attributes);
         $errors = $course->errors();
@@ -58,7 +59,8 @@ class CourseController extends BaseController {
         $attributes = array(
             'id' => $id,
             'name' => $params['name'],
-            'term' => $params['term']
+            'term' => $params['term'],
+            'total_problems' => $params['total_problems']
         );
         $course = new Course($attributes);
         $errors = $course->errors();

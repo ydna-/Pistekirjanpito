@@ -14,6 +14,8 @@ class HomeController extends BaseController {
             $returns = ProblemReturn::all_by_student($student->id);
             $points = array();
             $marks = array();
+            $course = Course::find($student->course_id);
+            $total = 0;
             foreach ($exercises as $exercise) {
                 $points[$exercise->exercise_number]['total_points'] = 0;
                 $points[$exercise->exercise_number]['number_of_problems'] = $exercise->number_of_problems;
@@ -38,10 +40,11 @@ class HomeController extends BaseController {
                 $exercise = Exercise::find($problem->exercise_id);
                 if ($return->mark == 'O') {
                     $points[$exercise->exercise_number]['total_points']++;
+                    $total++;
                 }
                 $marks[$exercise->exercise_number][$problem->problem_number] = $return->mark;
             }
-            View::make('score/list.html', array('points' => $points, 'marks' => $marks, 'course' => Course::find($student->course_id)));
+            View::make('score/list.html', array('points' => $points, 'marks' => $marks, 'course' => $course, 'percentage' => round(($total/$course->total_problems)*100)));
         } else {
             View::make('home.html', array('error' => 'Kyseistä kurssitunnusta ei löydy!'));
         }

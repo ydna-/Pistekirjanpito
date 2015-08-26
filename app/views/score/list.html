@@ -5,10 +5,11 @@
 </ol>
 
 <table class="table table-striped table-bordered" style="table-layout: fixed;">
+    <caption>Pisteet harjoituksittain</caption>
     <thead>
         <tr>
             {% for number in points|keys %}
-            <th><a href="#" id="{{number}}" onclick="showPoints(this)">Harjoitus {{number}}</a></th>
+            <th><a href="#" id="{{number}}" onclick="showPoints(this)">{{number}}</a></th>
             {% endfor %}
         </tr>
     </thead>
@@ -20,6 +21,12 @@
         </tr>
     </tbody>
 </table>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentage}}%">
+    {{percentage}}% tehty
+  </div>
+</div>
 
 {% for number in marks|keys %}
 <div id="div{{number}}" class="div-exercise" style="display: none;">
