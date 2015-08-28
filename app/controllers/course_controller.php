@@ -31,7 +31,7 @@ class CourseController extends BaseController {
             'name' => $params['name'],
             'term' => $params['term'],
             'total_problems' => $params['total_problems'],
-            'total_star_problems' => $row['total_star_problems']
+            'total_star_problems' => $params['total_star_problems']
         );
         $course = new Course($attributes);
         $errors = $course->errors();
@@ -62,7 +62,7 @@ class CourseController extends BaseController {
             'name' => $params['name'],
             'term' => $params['term'],
             'total_problems' => $params['total_problems'],
-            'total_star_problems' => $row['total_star_problems']
+            'total_star_problems' => $params['total_star_problems']
         );
         $course = new Course($attributes);
         $errors = $course->errors();
