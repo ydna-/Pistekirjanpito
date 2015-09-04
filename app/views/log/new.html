@@ -44,6 +44,19 @@
                 {% endfor %}
             </select>
         </div>
+        {% if option == '' %}
+        <label>Kysymykset</label>
+        <button type="button" class="btn btn-default" onclick="selectAllQuestions()">Valitse kaikki</button>
+        <button type="button" class="btn btn-default" onclick="removeAllQuestions()">Poista valinnat</button>
+        <div class="row form-group">
+            {% for question in questions %}
+            <div class="col-sm-1 form-inline">
+                <pre>{{question.question_number}}</pre>
+                <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
         <label>Tehtävät</label>
         <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki</button>
         <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
@@ -63,19 +76,6 @@
             {% endif %}
             {% endfor %}
         </div>
-        {% if option == '' %}
-        <label>Kysymykset</label>
-        <button type="button" class="btn btn-default" onclick="selectAllQuestions()">Valitse kaikki</button>
-        <button type="button" class="btn btn-default" onclick="removeAllQuestions()">Poista valinnat</button>
-        <div class="row form-group">
-            {% for question in questions %}
-            <div class="col-sm-1 form-inline">
-                <pre>{{question.question_number}}</pre>
-                <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
     </div>
     <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
 </form>
