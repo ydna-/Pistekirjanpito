@@ -84,6 +84,22 @@ function removeAll() {
     });
 }
 
+function selectAllQuestions() {
+    $(".q-checkbox").each(function() {
+        $(this).val("K");
+        $(this).prop('indeterminate', false);
+        $(this).prop('checked', true);
+    });
+}
+
+function removeAllQuestions() {
+    $(".q-checkbox").each(function() {
+        $(this).val("");
+        $(this).prop('indeterminate', false);
+        $(this).prop('checked', false);
+    });
+}
+
 function enable() {
     $("#selCourseNo").prop('disabled', false);
     $("#selCourseNo").selectpicker('refresh');

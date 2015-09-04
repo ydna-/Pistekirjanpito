@@ -6,7 +6,7 @@ class Course extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_name', 'validate_term');
+        $this->validators = array('validate_name', 'validate_term', 'validate_total', 'validate_total_star');
     }
 
     public static function all() {
@@ -80,6 +80,22 @@ class Course extends BaseModel {
         }
         if (strlen($this->name) < 3) {
             $errors[] = 'Lukukauden pituuden tulee olla vähintään kolme merkkiä!';
+        }
+        return $errors;
+    }
+    
+    public function validate_total() {
+        $errors = array();
+        if ($this->total_problems == null || $this->total_problems < 0) {
+            $errors[] = 'Tehtävien maksimipistemääräarvion tulee olla ei-negatiivinen kokonaisluku!';
+        }
+        return $errors;
+    }
+    
+    public function validate_total_star() {
+        $errors = array();
+        if ($this->total_star_problems == null || $this->total_star_problems < 0) {
+            $errors[] = 'Tähtitehtävien maksimipistemääräarvion tulee olla ei-negatiivinen kokonaisluku!';
         }
         return $errors;
     }

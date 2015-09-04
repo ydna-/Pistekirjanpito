@@ -49,7 +49,11 @@ class HomeController extends BaseController {
                 }
                 $marks[$exercise->exercise_number][$problem->problem_number] = $return->mark;
             }
-            View::make('score/list.html', array('points' => $points, 'marks' => $marks, 'course' => $course, 'percentage' => round(($total / $course->total_problems) * 100), 'percentage_star' => round(($total_star / $course->total_star_problems) * 100)));
+            if ($course->total_problems != 0 && $course->total_star_problems != 0) {
+                View::make('score/list.html', array('points' => $points, 'marks' => $marks, 'course' => $course, 'percentage' => round(($total / $course->total_problems) * 100), 'percentage_star' => round(($total_star / $course->total_star_problems) * 100)));
+            } else {
+                View::make('score/list.html', array('points' => $points, 'marks' => $marks, 'course' => $course));
+            }
         } else {
             View::make('home.html', array('error' => 'Kyseistä kurssitunnusta ei löydy!'));
         }

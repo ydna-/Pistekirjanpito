@@ -45,6 +45,8 @@
             </select>
         </div>
         <label>Tehtävät</label>
+        <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki</button>
+        <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
         <div class="row form-group">
             {% for problem in problems %}
             <div class="col-sm-1 form-inline">
@@ -63,7 +65,8 @@
         </div>
         {% if option == '' %}
         <label>Kysymykset</label>
-        {% endif %}
+        <button type="button" class="btn btn-default" onclick="selectAllQuestions()">Valitse kaikki</button>
+        <button type="button" class="btn btn-default" onclick="removeAllQuestions()">Poista valinnat</button>
         <div class="row form-group">
             {% for question in questions %}
             <div class="col-sm-1 form-inline">
@@ -72,9 +75,8 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
-    <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki</button>
-    <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
     <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
 </form>
 
