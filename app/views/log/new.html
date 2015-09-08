@@ -52,7 +52,7 @@
             {% for question in questions %}
             <div class="col-sm-1 form-inline">
                 <pre>{{question.question_number}}</pre>
-                <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
+                <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox">
             </div>
             {% endfor %}
         </div>
@@ -65,9 +65,9 @@
             <div class="col-sm-1 form-inline">
                 <pre>{{problem.problem_number}}{% if problem.star_problem %}*{% endif %}</pre>
                 {% if problem.star_problem %}
-                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
+                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox">
                 {% else %}
-                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox" style="width:70px; height:70px;">
+                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox">
                 {% endif %}
             </div>
             {% if (problem.problem_number|number_format)%5 == 0 %}

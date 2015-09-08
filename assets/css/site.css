@@ -12,3 +12,12 @@
 .breadcrumb{
     font-size: 1.5em;
 }
+
+input[type=checkbox]
+{
+    -ms-transform: scale(2);
+    -mox-transform: scale(2);
+    -webkit-transform: scale(2);
+    -o-transform: scale(2);
+    padding: 10px;
+}
