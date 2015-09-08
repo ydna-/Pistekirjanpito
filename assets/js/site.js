@@ -11,7 +11,6 @@ function toggle(elem) {
             case "":
                 elem.val("V");
                 elem.prop('indeterminate', true);
-                elem.prop('checked', true);
                 break;
             case "V":
                 elem.val("O");
@@ -44,7 +43,6 @@ function toggle(elem) {
             case "":
                 elem.val("E");
                 elem.prop('indeterminate', true);
-                elem.prop('checked', true);
                 break;
             case "E":
                 elem.val("K");
@@ -170,7 +168,7 @@ $(document).ready(function() {
         }
         $("#divStar").show();
     });
-    $(".ns-checkbox").val("").click(function() {
+    $(".ns-checkbox").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("O");
@@ -181,12 +179,11 @@ $(document).ready(function() {
                 $(this).prop('checked', false);
         }
     });
-    $(".star-checkbox").val("").click(function() {
+    $(".star-checkbox").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("V");
                 $(this).prop('indeterminate', true);
-                $(this).prop('checked', true);
                 break;
             case "V":
                 $(this).val("O");
@@ -199,12 +196,11 @@ $(document).ready(function() {
                 $(this).prop('checked', false);
         }
     });
-    $(".q-checkbox").val("").click(function() {
+    $(".q-checkbox").click(function() {
         switch ($(this).val()) {
             case "":
                 $(this).val("E");
                 $(this).prop('indeterminate', true);
-                $(this).prop('checked', true);
                 break;
             case "E":
                 $(this).val("K");
@@ -244,25 +240,25 @@ $(document).ready(function() {
                         $(this).prop('indeterminate', true);
                         $(this).prop('checked', true);
                 }
-                return true;
-            }
-            var problem_no = $(this).attr('name');
-            var temp = student_no + "p" + problem_no;
-            switch ($(document.getElementById(temp)).val()) {
-                case " ":
-                    $(this).val("");
-                    $(this).prop('indeterminate', false);
-                    $(this).prop('checked', false);
-                    break;
-                case "O":
-                    $(this).val("O");
-                    $(this).prop('indeterminate', false);
-                    $(this).prop('checked', true);
-                    break;
-                case "V":
-                    $(this).val("V");
-                    $(this).prop('indeterminate', true);
-                    $(this).prop('checked', true);
+            } else {
+                var problem_no = $(this).attr('name');
+                var temp = student_no + "p" + problem_no;
+                switch ($(document.getElementById(temp)).val()) {
+                    case " ":
+                        $(this).val("");
+               		$(this).prop('indeterminate', false);
+                        $(this).prop('checked', false);
+                        break;
+                    case "O":
+                        $(this).val("O");
+                        $(this).prop('indeterminate', false);
+                        $(this).prop('checked', true);
+                        break;
+                    case "V":
+                        $(this).val("V");
+                        $(this).prop('indeterminate', true);
+                        $(this).prop('checked', true);
+                }
             }
         });
         flag = true;

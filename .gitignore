@@ -1,3 +1,6 @@
 .DS_Store
 doc/
 nbproject/
+lib/database.php
+vendor/
+composer.phar

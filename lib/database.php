@@ -12,7 +12,7 @@ class DB {
             if (isset($config['username'])) {
                 $connection = new PDO($config['resource'], $config['username'], $config['password']);
             } else {
-                $connection = new PDO($config['resource']);
+                $connection = new PDO($config['resource'], 'andreasn', '3p7wpk');
             }
             // Asetetaan tietokannan kenttien koodaukseksi utf8
             $connection->exec('SET NAMES UTF8');

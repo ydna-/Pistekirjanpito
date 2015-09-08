@@ -32,7 +32,7 @@ class StudentController extends BaseController {
         try {
             $fh = fopen($_FILES['file']['tmp_name'], 'r+');
             $students = array();
-            while (($row = fgetcsv($fh, 8192, ";")) !== FALSE) {
+            while (($row = fgetcsv($fh, 8192, ';')) !== FALSE) {
                 $attributes = array(
                     'student_number' => $row[0],
                     'course_number' => $row[1],
