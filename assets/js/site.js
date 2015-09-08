@@ -11,6 +11,7 @@ function toggle(elem) {
             case "":
                 elem.val("V");
                 elem.prop('indeterminate', true);
+                elem.prop('checked', true);
                 break;
             case "V":
                 elem.val("O");
@@ -43,6 +44,7 @@ function toggle(elem) {
             case "":
                 elem.val("E");
                 elem.prop('indeterminate', true);
+                elem.prop('checked', true);
                 break;
             case "E":
                 elem.val("K");
@@ -184,6 +186,7 @@ $(document).ready(function() {
             case "":
                 $(this).val("V");
                 $(this).prop('indeterminate', true);
+                $(this).prop('checked', true);
                 break;
             case "V":
                 $(this).val("O");
@@ -201,6 +204,7 @@ $(document).ready(function() {
             case "":
                 $(this).val("E");
                 $(this).prop('indeterminate', true);
+                $(this).prop('checked', true);
                 break;
             case "E":
                 $(this).val("K");
