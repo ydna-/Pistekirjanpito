@@ -1,15 +1,5 @@
 # Pistekirjanpitojärjestelmä
 
-Yleisiä linkkejä:
-
-* [Linkki sovellukseeni](http://andreasn.users.cs.helsinki.fi/pkp/)
-
-Kirjautumistiedot:
-* Sähköpostiosoite: andreasn@cs.helsinki.fi
-* Salasana: asdasd123456
-
-## Työn aihe
-
 Kisällikursseilla opiskelijat palauttavat viikoittain harjoitustehtäviä,
 joista he voivat ansaita lisäpisteitä kurssisuoritukseen. Tämän web-sovelluksen
 tarkoituksena on toimia pistekirjanpitojärjestelmänä tällaisille kursseille.
