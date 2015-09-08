@@ -15,9 +15,13 @@
 
 input[type=checkbox]
 {
-    -ms-transform: scale(2);
-    -mox-transform: scale(2);
-    -webkit-transform: scale(2);
-    -o-transform: scale(2);
-    padding: 10px;
+    -ms-transform: scale(1.5);
+    -mox-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+}
+
+.checkboxtext
+{
+    font-size: 110%;
 }

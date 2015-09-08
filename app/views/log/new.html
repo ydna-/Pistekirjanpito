@@ -50,8 +50,8 @@
         <button type="button" class="btn btn-default" onclick="removeAllQuestions()">Poista valinnat</button>
         <div class="row form-group">
             {% for question in questions %}
-            <div class="col-sm-1 form-inline">
-                <pre>{{question.question_number}}</pre>
+            <div class="col-sm-1">
+                <label class="checkboxtext">{{question.question_number}}</label>
                 <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox">
             </div>
             {% endfor %}
@@ -62,9 +62,9 @@
         <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
         <div class="row form-group">
             {% for problem in problems %}
-            <div class="col-sm-1 form-inline">
-                <pre>{{problem.problem_number}}{% if problem.star_problem %}*{% endif %}</pre>
-                {% if problem.star_problem %}
+            <div class="col-sm-1 form-group">
+                <label class="checkboxtext">{{problem.problem_number}}{% if problem.star_problem %}*{% endif %}</label>
+		{% if problem.star_problem %}
                 <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox">
                 {% else %}
                 <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox">
