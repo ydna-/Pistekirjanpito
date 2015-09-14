@@ -90,7 +90,7 @@ class LogController extends BaseController {
             foreach ($problems as $problem) {
                 $number = substr($problem->problem_number, 0, -2);
                 $previous = ProblemReturn::find_by_number($number, $exercise_id, $params['course_number']);
-                if ($previous && $previous->mark == 'O') {
+                if ($previous && $previous->mark == 'O' && array_key_exists($problem->id, $params)) {
                     Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/first', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
                     return;
                 }
@@ -133,7 +133,7 @@ class LogController extends BaseController {
                 }
                 $number = $number . "k1";
                 $previous = ProblemReturn::find_by_number($number, $exercise_id, $params['course_number']);
-                if ($previous && $previous->mark == 'O') {
+                if ($previous && $previous->mark == 'O' && array_key_exists($problem->id, $params)) {
                     Redirect::to('/courses/' . $course_id . '/exercises/' . $exercise_id . '/log/second', array('error' => 'Opiskelijalle on jo kirjattu tehtävä ' . $number . ' oikein!'));
                     return;
                 }
