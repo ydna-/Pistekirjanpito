@@ -85,7 +85,7 @@ class Answer extends BaseModel {
     }
     
     public static function delete_all($question_id) {
-        $query = DB::connection()->prepare('DELETE FROM Abswer WHERE question_id = :question_id');
+        $query = DB::connection()->prepare('DELETE FROM Answer WHERE question_id = :question_id');
         $query->execute(array('question_id' => $question_id));
     }
     
