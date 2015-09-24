@@ -162,8 +162,9 @@ class ExerciseController extends BaseController {
     }
 
     public static function exercise_csv($course_id, $id) {
+	self::check_logged_in();
         $array = ProblemReturn::exercise_table($id);
-        try {
+	try {
             $file = fopen('php://temp', 'w');
             foreach ($array as $row) {
                 fputcsv($file, $row, ',');

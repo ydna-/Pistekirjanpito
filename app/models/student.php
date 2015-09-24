@@ -54,10 +54,10 @@ class Student extends BaseModel {
     }
 
     public static function get_student_number($sid) {
-        $query = DB::connection()->prepare("SELECT student_number FROM Student WHERE id = :id LIMIT 1");
+        $query = DB::connection()->prepare("SELECT course_number FROM Student WHERE id = :id LIMIT 1");
         $query->execute(array('id' => $sid));
         $row = $query->fetch();
-        return $row['student_number'];
+        return $row['course_number'];
     }
 
     public static function find($id) {

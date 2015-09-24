@@ -85,17 +85,31 @@ class ProblemReturn extends BaseModel {
 
     public static function exercise_table($exercise_id) {
         $problem_numbers = Problem::problem_numbers($exercise_id);
-        $problem_nos = "";
+        $problem_nos = '';
         foreach ($problem_numbers as $no) {
-            $problem_nos = $problem_nos . "'" . $no . "'" . " varchar, ";
+            $problem_nos = $problem_nos . '"' . $no . '" varchar, ';
         }
         $problem_nos = substr($problem_nos, 0, -2);
-        $query = DB::connection()->prepare('select * from crosstab( $$ select student_id, problem_id, mark from problemreturn
-            where problem_id in (select id from problem where exercise_id=121) order by 1 $$,
-            $$ select id from problem where exercise_id=121 $$) as (student_id varchar, :problem_nos)');
-        $query->execute(array('exercise_id' => $exercise_id, 'problem_nos' => $problem_nos));
+        $query = DB::connection()->prepare('SELECT * FROM crosstab($$ SELECT student_id, problem_id, mark FROM problemreturn WHERE problem_id IN (SELECT id FROM problem WHERE exercise_id = ' . $exercise_id . ') ORDER BY 1 $$, $$ SELECT id FROM problem WHERE exercise_id = ' . $exercise_id . ' $$) AS (student_id varchar, ' . $problem_nos . ')');
+        $query->execute();
         $rows = $query->fetchAll();
-        return $rows;
+	$table = array();
+	$trow = array();
+	$trow[] = 'Kurssitunnus';
+	foreach ($problem_numbers as $number) {
+		$trow[] = $number;
+	}
+	$table[] = $trow;
+	$flag = false;
+	foreach ($rows as $row) {
+		$trow = array();
+		$trow[] = Student::get_student_number($row['student_id']);
+		foreach ($problem_numbers as $number) {
+			$trow[] = $row[$number];
+		}
+		$table[] = $trow;
+	}
+        return $table;
     }
     
     public static function find($problem_id, $student_id) {

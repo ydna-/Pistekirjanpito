@@ -20,7 +20,7 @@
     <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log" class="btn btn-primary">Kirjaa pisteitä</a>
     <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log/first" class="btn btn-primary">Kirjaa ensimmäisiä korjauksia</a>
     <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log/second" class="btn btn-primary">Kirjaa toisia korjauksia</a>
-    <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/csv" class="btn btn-primary disabled">Lataa CSV-tiedosto</a>
+    <a href="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/csv" class="btn btn-primary">Lataa CSV-tiedosto</a>
     {% if user_logged_in.is_teacher %}
 <form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa harjoituksen?">
     <button type="submit" class="btn btn-danger pull-right">Poista</button>
