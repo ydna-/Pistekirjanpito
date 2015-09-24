@@ -162,40 +162,7 @@ class ExerciseController extends BaseController {
     }
 
     public static function exercise_csv($course_id, $id) {
-        $students = Student::all($course_id);
-        $problems = Problem::all_plus_star($id);
-        usort($problems, function($a, $b) {
-            if ($a->problem_number - $b->problem_number == 0) {
-                if (strlen($a->problem_number) == strlen($b->problem_number)) {
-                    return substr($a->problem_number, -1) - substr($b->problem_number, -1);
-                } else {
-                    return strlen($a->problem_number) - strlen($b->problem_number);
-                }
-            }
-            return $a->problem_number - $b->problem_number;
-        });
-        $array = array();
-        $array[0][0] = 'tunnus';
-        $i = 1;
-        foreach ($problems as $problem) {
-            $array[0][$i] = $problem->problem_number;
-            $i++;
-        }
-        $i = 1;
-        foreach ($students as $student) {
-            $array[$i][0] = $student->course_number;
-            $j = 1;
-            foreach ($problems as $problem) {
-                $return = ProblemReturn::find($problem->id, $student->id);
-                if ($return) {
-                    $array[$i][$j] = $return->mark;
-                } else {
-                    $array[$i][$j] = ' ';
-                }
-                $j++;
-            }
-            $i++;
-        }
+        $array = ProblemReturn::exercise_table($id);
         try {
             $file = fopen('php://temp', 'w');
             foreach ($array as $row) {

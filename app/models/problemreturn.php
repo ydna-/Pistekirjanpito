@@ -82,6 +82,21 @@ class ProblemReturn extends BaseModel {
         }
         return $returns;
     }
+
+    public static function exercise_table($exercise_id) {
+        $problem_numbers = Problem::problem_numbers($exercise_id);
+        $problem_nos = "";
+        foreach ($problem_numbers as $no) {
+            $problem_nos = $problem_nos . "'" . $no . "'" . " varchar, ";
+        }
+        $problem_nos = substr($problem_nos, 0, -2);
+        $query = DB::connection()->prepare('select * from crosstab( $$ select student_id, problem_id, mark from problemreturn
+            where problem_id in (select id from problem where exercise_id=121) order by 1 $$,
+            $$ select id from problem where exercise_id=121 $$) as (student_id varchar, :problem_nos)');
+        $query->execute(array('exercise_id' => $exercise_id, 'problem_nos' => $problem_nos));
+        $rows = $query->fetchAll();
+        return $rows;
+    }
     
     public static function find($problem_id, $student_id) {
         $query = DB::connection()->prepare('SELECT * FROM ProblemReturn WHERE problem_id = :problem_id AND student_id = :student_id LIMIT 1');

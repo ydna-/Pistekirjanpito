@@ -72,6 +72,13 @@ class Problem extends BaseModel {
         return $problems;
     }
 
+    public static function problem_numbers($exercise_id) {
+        $query = DB::connection()->prepare("SELECT problem_number FROM Problem WHERE exercise_id = :exercise_id");
+        $query->execute(array('exercise_id' => $exercise_id));
+        $row = $query->fetch();
+        return $row['problem_number'];
+    }
+
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Problem WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
