@@ -83,13 +83,12 @@ class CourseController extends BaseController {
 
     public static function course_csv($id) {
         self::check_logged_in();
+        $course = Course::find($id);
         $exercises = Exercise::all($id);
         $final_array = array();
-        $count = 0;
         foreach ($exercises as $exercise) {
             $array = ProblemReturn::exercise_table($exercise->id);
             $final_array = array_merge($final_array, $array);
-            $count++;
         }
         try {
             $file = fopen('php://temp', 'w');
@@ -98,7 +97,7 @@ class CourseController extends BaseController {
             }
             fseek($file, 0);
             header('Content-Type: application/csv');
-            header('Content-Disposition: attachment; filename="' . $id . '.csv' . '";');
+            header('Content-Disposition: attachment; filename="' . $course->name . '_' . $course->term . '.csv' . '";');
             fpassthru($file);
         } catch (Exception $e) {
             Kint::dump($final_array);

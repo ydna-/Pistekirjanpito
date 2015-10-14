@@ -88,7 +88,7 @@ class ProblemReturn extends BaseModel {
         $problem_nos = '';
         $exercise = Exercise::find($exercise_id);
         foreach ($problem_numbers as $no) {
-            $problem_nos = $problem_nos . '"' . $exercise->$exercise_number . '.' . $no . '" varchar, ';
+            $problem_nos = $problem_nos . '"' . $no . '" varchar, ';
         }
         $problem_nos = substr($problem_nos, 0, -2);
         $query = DB::connection()->prepare('SELECT * FROM crosstab($$ SELECT student_id, problem_id, mark FROM problemreturn WHERE problem_id IN (SELECT id FROM problem WHERE exercise_id = ' . $exercise_id . ') ORDER BY 1 $$, $$ SELECT id FROM problem WHERE exercise_id = ' . $exercise_id . ' $$) AS (student_id varchar, ' . $problem_nos . ')');
@@ -96,7 +96,7 @@ class ProblemReturn extends BaseModel {
         $rows = $query->fetchAll();
         $table = array();
         $trow = array();
-        $trow[] = 'Kurssitunnus';
+        $trow[] = 'Harjoitus ' . $exercise->exercise_number;
     	foreach ($problem_numbers as $number) {
             $trow[] = $number;
     	}
