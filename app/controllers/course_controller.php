@@ -82,6 +82,31 @@ class CourseController extends BaseController {
     }
 
     public static function course_csv($id) {
+        self::check_logged_in();
+        $exercises = Exercise::all($id);
+        $final_array = array();
+        $count = 0;
+        foreach ($exercises as $exercise) {
+            $array = ProblemReturn::exercise_table($exercise->id);
+            $final_array = array_merge($final_array, $array);
+            $count++;
+        }
+        try {
+            $file = fopen('php://temp', 'w');
+            foreach ($final_array as $row) {
+                fputcsv($file, $row, ',');
+            }
+            fseek($file, 0);
+            header('Content-Type: application/csv');
+            header('Content-Disposition: attachment; filename="' . $id . '.csv' . '";');
+            fpassthru($file);
+        } catch (Exception $e) {
+            Kint::dump($final_array);
+        }
+    }
+
+    /*
+    public static function course_csv($id) {
         $students = Student::all($id);
         $exercises = Exercise::all($id);
         $array = array();
@@ -129,5 +154,5 @@ class CourseController extends BaseController {
             Kint::dump($array);
         }
     }
-
+    */
 }
