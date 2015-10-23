@@ -10,7 +10,7 @@ class Exercise extends BaseModel {
     }
 
     public static function all($course_id) {
-        $query = DB::connection()->prepare('SELECT * FROM Exercise WHERE course_id = :course_id');
+        $query = DB::connection()->prepare('SELECT * FROM Exercise WHERE course_id = :course_id ORDER BY exercise_number');
         $query->execute(array('course_id' => $course_id));
         $rows = $query->fetchAll();
         $exercises = array();
