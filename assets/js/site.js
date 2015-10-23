@@ -220,8 +220,6 @@ $(document).ready(function() {
 
     $(".selectpicker").selectpicker();
 
-    $("#selCourseNo").focus();
-
     $("#selCourseNo").change(function() {
         $("#selCourseNo").prop('disabled', true);
         $("#selCourseNo").selectpicker('refresh');

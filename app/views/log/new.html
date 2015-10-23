@@ -38,7 +38,7 @@
         <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
         <div class="form-inline">
             <label>Kurssitunnus</label>
-            <select id="selCourseNo" class="selectpicker" data-live-search="true" name="course_number">
+            <select id="selCourseNo" class="selectpicker" data-live-search="true" name="course_number" autofocus>
                 <option></option>
                 {% for student in students %}
                 <option value="{{student.id}}">{{student.course_number}}</option>
