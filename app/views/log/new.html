@@ -35,6 +35,7 @@
 
 <form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log{{option}}">
     <div class="form">
+        <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
         <div class="form-inline">
             <label>Kurssitunnus</label>
             <select id="selCourseNo" class="selectpicker" data-live-search="true" name="course_number">
@@ -43,7 +44,6 @@
                 <option value="{{student.id}}">{{student.course_number}}</option>
                 {% endfor %}
             </select>
-            <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
         </div>
         {% if option == '' %}
         <label>Kysymykset</label>
