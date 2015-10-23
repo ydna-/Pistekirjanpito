@@ -53,7 +53,7 @@
             {% for question in questions %}
             <div class="col-sm-1">
                 <label class="checkboxtext">{{question.question_number}}</label>
-                <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox">
+                <input id="q{{question.question_number}}" name=q{{question.id}} class="form-control checkbox q-checkbox" value="" type="checkbox" disabled>
             </div>
             {% endfor %}
         </div>
