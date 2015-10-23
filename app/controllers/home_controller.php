@@ -19,7 +19,7 @@ class HomeController extends BaseController {
             $total_star = 0;
             foreach ($exercises as $exercise) {
                 $points[$exercise->exercise_number]['total_points'] = 0;
-                $points[$exercise->exercise_number]['number_of_problems'] = $exercise->number_of_problems;
+                $points[$exercise->exercise_number]['number_of_problems'] = $exercise->max_non_star_score + $exercise->max_star_score;
                 $marks[$exercise->exercise_number] = array();
                 $problems = Problem::all_plus_star($exercise->id);
                 usort($problems, function($a, $b) {
