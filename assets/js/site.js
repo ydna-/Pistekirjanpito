@@ -220,11 +220,14 @@ $(document).ready(function() {
 
     $(".selectpicker").selectpicker();
 
+    $("#selCourseNo").focus();
+
     $("#selCourseNo").change(function() {
         $("#selCourseNo").prop('disabled', true);
         $("#selCourseNo").selectpicker('refresh');
         var student_no = $(this).val();
         $(".checkbox").each(function(i) {
+            $(this).prop('disabled', false);
             if ($(this).hasClass("q-checkbox")) {
                 var question_no = $(this).attr('name');
                 var temp = student_no + question_no;
@@ -331,6 +334,18 @@ $(document).keydown(function(e) {
                 break;
             case 80:
                 toggle($("#p20"));
+                break;
+            case 65:
+                toggle($("#q1"));
+                break;
+            case 83:
+                toggle($("#q2"));
+                break;
+            case 68:
+                toggle($("#q3"));
+                break;
+            case 70:
+                toggle($("#q4"));
                 break;
             default:
                 return;

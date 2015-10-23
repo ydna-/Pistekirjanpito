@@ -43,6 +43,7 @@
                 <option value="{{student.id}}">{{student.course_number}}</option>
                 {% endfor %}
             </select>
+            <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
         </div>
         {% if option == '' %}
         <label>Kysymykset</label>
@@ -64,10 +65,10 @@
             {% for problem in problems %}
             <div class="col-sm-1 form-group">
                 <label class="checkboxtext">{{problem.problem_number}}{% if problem.star_problem %}*{% endif %}</label>
-		{% if problem.star_problem %}
-                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox">
+                {% if problem.star_problem %}
+                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox star-checkbox" value="" type="checkbox" disabled>
                 {% else %}
-                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox">
+                <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox" disabled>
                 {% endif %}
             </div>
             {% if (problem.problem_number|number_format)%5 == 0 %}
