@@ -31,7 +31,7 @@
         {% for student in students %}
         <tr>
             <td>{{student.student_number}}</td>
-            <td>{{student.course_number}}</td>
+            <td><form method="post" action="{{base_path}}/scores"><button type="submit" class="btn btn-default" name="course_number" value="{{student.course_number}}">{{student.course_number}}</button></form></td>
             {% if user_logged_in.is_teacher %}
             <td><a href="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/edit" class="btn btn-default">Muokkaa</a></td>
             <td><form method="post" action="{{base_path}}/courses/{{course.id}}/students/{{student.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa opiskelijan?">

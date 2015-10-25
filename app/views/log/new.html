@@ -36,6 +36,7 @@
 <form method="post" action="{{base_path}}/courses/{{course.id}}/exercises/{{exercise.id}}/log{{option}}">
     <div class="form">
         <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
+        <button type="button" class="btn btn-danger" onclick="cancel()">Peruuta</button>
         <div class="form-inline">
             <label>Kurssitunnus</label>
             <select id="selCourseNo" class="selectpicker" data-live-search="true" name="course_number" autofocus>
@@ -47,7 +48,8 @@
         </div>
         {% if option == '' %}
         <label>Kysymykset</label>
-        <button type="button" class="btn btn-default" onclick="selectAllQuestions()">Valitse kaikki</button>
+        <button type="button" class="btn btn-default" onclick="selectAllQuestionsYes()">Valitse kaikki (kyllä)</button>
+        <button type="button" class="btn btn-default" onclick="selectAllQuestionsNo()">Valitse kaikki (ei)</button>
         <button type="button" class="btn btn-default" onclick="removeAllQuestions()">Poista valinnat</button>
         <div class="row form-group">
             {% for question in questions %}
@@ -59,7 +61,8 @@
         </div>
         {% endif %}
         <label>Tehtävät</label>
-        <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki</button>
+        <button type="button" class="btn btn-default" onclick="selectAll()">Valitse kaikki, tähtitehtävät oikein</button>
+        <button type="button" class="btn btn-default" onclick="selectAllButStar()">Valitse kaikki, tähtitehtävät väärin</button>
         <button type="button" class="btn btn-default" onclick="removeAll()">Poista valinnat</button>
         <div class="row form-group">
             {% for problem in problems %}
@@ -79,6 +82,7 @@
         </div>
     </div>
     <button type="submit" class="btn btn-primary" onclick="enable()">Tallenna</button>
+    <button type="button" class="btn btn-danger" onclick="cancel()">Peruuta</button>
 </form>
 
 {% endblock %}

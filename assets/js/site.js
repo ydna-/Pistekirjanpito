@@ -62,6 +62,8 @@ function toggle(elem) {
     }
 }
 
+var flag = false;
+
 function selectAll() {
     $(".ns-checkbox").each(function() {
         $(this).val("O");
@@ -70,6 +72,18 @@ function selectAll() {
     $(".star-checkbox").each(function() {
         $(this).val("O");
         $(this).prop('indeterminate', false);
+        $(this).prop('checked', true);
+    });
+}
+
+function selectAllButStar() {
+    $(".ns-checkbox").each(function() {
+        $(this).val("O");
+        $(this).prop('checked', true);
+    });
+    $(".star-checkbox").each(function() {
+        $(this).val("V");
+        $(this).prop('indeterminate', true);
         $(this).prop('checked', true);
     });
 }
@@ -86,10 +100,18 @@ function removeAll() {
     });
 }
 
-function selectAllQuestions() {
+function selectAllQuestionsYes() {
     $(".q-checkbox").each(function() {
         $(this).val("K");
         $(this).prop('indeterminate', false);
+        $(this).prop('checked', true);
+    });
+}
+
+function selectAllQuestionsNo()) {
+    $(".q-checkbox").each(function() {
+        $(this).val("E");
+        $(this).prop('indeterminate', true);
         $(this).prop('checked', true);
     });
 }
@@ -107,7 +129,16 @@ function enable() {
     $("#selCourseNo").selectpicker('refresh');
 }
 
-var flag = false;
+function cancel() {
+    removeAll();
+    removeAllQuestions();
+    flag = false;
+    $(".checkbox").each(function(i) {
+        $(this).prop('disabled', true);
+    }
+    $("#selCourseNo").prop('disabled', false);
+    $("#selCourseNo").selectpicker('refresh');
+}
 
 $(document).ready(function() {
     $('form.destroy-form').on('submit', function(submit) {
@@ -161,6 +192,39 @@ $(document).ready(function() {
             ]
         };
         var exerciseChart = new Chart(ctx).Bar(data);
+    }
+    if ($("#numberOfCorrectProblems").length) {
+        var labels = [];
+        var data_correct = [];
+        var data_incorrect = [];
+        $('input', '#numberOfCorrectProblems').each(function() {
+            labels.push($(this).attr('id'));
+            data_correct.push($(this).attr('value')[0]);
+            data_incorrect.push($(this).attr('value')[1]);
+        });
+        var ctx = $("#starProblemChart").get(0).getContext("2d");
+        var data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Oikein",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: data_correct
+                },
+                {
+                    label: "Väärin",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: data_incorrect
+                }
+            ]
+        };
+        var starExerciseChart = new Chart(ctx).Bar(data);
     }
     $("#nExercises").change(function() {
         $("#starExercises").children().remove();

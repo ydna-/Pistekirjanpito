@@ -19,6 +19,10 @@ class ExerciseController extends BaseController {
         });
         foreach ($problems as $problem) {
             $problem->number_of_returned = Student::count_returned_by_problem($course->id, $exercise->id, $problem->id);
+            if ($problem->star_problem) {
+                $problem->number_of_correct = Student::count_correct_by_problem($course->id, $exercise->id, $problem->id);
+                $problem->number_of_incorrect = Student::count_incorrect_by_problem($course->id, $exercise->id, $problem->id);
+            }
         }
         View::make('exercise/show.html', array('exercise' => $exercise, 'course' => $course, 'problems' => $problems));
     }

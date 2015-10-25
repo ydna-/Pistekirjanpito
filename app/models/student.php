@@ -53,6 +53,20 @@ class Student extends BaseModel {
         return $row['count'];
     }
 
+    public static function count_correct_by_problem($course_id, $exercise_id, $problem_id) {
+        $query = DB::connection()->prepare("SELECT count(distinct student_id) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND exercise_id = :exercise_id AND problem_id = :problem_id AND MARK='O'");
+        $query->execute(array('course_id' => $course_id, 'exercise_id' => $exercise_id, 'problem_id' => $problem_id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
+
+    public static function count_incorrect_by_problem($course_id, $exercise_id, $problem_id) {
+        $query = DB::connection()->prepare("SELECT count(distinct student_id) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND exercise_id = :exercise_id AND problem_id = :problem_id AND MARK='V'");
+        $query->execute(array('course_id' => $course_id, 'exercise_id' => $exercise_id, 'problem_id' => $problem_id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
+
     public static function get_student_number($sid) {
         $query = DB::connection()->prepare("SELECT course_number FROM Student WHERE id = :id LIMIT 1");
         $query->execute(array('id' => $sid));
