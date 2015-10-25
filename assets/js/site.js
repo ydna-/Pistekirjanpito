@@ -108,7 +108,7 @@ function selectAllQuestionsYes() {
     });
 }
 
-function selectAllQuestionsNo()) {
+function selectAllQuestionsNo() {
     $(".q-checkbox").each(function() {
         $(this).val("E");
         $(this).prop('indeterminate', true);
@@ -135,7 +135,7 @@ function cancel() {
     flag = false;
     $(".checkbox").each(function(i) {
         $(this).prop('disabled', true);
-    }
+    });
     $("#selCourseNo").prop('disabled', false);
     $("#selCourseNo").selectpicker('refresh');
 }
@@ -198,9 +198,10 @@ $(document).ready(function() {
         var data_correct = [];
         var data_incorrect = [];
         $('input', '#numberOfCorrectProblems').each(function() {
-            labels.push($(this).attr('id'));
-            data_correct.push($(this).attr('value')[0]);
-            data_incorrect.push($(this).attr('value')[1]);
+            labels.push($(this).attr('id').slice(0,-1));
+            var temp = $(this).attr('value').split("|");
+            data_correct.push(temp[0]);
+            data_incorrect.push(temp[1]);
         });
         var ctx = $("#starProblemChart").get(0).getContext("2d");
         var data = {
@@ -208,18 +209,18 @@ $(document).ready(function() {
             datasets: [
                 {
                     label: "Oikein",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
+                    fillColor: "rgba(70,191,189,0.5)",
+                    strokeColor: "rgba(70,191,189,0.8)",
+                    highlightFill: "rgba(70,191,189,0.75)",
+                    highlightStroke: "rgba(70,191,189,1)",
                     data: data_correct
                 },
                 {
                     label: "Väärin",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
+                    fillColor: "rgba(247,70,74,0.5)",
+                    strokeColor: "rgba(247,70,74,0.8)",
+                    highlightFill: "rgba(247,70,74,0.75)",
+                    highlightStroke: "rgba(247,70,74,1)",
                     data: data_incorrect
                 }
             ]
@@ -230,7 +231,6 @@ $(document).ready(function() {
         $("#starExercises").children().remove();
         for (var i = 1; i <= $(this).val(); i++) {
             $("#starExercises").append('<option value=' + i + '>' + i + '</option>').selectpicker('refresh');
-            ;
         }
         $("#divStar").show();
     });

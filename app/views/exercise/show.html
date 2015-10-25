@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block content %}s
+{% block content %}
 <ol class="breadcrumb">
   <li><a href="{{base_path}}/courses">Kurssit</a></li>
   <li><a href="{{base_path}}/courses/{{course.id}}">{{course.name}} ({{course.term}})</a></li>
@@ -19,7 +19,7 @@
 <div id="numberOfCorrectProblems" style="display: none;">
 {% for problem in problems %}
 {% if problem.star_problem %}
-<input type="hidden" id="{{problem.problem_number}}_" value="{'correct':{{problem.number_of_correct}},'incorrect':{{problem.number_of_incorrect}}}" />
+<input type="hidden" id="{{problem.problem_number}}_" value="{{problem.number_of_correct}}|{{problem.number_of_incorrect}}" />
 {% endif %}
 {% endfor %}
 </div>
@@ -44,6 +44,8 @@
 
 <caption>Tehtäviä palauttaneiden opiskelijoiden lukumäärä tehtäväkohtaisesti</caption>
 <canvas id="problemChart" width="1000" height="400"></canvas>
+
+<br>
 
 <caption>Tähtitehtävien oikein/väärin-jakauma</caption>
 <canvas id="starProblemChart" width="1000" height="400"></canvas>
