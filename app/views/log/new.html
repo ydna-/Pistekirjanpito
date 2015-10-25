@@ -67,6 +67,12 @@
         <div class="row form-group">
             {% set counter = 1 %}
             {% for problem in problems %}
+            {% for i in counter..(problem.problem_number|split("k")|first|number_format)-1 %}
+                {% if i%5 == 0 %}
+        </div>
+        <div class="row form-group">
+                {% endif %}
+            {% endfor %}
             <div class="col-sm-1 form-group">
                 <label class="checkboxtext">{{problem.problem_number}}{% if problem.star_problem %}*{% endif %}</label>
                 {% if problem.star_problem %}
@@ -75,13 +81,7 @@
                 <input id="p{{problem.problem_number}}" name={{problem.id}} class="form-control checkbox ns-checkbox" value="" type="checkbox" disabled>
                 {% endif %}
             </div>
-            {% for i in counter..(problem.problem_number|number_format) %}
-                {% if counter%5 == 0 %}
-        </div>
-        <div class="row form-group">
-                {% endif %}
-                {% set counter = counter + 1 %}
-            {% endfor %}
+            {% set counter = (problem.problem_number|split("k")|first|number_format) %}
             {% endfor %}
         </div>
     </div>
