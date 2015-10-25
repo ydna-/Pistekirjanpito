@@ -138,6 +138,7 @@ function cancel() {
     });
     $("#selCourseNo").prop('disabled', false);
     $("#selCourseNo").selectpicker('refresh');
+    $("#selCourseNo").focus();
 }
 
 $(document).ready(function() {
@@ -308,6 +309,11 @@ $(document).ready(function() {
                         $(this).val("E");
                         $(this).prop('indeterminate', true);
                         $(this).prop('checked', true);
+                        break;
+                    default:
+                        $(this).val("");
+                        $(this).prop('indeterminate', false);
+                        $(this).prop('checked', false);
                 }
             } else {
                 var problem_no = $(this).attr('name');
@@ -315,7 +321,7 @@ $(document).ready(function() {
                 switch ($(document.getElementById(temp)).val()) {
                     case " ":
                         $(this).val("");
-               		$(this).prop('indeterminate', false);
+               		   $(this).prop('indeterminate', false);
                         $(this).prop('checked', false);
                         break;
                     case "O":
@@ -327,6 +333,11 @@ $(document).ready(function() {
                         $(this).val("V");
                         $(this).prop('indeterminate', true);
                         $(this).prop('checked', true);
+                        break;
+                    default:
+                        $(this).val("");
+                        $(this).prop('indeterminate', false);
+                        $(this).prop('checked', false);
                 }
             }
         });
