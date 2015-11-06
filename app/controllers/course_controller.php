@@ -104,6 +104,51 @@ class CourseController extends BaseController {
         }
     }
 
+    public static function course_summary_csv($id) {
+        self::check_logged_in();
+        $course = Course::find($id);
+        $students = Student::all($id);
+        $total_non_star = Course::count_total_number_of_non_star_problems($id);
+        $total_star = Course::count_total_number_of_star_problems($id);
+        $array = array();
+        $array[0][0] = 'Opiskelijanumero';
+        $array[0][1] = 'Kurssitunnus';
+        $array[0][2] = 'Tehdyt tähdettömät yhteensä';
+        $array[0][3] = 'Tehdyt tähdelliset yhteensä';
+        $array[0][4] = 'Prosentit tähdettömistä';
+        $array[0][5] = 'Prosentit tähdellisistä';
+        $i = 1;
+        foreach ($students as $student) {
+            $array[$i][0] = $student->student_number;
+            $array[$i][1] = $student->course_number;
+            $array[$i][2] = Student::count_correct_non_star_exercises_by_student($id, $student->id);
+            $array[$i][3] = Student::count_correct_star_exercises_by_student($id, $student->id);
+            if ($total_non_star != 0) {
+                $array[$i][4] = 100*($array[$i][2]/$total_non_star);
+            } else {
+                $array[$i][4] = -1;
+            }
+            if ($total_star != 0) {
+                $array[$i][5] = 100*($array[$i][3]/$total_star);
+            } else {
+                $array[$i][5] = -1;
+            }
+            $i++;
+        }
+        try {
+            $file = fopen('php://temp', 'w');
+            foreach ($array as $row) {
+                fputcsv($file, $row, ',');
+            }
+            fseek($file, 0);
+            header('Content-Type: application/csv');
+            header('Content-Disposition: attachment; filename="' . $course->name . '.csv' . '";');
+            fpassthru($file);
+        } catch (Exception $e) {
+            Kint::dump($array);
+        }
+    }
+
     /*
     public static function course_csv($id) {
         $students = Student::all($id);

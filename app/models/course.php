@@ -43,6 +43,20 @@ class Course extends BaseModel {
         return null;
     }
 
+    public static function count_total_number_of_non_star_problems($id) {
+        $query = DB::connection()->prepare('SELECT count(*) FROM Problem INNER JOIN Exercise ON Exercise.id=Problem.exercise_id where Exercise.course_id = :course_id AND NOT problem.star_problem');
+        $query->execute(array('course_id' => $id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
+
+    public static function count_total_number_of_star_problems($id) {
+        $query = DB::connection()->prepare('SELECT count(*) FROM Problem INNER JOIN Exercise ON Exercise.id=Problem.exercise_id where Exercise.course_id = :course_id AND problem.star_problem');
+        $query->execute(array('course_id' => $id));
+        $row = $query->fetch();
+        return $row['count'];
+    }
+
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Course (name, term, total_problems, total_star_problems) VALUES (:name, :term, :total_problems, :total_star_problems) RETURNING id');
         $query->execute(array('name' => $this->name, 'term' => $this->term, 'total_problems' => $this->total_problems, 'total_star_problems' => $this->total_star_problems));
