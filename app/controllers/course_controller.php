@@ -108,8 +108,8 @@ class CourseController extends BaseController {
         self::check_logged_in();
         $course = Course::find($id);
         $students = Student::all($id);
-        $total_non_star = Course::count_total_number_of_non_star_problems($id);
-        $total_star = Course::count_total_number_of_star_problems($id);
+        $total_non_star = $course->total_problems;
+        $total_star = $course->total_star_problems;
         $array = array();
         $array[0][0] = 'Opiskelijanumero';
         $array[0][1] = 'Kurssitunnus';

@@ -40,14 +40,14 @@ class Student extends BaseModel {
     }
 
     public static function count_correct_non_star_exercises_by_student($course_id, $student_id) {
-        $query = DB::connection()->prepare("SELECT count(*) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND student_id = :student_id AND NOT problem.star_problem AND (mark='O')")
+        $query = DB::connection()->prepare("SELECT count(*) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND student_id = :student_id AND NOT problem.star_problem AND (mark='O')");
         $query->execute(array('course_id' => $course_id, 'student_id' => $student_id));
         $row = $query->fetch();
         return $row['count'];
     }
 
     public static function count_correct_star_exercises_by_student($course_id, $student_id) {
-        $query = DB::connection()->prepare("SELECT count(*) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND student_id = :student_id AND problem.star_problem AND (mark='O')")
+        $query = DB::connection()->prepare("SELECT count(*) FROM ProblemReturn INNER JOIN Student ON Student.id=ProblemReturn.student_id INNER JOIN Problem ON Problem.id=ProblemReturn.problem_id WHERE course_id = :course_id AND student_id = :student_id AND problem.star_problem AND (mark='O')");
         $query->execute(array('course_id' => $course_id, 'student_id' => $student_id));
         $row = $query->fetch();
         return $row['count'];
