@@ -124,12 +124,12 @@ class CourseController extends BaseController {
             $array[$i][2] = Student::count_correct_non_star_exercises_by_student($id, $student->id);
             $array[$i][3] = Student::count_correct_star_exercises_by_student($id, $student->id);
             if ($total_non_star != 0) {
-                $array[$i][4] = 100*($array[$i][2]/$total_non_star);
+                $array[$i][4] = round(100*($array[$i][2]/$total_non_star));
             } else {
                 $array[$i][4] = -1;
             }
             if ($total_star != 0) {
-                $array[$i][5] = 100*($array[$i][3]/$total_star);
+                $array[$i][5] = round(100*($array[$i][3]/$total_star));
             } else {
                 $array[$i][5] = -1;
             }
