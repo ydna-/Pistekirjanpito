@@ -167,3 +167,7 @@ $routes->get('/courses/:course_id/summary', function($course_id) {
 $routes->get('/courses/:course_id/exercises/:exercise_id/csv', function($course_id, $exercise_id) {
     ExerciseController::exercise_csv($course_id, $exercise_id);
 });
+
+$routes->get('/courses/:course_id/exercises/:exercise_id/question_csv', function($course_id, $exercise_id) {
+    ExerciseController::exercise_question_csv($course_id, $exercise_id);
+});

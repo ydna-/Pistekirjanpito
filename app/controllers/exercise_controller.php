@@ -184,4 +184,23 @@ class ExerciseController extends BaseController {
         }
     }
 
+    public static function exercise_question_csv($course_id, $id) {
+    self::check_logged_in();
+        $course = Course::find($course_id);
+        $exercise = Exercise::find($id);
+        $array = Answer::exercise_table($id);
+    try {
+            $file = fopen('php://temp', 'w');
+            foreach ($array as $row) {
+                fputcsv($file, $row, ',');
+            }
+            fseek($file, 0);
+            header('Content-Type: application/csv');
+            header('Content-Disposition: attachment; filename="' . $course->name . '_' . $exercise->exercise_number . '_questions.csv' . '";');
+            fpassthru($file);
+        } catch (Exception $e) {
+            Kint::dump($array);
+        }
+    }
+
 }
