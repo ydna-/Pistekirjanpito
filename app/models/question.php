@@ -22,6 +22,17 @@ class Question extends BaseModel {
         }
         return $questions;
     }
+
+    public static function question_numbers($exercise_id) {
+        $query = DB::connection()->prepare("SELECT question_number FROM Question WHERE exercise_id = :exercise_id");
+        $query->execute(array('exercise_id' => $exercise_id));
+        $rows = $query->fetchAll();
+        $numbers = array();
+        foreach ($rows as $row) {
+            $numbers[] = $row['question_number'];
+        }
+        return $numbers;
+    }
     
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Question WHERE id = :id LIMIT 1');
@@ -60,6 +71,11 @@ class Question extends BaseModel {
         }
         $query = DB::connection()->prepare('DELETE FROM Question WHERE exercise_id = :exercise_id');
         $query->execute(array('exercise_id' => $exercise_id));
+    }
+
+    public static function delete_all_by_student($student_id) {
+        $query = DB::connection()->prepare('DELETE FROM Question WHERE student_id = :student_id');
+        $query->execute(array('student_id' => $student_id));
     }
 
     public function save() {

@@ -53,6 +53,36 @@ class Answer extends BaseModel {
         return $answers;
     }
     
+    public static function exercise_table($exercise_id) {
+        $question_numbers = Question::question_numbers($exercise_id);
+        $question_nos = '';
+        $exercise = Exercise::find($exercise_id);
+        foreach ($question_numbers as $no) {
+            $question_nos = $question_nos . '"' . $no . '" varchar, ';
+        }
+        $question_nos = substr($question_nos, 0, -2);
+        $query = DB::connection()->prepare('SELECT * FROM crosstab($$ SELECT student_id, question_id, mark FROM answer WHERE question_id IN (SELECT id FROM question WHERE exercise_id = ' . $exercise_id . ') ORDER BY 1 $$, $$ SELECT id FROM question WHERE exercise_id = ' . $exercise_id . ' $$) AS (student_id varchar, ' . $question_nos . ')');
+        $query->execute();
+        $rows = $query->fetchAll();
+        $table = array();
+        $trow = array();
+        $trow[] = 'Harjoitus ' . $exercise->exercise_number;
+        foreach ($question_numbers as $number) {
+            $trow[] = $number;
+        }
+        $table[] = $trow;
+        $flag = false;
+        foreach ($rows as $row) {
+            $trow = array();
+            $trow[] = Student::get_student_number($row['student_id']);
+            foreach ($question_numbers as $number) {
+                $trow[] = $row[$number];
+            }
+            $table[] = $trow;
+        }
+        return $table;
+    }
+
     public static function find($question_id, $student_id) {
         $query = DB::connection()->prepare('SELECT * FROM Answer WHERE question_id = :question_id AND student_id = :student_id LIMIT 1');
         $query->execute(array('question_id' => $question_id, 'student_id' => $student_id));

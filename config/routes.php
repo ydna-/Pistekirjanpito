@@ -156,6 +156,10 @@ $routes->get('/courses/:course_id/csv', function($course_id) {
     CourseController::course_csv($course_id);
 });
 
+$routes->get('/courses/:course_id/question_csv', function($course_id) {
+    CourseController::course_question_csv($course_id);
+});
+
 $routes->get('/courses/:course_id/summary', function($course_id) {
     CourseController::course_summary_csv($course_id);
 });

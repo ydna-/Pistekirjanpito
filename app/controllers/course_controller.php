@@ -104,6 +104,29 @@ class CourseController extends BaseController {
         }
     }
 
+    public static function course_question_csv($id) {
+        self::check_logged_in();
+        $course = Course::find($id);
+        $exercises = Exercise::all($id);
+        $final_array = array();
+        foreach ($exercises as $exercise) {
+            $array = Question::exercise_table($exercise->id);
+            $final_array = array_merge($final_array, $array);
+        }
+        try {
+            $file = fopen('php://temp', 'w');
+            foreach ($final_array as $row) {
+                fputcsv($file, $row, ',');
+            }
+            fseek($file, 0);
+            header('Content-Type: application/csv');
+            header('Content-Disposition: attachment; filename="' . $course->name . '_' . $course->term . '_questions.csv' . '";');
+            fpassthru($file);
+        } catch (Exception $e) {
+            Kint::dump($final_array);
+        }
+    }
+
     public static function course_summary_csv($id) {
         self::check_logged_in();
         $course = Course::find($id);
