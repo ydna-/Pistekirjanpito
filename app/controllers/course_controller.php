@@ -110,7 +110,7 @@ class CourseController extends BaseController {
         $exercises = Exercise::all($id);
         $final_array = array();
         foreach ($exercises as $exercise) {
-            $array = Question::exercise_table($exercise->id);
+            $array = Answer::exercise_table($exercise->id);
             $final_array = array_merge($final_array, $array);
         }
         try {
