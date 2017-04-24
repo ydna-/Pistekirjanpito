@@ -119,7 +119,6 @@ class Problem extends BaseModel {
         $problems = Problem::all_plus_star($exercise_id);
         foreach ($problems as $problem) {
             ProblemReturn::delete_all($problem->id);
-            Question::delete_all($problem->id);
         }
         $query = DB::connection()->prepare('DELETE FROM Problem WHERE exercise_id = :exercise_id');
         $query->execute(array('exercise_id' => $exercise_id));

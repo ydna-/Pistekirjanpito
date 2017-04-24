@@ -73,11 +73,6 @@ class Question extends BaseModel {
         $query->execute(array('exercise_id' => $exercise_id));
     }
 
-    public static function delete_all_by_student($student_id) {
-        $query = DB::connection()->prepare('DELETE FROM Question WHERE student_id = :student_id');
-        $query->execute(array('student_id' => $student_id));
-    }
-
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Question (question_number, exercise_id) VALUES (:question_number, :exercise_id) RETURNING id');
         $query->execute(array('question_number' => $this->question_number, 'exercise_id' => $this->exercise_id));
